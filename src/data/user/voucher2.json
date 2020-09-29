@@ -1,0 +1,14 @@
+{
+    "currentPage":1,
+    "data":[
+1,
+2,
+3
+    ],
+    "hasNext":false,
+    "hasPre":false,
+    "pageSize":20,
+    "success":true,
+    "totalPage":0,
+    "totalSize":0
+}
