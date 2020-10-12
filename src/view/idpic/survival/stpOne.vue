@@ -1142,33 +1142,23 @@
       saveInfo: function() {
        if(this.isSubmitted) {
             if(this.form.radio1 === 0)  this.$dialog("请作答第1题");
-            // else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
-            // else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
-            // else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
-            // else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
-            // else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
-            // else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
-            // else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
-            // else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
-            // else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
-            // else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
-            // else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
-            // else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
-            // else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
+            else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
+            else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
+            else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
+            else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
+            else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
+            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
+            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
+            else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
+            else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
             else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
-            else if(this.form.radio15 === 151) {
-              if(this.form.radio153 === 0) {
-                this.$dialog("请作答第15c题")
-              }
-            } else if(this.form.radio15 === 152) {
-              if(this.form.radio151 === 0){
-                this.$dialog("请作答第15a题")
-              }else if( this.form.radio151 === 1512){
-                if(this.form.radio152 === 0){
-                this.$dialog("请作答第15b题")
-                }
-              }
-            }
+            else if(this.form.radio15 === 151 && this.form.radio153 === 0) this.$dialog("请作答第15c题");
+            else if(this.form.radio15 === 152 && this.form.radio151 === 0) this.$dialog("请作答第15a题");
+            else if(this.form.radio15 === 152 && this.form.radio151 === 1512 && this.form.radio152 === 0) this.$dialog("请作答第15b题");
             else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
             else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
             else if(this.form.radio18 === 0)  this.$dialog("请作答第18题");
@@ -1180,14 +1170,67 @@
             else if(this.form.radio24 === 0) this.$dialog("请作答第24题");
             else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
             else {
-              let total =  this.calculate(parseInt(this.form.radio2_1.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_2.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_3.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_4.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_5.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_6.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_7.toString().split(".")[1].charAt(1))) +
-                           this.calculate(parseInt(this.form.radio2_8.toString().split(".")[1].charAt(1)))
+             let num =0;
+             if(this.form.radio153 != 0){
+               num = this.calculate(parseInt(this.form.radio2_1.toString().split(".")[1].charAt(1)));
+             }
+              //calculate_1
+              // 1,3,4,5,6,7,8,9,10,11,12,13,14,16,16a,15c
+              // A3,A4,A5,A6,A7,A8,A9
+
+              // calculate_2
+              // 2
+
+              // calculate_3
+              // 17,18,19,20,21,22,23,24,25,
+              // A11,,A12,A13
+
+              // calculate_4
+              // A1,A2
+              // 一共38
+              let total =  num +
+                           this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio6.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio7.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio8.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio9.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio10.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio11.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio12.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio13.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio14.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) +
+                           this.calculate_1(parseInt(this.form.radio43.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio44.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio45.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio46.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio47.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio48.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio49.toString().charAt(2))) +
+                           this.calculate_2(parseInt(this.form.radio2.toString().charAt(1))) +
+                           this.calculate_3(parseInt(this.form.radio17.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio18.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio19.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio20.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio21.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio22.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) +
+                           this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) +
+                           this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) +
+                           this.calculate_4(parseInt(this.form.radio41.toString().charAt(2))) +
+                           this.calculate_4(parseInt(this.form.radio42.toString().charAt(2)))
+              if(num===0){
+                total = (total/37).toFixed(2)
+              } else {
+                total = (total/37).toFixed(2)
+              }
               this.cls = "subBtn grayBg";
               this.isSubmitted = false;
               this.isAble = true;
@@ -1202,15 +1245,7 @@
               });
             }
 
-              // console.log("value1:"+ this.value);
             }
-          // else {
-          //   this.$dialog("提交完成");
-          //   this.cls = "subBtn grayBg"
-          //   this.isSubmitted = false
-          //   this.isAble = true
-          //   // console.log("value2:"+ this.value)
-          // }
       },
 
        calculate_1(val) {
@@ -1265,7 +1300,8 @@
 
        showOtherac(){
         if(this.form.radio15 === 151){
-          this.form.radio153 === 0
+          this.form.radio153 === '';
+          console.log('====' + this.form.radio153)
           this.isShow15c = true
           this.isShow15a = false
           this.isShow15b = false
@@ -1284,9 +1320,10 @@
         }else if(this.form.radio151 === 1512){
           this.isShow15b = true
         }
-      }
-
       },
+
+
+      }
 
 
     }
