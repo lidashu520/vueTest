@@ -962,7 +962,8 @@
 
 <!------10-------->
     <dl>
-     <dt style="padding-top: 0.325rem"><span>A10、你是否因你的视力问题而受到他人较多的帮助？</span></dt>
+     <dt style="padding-top: 0.325rem"><span>A11a、你是否因你的视力问题而受到他人较多的帮助</span></dt>
+     <dt style="padding-top: 0.325rem"><span>？</span></dt>
         <el-radio-group v-model="form.radio410">
           <dd class="floatW28">
             <el-radio :label="4101"><span class="questionsWord">所有时间</span></el-radio>
@@ -984,8 +985,8 @@
 
     <!------11-------->
     <dl>
-     <dt style="padding-top: 0.325rem"><span>A11、你能做的事情种类是否因你的视力问题而受到限</span></dt>
-     <dt style="padding-top: 0.325rem"><span>制？</span></dt>
+     <dt style="padding-top: 0.325rem"><span>A11b、你能做的事情种类是否因你的视力问题而受到</span></dt>
+     <dt style="padding-top: 0.325rem"><span>限制？</span></dt>
         <el-radio-group v-model="form.radio411">
           <dd class="floatW28">
             <el-radio :label="4111"><span class="questionsWord">所有时间</span></el-radio>
@@ -1062,9 +1063,53 @@
     </div>
     <div class="btnWarp">
         <span :class="this.cls" @click='saveInfo'>提交</span>
+        <!-- <span  @click='saveInfo'>提交</span> -->
     </div>
     </div>
-    <survivalFooter :idx='0'></survivalFooter>
+    <!----- dialog1  start ----->
+    <el-dialog
+      title=" 得分统计"
+      :visible.sync="centerDialogVisible1"
+      width="95%"
+      center>
+    <div>
+      <el-table
+        :data="tableData"
+        border
+        style="width: 100%">
+        <el-table-column
+          prop="content"
+          label="各项指标"
+          min-width="55%">
+        </el-table-column>
+        <el-table-column
+          prop="score"
+          label="得分">
+        </el-table-column>
+      </el-table>
+    </div>
+    </el-dialog>
+    <!----- dialog1  end ----->
+
+    <el-dialog
+      :visible.sync="centerDialogVisible"
+      width="90%"
+      center>
+      <div class="container">
+        <dt class="border ml20" style="line-height: 1.525rem;
+          text-indent: 0.625rem;
+          font-size: 0.9125rem;">您的生存质量评分为{{this.form.total}}分。</dt>
+        <div class="hint">
+            <dl>
+            <dd>
+              <p><span>您的生存质量评分为{{this.form.total}}分，低于最低分值62分,请咨询您的主管医生和护士，进行对应的处理！！</span></p>
+            </dd>
+            </dl>
+        </div>
+        <img src="../../../assets/img/hushi.png"  class="fr" style="margin-top: 23px; "/>
+      </div>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -1115,6 +1160,19 @@
           radio411: 0,
           radio412: 0,
           radio413: 0,
+          average1: 0,
+          average2: 0,
+          average3: 0,
+          average4: 0,
+          average5: 0,
+          average6: 0,
+          average7: 0,
+          average8: 0,
+          average9: 0,
+          average10: 0,
+          average11: 0,
+          average12: 0,
+          total: 0
         },
         isShow: false,
         marks: {
@@ -1135,44 +1193,111 @@
         isShow15c: false,
         cls: 'subBtn',
         isSubmitted: true,
-        isAble: false
+        isAble: false,
+        centerDialogVisible1: false,
+        centerDialogVisible: false,
+        tableData: [{
+          content: '生存质量(总分)',
+          score: 0
+          },
+          {
+            content: '一般健康',
+            score: 0
+          },
+          {
+            content: '总体视力',
+            score: 0
+          },
+          {
+            content: '眼痛',
+            score: 0
+          },
+          {
+            content: '近视力',
+            score: 0
+          },
+          {
+            content: '远视力',
+            score: 0
+          },
+          {
+            content: '社会功能',
+            score: 0
+          },
+          {
+            content: '心理问题',
+            score: 0
+          },
+          {
+            content: '角色困难',
+            score: 0
+          },
+          {
+            content: '依赖性',
+            score: 0
+          },
+          {
+            content: '驾驶',
+            score: 0
+          },
+          {
+            content: '色觉',
+            score: 0
+          },
+          {
+            content: '外周视力',
+            score: 0
+          },
+        ],
       }
     },
     methods: {
       saveInfo: function() {
+
        if(this.isSubmitted) {
             if(this.form.radio1 === 0)  this.$dialog("请作答第1题");
-            else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
-            else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
-            else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
-            else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
-            else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
-            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
-            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
-            else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
-            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
-            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
-            else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
-            else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
-            else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
-            else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
-            else if(this.form.radio15 === 151 && this.form.radio153 === 0) this.$dialog("请作答第15c题");
-            else if(this.form.radio15 === 152 && this.form.radio151 === 0) this.$dialog("请作答第15a题");
-            else if(this.form.radio15 === 152 && this.form.radio151 === 1512 && this.form.radio152 === 0) this.$dialog("请作答第15b题");
-            else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
-            else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
-            else if(this.form.radio18 === 0)  this.$dialog("请作答第18题");
-            else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
-            else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
-            else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
-            else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
-            else if(this.form.radio23 === 0) this.$dialog("请作答第23题");
-            else if(this.form.radio24 === 0) this.$dialog("请作答第24题");
-            else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
+            // else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
+            // else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
+            // else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
+            // else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
+            // else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
+            // else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            // else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            // else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
+            // else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            // else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            // else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
+            // else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
+            // else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
+            // else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
+            // else if(this.form.radio15 === 151 && this.form.radio153 === 0) this.$dialog("请作答第15c题");
+            // else if(this.form.radio15 === 152 && this.form.radio151 === 0) this.$dialog("请作答第15a题");
+            // else if(this.form.radio15 === 152 && this.form.radio151 === 1512 && this.form.radio152 === 0) this.$dialog("请作答第15b题");
+            // else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
+            // else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
+            // else if(this.form.radio18 === 0)  this.$dialog("请作答第18题");
+            // else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
+            // else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
+            // else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
+            // else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
+            // else if(this.form.radio23 === 0) this.$dialog("请作答第23题");
+            // else if(this.form.radio24 === 0) this.$dialog("请作答第24题");
+            // else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
+            // else if(this.form.radio43 === 0) this.$dialog("请作答第A3题");
+            // else if(this.form.radio44 === 0) this.$dialog("请作答第A4题");
+            // else if(this.form.radio45 === 0) this.$dialog("请作答第A5题");
+            // else if(this.form.radio46 === 0) this.$dialog("请作答第A6题");
+            // else if(this.form.radio47 === 0) this.$dialog("请作答第A7题");
+            // else if(this.form.radio48 === 0) this.$dialog("请作答第A8题");
+            // else if(this.form.radio49 === 0) this.$dialog("请作答第A9题");
+            // else if(this.form.radio410 === 0) this.$dialog("请作答第A11a题");
+            // else if(this.form.radio411 === 0) this.$dialog("请作答第A11b题");
+            // else if(this.form.radio412 === 0) this.$dialog("请作答第A12题");
+            // else if(this.form.radio413 === 0) this.$dialog("请作答第A13题");
             else {
              let num =0;
              if(this.form.radio153 != 0){
-               num = this.calculate(parseInt(this.form.radio2_1.toString().split(".")[1].charAt(1)));
+               num = this.calculate_1(parseInt(this.form.radio153.toString().charAt(3)))
              }
               //calculate_1
               // 1,3,4,5,6,7,8,9,10,11,12,13,14,16,16a,15c
@@ -1187,9 +1312,47 @@
 
               // calculate_4
               // A1,A2
-              // 一共38
-              let total =  num +
-                           this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) +
+              // 一共39
+               console.log("form.radio1:" + this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) )
+               console.log("form.radio3:" + this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) )
+               console.log("form.radio4:" + this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) )
+               console.log("form.radio5:" + this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) )
+               console.log("form.radio6:" + this.calculate_1(parseInt(this.form.radio6.toString().charAt(1))) )
+               console.log("form.radio7:" + this.calculate_1(parseInt(this.form.radio7.toString().charAt(1))) )
+               console.log("form.radio8:" + this.calculate_1(parseInt(this.form.radio8.toString().charAt(1))) )
+               console.log("form.radio9:" + this.calculate_1(parseInt(this.form.radio9.toString().charAt(1))) )
+               console.log("form.radio10:" + this.calculate_1(parseInt(this.form.radio10.toString().charAt(2))) )
+               console.log("form.radio11:" + this.calculate_1(parseInt(this.form.radio11.toString().charAt(2))) )
+               console.log("form.radio12:" + this.calculate_1(parseInt(this.form.radio12.toString().charAt(2))) )
+               console.log("form.radio13:" + this.calculate_1(parseInt(this.form.radio13.toString().charAt(2))) )
+               console.log("form.radio14:" + this.calculate_1(parseInt(this.form.radio14.toString().charAt(2))) )
+               console.log("form.radio16:" + this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) )
+               console.log("form.radio161:" + this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) )
+               console.log("form.radio43:" + this.calculate_1(parseInt(this.form.radio43.toString().charAt(2))) )
+               console.log("form.radio44:" + this.calculate_1(parseInt(this.form.radio44.toString().charAt(2))) )
+               console.log("form.radio45:" + this.calculate_1(parseInt(this.form.radio45.toString().charAt(2))) )
+               console.log("form.radio46:" + this.calculate_1(parseInt(this.form.radio46.toString().charAt(2))) )
+               console.log("form.radio47:" + this.calculate_1(parseInt(this.form.radio47.toString().charAt(2))) )
+               console.log("form.radio48:" + this.calculate_1(parseInt(this.form.radio48.toString().charAt(2))) )
+               console.log("form.radio49:" + this.calculate_1(parseInt(this.form.radio49.toString().charAt(2))) )
+               console.log("form.radio2:" + this.calculate_2(parseInt(this.form.radio2.toString().charAt(1)))  )
+               console.log("form.radio17:" + this.calculate_3(parseInt(this.form.radio17.toString().charAt(2))) )
+               console.log("form.radio18:" + this.calculate_3(parseInt(this.form.radio18.toString().charAt(2))) )
+               console.log("form.radio19:" + this.calculate_3(parseInt(this.form.radio19.toString().charAt(2))) )
+               console.log("form.radio20:" + this.calculate_3(parseInt(this.form.radio20.toString().charAt(2))) )
+               console.log("form.radio21:" + this.calculate_3(parseInt(this.form.radio21.toString().charAt(2))) )
+               console.log("form.radio22:" + this.calculate_3(parseInt(this.form.radio22.toString().charAt(2))) )
+               console.log("form.radio23:" + this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) )
+               console.log("form.radio24:" + this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) )
+               console.log("form.radio25:" + this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) )
+               console.log("form.radio410:" + this.calculate_3(parseInt(this.form.radio410.toString().charAt(3))) )
+               console.log("form.radio411:" + this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) )
+               console.log("form.radio412:" + this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) )
+               console.log("form.radio413:" + this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) )
+               console.log("value1:" + this.calculate_4(this.form.value1) )
+               console.log("value2:" + this.calculate_4(this.form.value2) )
+
+              this.form.total =  this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) +
                            this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) +
                            this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) +
                            this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) +
@@ -1221,28 +1384,98 @@
                            this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) +
                            this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) +
                            this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) +
+                           this.calculate_3(parseInt(this.form.radio410.toString().charAt(3))) +
                            this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) +
                            this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) +
                            this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) +
-                           this.calculate_4(parseInt(this.form.radio41.toString().charAt(2))) +
-                           this.calculate_4(parseInt(this.form.radio42.toString().charAt(2)))
+                           this.calculate_4(this.form.value1) +
+                           this.calculate_4(this.form.value2) + num
+
+
+             this.form.average1= ((this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) +
+                           this.calculate_4(this.form.value1)) /2).toFixed(2)
+
+             this.form.average2= ((this.calculate_1(parseInt(this.form.radio2.toString().charAt(1))) +
+                           this.calculate_4(this.form.value2)) /2).toFixed(2)
+
+             this.form.average3= ((this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) +
+                           this.calculate_3(parseInt(this.form.radio19.toString().charAt(2))) )/2).toFixed(2)
+
+             this.form.average4= ((this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio6.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio7.toString().charAt(1))) +
+                           this.calculate_1(parseInt(this.form.radio43.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio44.toString().charAt(2))) +
+                           this.calculate_1(parseInt(this.form.radio45.toString().charAt(2))) )/6).toFixed(2)
+
+            this.form.average5= ((this.calculate_1(parseInt(this.form.radio8.toString().charAt(1))) +
+                            this.calculate_1(parseInt(this.form.radio9.toString().charAt(1))) +
+                            this.calculate_1(parseInt(this.form.radio14.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio46.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio47.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio48.toString().charAt(2))) )/6).toFixed(2)
+
+            this.form.average6= ((this.calculate_1(parseInt(this.form.radio11.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio13.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio49.toString().charAt(2))) )/3).toFixed(2)
+
+            this.form.average7= ((this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) +
+                            this.calculate_3(parseInt(this.form.radio21.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio22.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) )/5).toFixed(2)
+
+            this.form.average8= ((this.calculate_3(parseInt(this.form.radio17.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio18.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio410.toString().charAt(3))) +
+                            this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) )/4).toFixed(2)
+
+            this.form.average9= ((this.calculate_3(parseInt(this.form.radio20.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) +
+                            this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) )/4).toFixed(2)
+
+            this.form.average11 = this.calculate_1(parseInt(this.form.radio12.toString().charAt(2))).toFixed(2)
+
+            this.form.average12 = this.calculate_1(parseInt(this.form.radio10.toString().charAt(2))).toFixed(2)
+
               if(num===0){
-                total = (total/37).toFixed(2)
+                this.form.average10 = ((this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) +
+                            this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) )/2).toFixed(2)
+                this.form.total =  (this.form.total/38).toFixed(2)
               } else {
-                total = (total/37).toFixed(2)
+                this.form.average10 = ((this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) +
+                this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) + num )/3).toFixed(2)
+                this.form.total =  (this.form.total/39).toFixed(2)
               }
+              this.tableData[0].score = this.form.total;
+              this.tableData[1].score = this.form.average1;
+              this.tableData[2].score = this.form.average2;
+              this.tableData[3].score = this.form.average3;
+              this.tableData[4].score = this.form.average4;
+              this.tableData[5].score = this.form.average5;
+              this.tableData[6].score = this.form.average6;
+              this.tableData[7].score = this.form.average7;
+              this.tableData[8].score = this.form.average8;
+              this.tableData[9].score = this.form.average9;
+              this.tableData[10].score = this.form.average10;
+              this.tableData[11].score = this.form.average11;
+              this.tableData[12].score = this.form.average12;
+
               this.cls = "subBtn grayBg";
               this.isSubmitted = false;
               this.isAble = true;
-              this.$message({
-                dangerouslyUseHTMLString: true,
-                message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
-                type: 'success',
-                center: true,
-                offset: 180,
-                showClose: true,
-                duration: 0
-              });
+              // this.$message({
+              //   dangerouslyUseHTMLString: true,
+              //   message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
+              //   type: 'success',
+              //   center: true,
+              //   offset: 180,
+              //   showClose: true,
+              //   duration: 0
+              // });
+              this.centerDialogVisible = true
+              this.centerDialogVisible1 = true
             }
 
             }
