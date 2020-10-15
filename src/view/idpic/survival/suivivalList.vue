@@ -1,13 +1,15 @@
 <template>
   <div class="container">
-    <topComponent title='症状监测' ></topComponent>
-    <ul class="listCom list-arrow list-icon no-top">
-      <listComponent v-for='(data,index) in datas' :key='index' :class='data.cls' @click="$router.push(data.push)" :title='data.tit'>
-        <template slot='right'>
-          <i class="hasSuc" v-show='data.isOk'>已完成</i>
-        </template>
-      </listComponent>
-    </ul>
+      <topComponent title='生存质量测评'>
+        <span class="back" @click="$router.push('/idpic')" slot="left">返回</span>
+      </topComponent>
+      <ul class="listCom list-arrow list-icon no-top">
+        <listComponent v-for='(data,index) in datas'  :key='index' @click="$router.push(data.push)" :class='data.cls' :title='data.tit'>
+          <template slot='right'>
+            <i class="hasSuc" v-show='data.isOk'>已完成</i>
+          </template>
+        </listComponent>
+      </ul>
   </div>
 </template>
 <script>
@@ -16,73 +18,73 @@
       return {
         //已完成的开关
         datas: [
-          {
-          cls: 'icon-info',
-          tit: '疼痛',
-          push: '/idpic/other1',
-          isOk: false,
-          param: 'idpic_other1'
-        },
-          {
-            cls: 'icon-urgent',
-            tit: '恶心、呕吐',
-            push: '/idpic/other2',
-            isOk: false,
-            param: 'userContacts'
-          },
-          {
-            cls: 'icon-credit',
-            tit: '头晕',
-            push: '/idpic/other3',
-            isOk: false,
-            param: 'userScan'
-          },
-          {
-            cls: 'icon-other',
-            tit: '抑郁',
-            push: '/idpic/other4',
-            isOk: false,
-            param: 'userPhone'
-          },
-          {
-            cls: 'icon-work',
-            tit: '焦虑',
-            push: '/idpic/other5',
-            isOk: false,
-            param: 'userWork'
-          },
+        //   {
+        //   cls: 'icon-info',
+        //   tit: '个人信息',
+        //   push: '/credit/userInfo',
+        //   isOk: false,
+        //   param: 'userInfo'
+        // },
+        //   {
+        //     cls: 'icon-urgent',
+        //     tit: '紧急联系人',
+        //     push: '/credit/contacts',
+        //     isOk: false,
+        //     param: 'userContacts'
+        //   },
+        //   {
+        //     cls: 'icon-scan',
+        //     tit: '人脸识别',
+        //     push: '/credit/scan',
+        //     isOk: false,
+        //     param: 'userScan'
+        //   },
+          // {
+          //   cls: 'icon-phone',
+          //   tit: '重置密码',
+          //   push: '/credit/mobile',
+          //   isOk: false,
+          //   param: 'userPhone'
+          // },
+          // {
+          //   cls: 'icon-work',
+          //   tit: '工作信息',
+          //   push: '/credit/work',
+          //   isOk: false,
+          //   param: 'userWork'
+          // },
           {
             cls: 'icon-idPic',
-            tit: '匹兹堡睡眠质量',
-            push: '/idpic/other6',
+            tit: '视功能量表评估',
+            push: '/idpic/stpTwo',
             isOk: false,
-            param: 'userIdpic'
-          },
-          {
-            cls: 'icon-fund',
-            tit: '认知评估',
-            push: '/idpic/other7',
-            isOk: false,
-            param: 'userFund'
-          },
-          {
-            cls: 'icon-shebao',
-            tit: '照顾者压力和负担',
-            push: '/idpic/other8',
-            isOk: false,
-            param: 'userSB'
-          },
-          {
-            cls: 'icon-chuxu',
-            tit: '其他',
-            push: '/idpic/other9',
-            isOk: false,
-            param: 'userChuxu'
+            param: 'userIdpic1'
           },
           // {
-          //   cls: 'icon-bank',
-          //   tit: 'J. 角色表现',
-          //   push: '/idpic/otherj',
+          //   cls: 'icon-fund',
+          //   tit: '公积金授权',
+          //   push: '/credit/gjjCity',
+          //   isOk: false,
+          //   param: 'userFund'
+          // },
+          // {
+          //   cls: 'icon-shebao',
+          //   tit: '营养态度和行为测评',
+          //   push: '/ganyusys/pinggu/two',
+          //   isOk: false,
+          //   param: 'userSB'
+          // },
+          {
+            cls: 'icon-chuxu',
+            tit: '视功能量表评估Pro',
+            push: '/idpic/stpTwo',
+            isOk: false,
+            param: 'userChuxu1'
+          },
+          // {
+          //   cls: 'icon-zhima',
+          //   tit: '芝麻信用授权',
+          //   push: '/credit/zhima',
           //   isOk: false,
           //   param: 'userZhima'
           // },
@@ -107,6 +109,12 @@
           //   isOk: false,
           //   param: 'userAlipay'
           // },
+          {
+            cls: 'icon-other',
+            tit: '历史记录',
+            isOk: false,
+            param: 'userOhter1'
+          }
         ]
       }
     },

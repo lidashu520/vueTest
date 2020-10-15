@@ -9,7 +9,7 @@
      <div class="questions">
     <dl>
      <dt style="padding-top: 0.325rem"><span>1.  您目前的居住情况是？</span></dt>
-      <el-radio-group v-model="radio1" @change="showOther1">
+      <el-radio-group v-model="form.radio1" @change="showOther1">
         <dd class="floatW20">
           <el-radio :label="11"><span class="questionsWord">A.独居</span></el-radio>
         </dd>
@@ -34,7 +34,7 @@
     <!-- 2 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>2.  您家里主要是谁在准备食物？</span></dt>
-      <el-radio-group v-model="radio2" @change="showOther2">
+      <el-radio-group v-model="form.radio2" @change="showOther2">
         <dd class="floatW24">
           <el-radio :label="21"><span class="questionsWord">A.您自己</span></el-radio>
         </dd>
@@ -62,7 +62,7 @@
      <!-- 3 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>3.  您家里主要是谁在做饭？</span></dt>
-      <el-radio-group v-model="radio3" @change="showOther3">
+      <el-radio-group v-model="form.radio3" @change="showOther3">
         <dd class="floatW24">
           <el-radio :label="31"><span class="questionsWord">A.您自己</span></el-radio>
         </dd>
@@ -90,7 +90,7 @@
      <!-- 4 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>4.  什么因素会影响您准备食物？</span></dt>
-      <el-radio-group v-model="radio4">
+      <el-radio-group v-model="form.radio4">
         <dd class="floatW30">
           <el-radio :label="41"><span class="questionsWord">A.视力损害</span></el-radio>
         </dd>
@@ -109,7 +109,7 @@
      <!-- 5 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>5.  什么因素会影响您做饭？</span></dt>
-      <el-radio-group v-model="radio5">
+      <el-radio-group v-model="form.radio5">
         <dd class="floatW30">
           <el-radio :label="51"><span class="questionsWord">A.视力损害</span></el-radio>
         </dd>
@@ -128,7 +128,7 @@
      <!-- 6 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>6.  什么因素会影响您做饭？</span></dt>
-      <el-radio-group v-model="radio6">
+      <el-radio-group v-model="form.radio6">
         <dd class="floatW20" style="witdth:20.5%">
           <el-radio :label="61"><span class="questionsWord">A.能</span></el-radio>
         </dd>
@@ -144,7 +144,7 @@
      <!-- 7 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>7.  您家里谁去买菜？</span></dt>
-      <el-radio-group v-model="radio7">
+      <el-radio-group v-model="form.radio7">
         <dd class="floatW24">
           <el-radio :label="71"><span class="questionsWord">A.您自己</span></el-radio>
         </dd>
@@ -167,7 +167,7 @@
      <!-- 8 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>8. 您一般在哪里购买食物？</span></dt>
-      <el-radio-group v-model="radio8">
+      <el-radio-group v-model="form.radio8">
         <dd class="floatW24">
           <el-radio :label="81"><span class="questionsWord">A.菜市场</span></el-radio>
         </dd>
@@ -192,7 +192,7 @@
      <!-- 9 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>9. 您平时每天具体买什么菜是由什么决定？(可多选)</span></dt>
-      <el-checkbox-group v-model="checkList">
+      <el-checkbox-group v-model="form.checkList9">
         <dd class="floatW20">
           <el-checkbox label="价格"><span class="questionsWord">A.价格</span></el-checkbox>
         </dd>
@@ -218,7 +218,7 @@
      <!-- 10 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>10. 您愿意改变自己的饮食吗？</span></dt>
-      <el-radio-group v-model="radio10">
+      <el-radio-group v-model="form.radio10">
         <dd class="floatW25">
           <el-radio :label="101"><span class="questionsWord">A.愿意</span></el-radio>
         </dd>
@@ -234,7 +234,7 @@
     <!-- 11 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>11. 您愿意改变自己的饮食吗？</span></dt>
-      <el-radio-group v-model="radio11">
+      <el-radio-group v-model="form.radio11">
         <dd class="floatW30">
           <el-radio :label="111"><span class="questionsWord">A.煮熟的</span></el-radio>
         </dd>
@@ -250,7 +250,7 @@
      <!-- 12 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>12. 您愿意改变自己的饮食吗？</span></dt>
-      <el-radio-group v-model="radio12" @change="showThirty">
+      <el-radio-group v-model="form.radio12" @change="showThirty">
         <dd class="floatW40">
           <el-radio :label="121"><span class="questionsWord">A.是</span></el-radio>
         </dd>
@@ -264,7 +264,7 @@
      <dl v-show="isShow">
      <dt style="padding-top: 0.325rem"><span>13. 如果回答“是”，您具体是和哪些人讨论呢？</span></dt>
      <dt style="padding-top: 0.325rem"><span>(可多选)</span></dt>
-      <el-checkbox-group v-model="checkList" @change="showOther13">
+      <el-checkbox-group v-model="form.checkList13" @change="showOther13">
         <dd class="floatW28">
           <el-checkbox label="眼科医生"><span class="questionsWord">A.眼科医生</span></el-checkbox>
         </dd>
@@ -293,7 +293,7 @@
     <!-- 14 -->
      <dl>
      <dt style="padding-top: 0.325rem"><span>14. 您平时会服用一些营养补充剂（即保健品）吗？</span></dt>
-      <el-radio-group v-model="radio14" @change="showThirty">
+      <el-radio-group v-model="form.radio14" @change="showThirty">
         <dd class="floatW50">
           <el-radio :label="141"><span class="questionsWord">A.是（继续回答21题）</span></el-radio>
         </dd>
@@ -309,7 +309,7 @@
    <!-- 15 -->
     <dl>
      <dt  style="padding-top: 0.325rem"><span>15. 您多久服用一次营养补充剂呢？ </span></dt>
-      <el-radio-group v-model="radio15" @change="showOther15">
+      <el-radio-group v-model="form.radio15" @change="showOther15">
         <dd class="floatW30">
           <el-radio :label="151"><span class="questionsWord">A.2/日以上 </span></el-radio>
         </dd>
@@ -338,7 +338,7 @@
      <dl>
      <dt style="padding-top: 0.325rem"><span>16. 您没有服用营养补充剂的理由是什么呢？</span></dt>
      <dt style="padding-top: 0.325rem"><span>(可多选)</span></dt>
-      <el-checkbox-group v-model="checkList16" @change="showOther16">
+      <el-checkbox-group v-model="form.checkList16" @change="showOther16">
         <dd class="floatW22">
           <el-checkbox label="太贵"><span class="questionsWord">A.太贵</span></el-checkbox>
         </dd>
@@ -369,7 +369,7 @@
     <dl>
     <dt style="padding-top: 0.325rem"><span>17. 如果营养补充剂对您的眼睛疾病有效，您每月</span></dt>
     <dt style="padding-top: 0.325rem"><span>愿意花多少钱服用呢？</span></dt>
-      <el-radio-group v-model="radio17">
+      <el-radio-group v-model="form.radio17">
         <dd class="floatW27">
           <el-radio :label="171"><span class="questionsWord">A.不愿意</span></el-radio>
         </dd>
@@ -394,7 +394,7 @@
     <dl>
     <dt style="padding-top: 0.325rem"><span>18. 您觉得获得了足够的营养信息来管理眼部疾病</span></dt>
     <dt style="padding-top: 0.325rem"><span>吗？</span></dt>
-      <el-radio-group v-model="radio18">
+      <el-radio-group v-model="form.radio18">
         <dd class="floatW29" style="width:30%">
           <el-radio :label="181"><span class="questionsWord">A.非常同意</span></el-radio>
         </dd>
@@ -417,7 +417,7 @@
     <!-- 19 -->
     <dl>
     <dt style="padding-top: 0.325rem"><span>19. 您一般在哪里获得AMD疾病相关信息？(可多选)</span></dt>
-      <el-checkbox-group v-model="checkList19" @change="showOther19">
+      <el-checkbox-group v-model="form.checkList19" @change="showOther19">
         <dd class="floatW28">
           <el-checkbox label="眼科医生"><span class="questionsWord">A.眼科医生</span></el-checkbox>
         </dd>
@@ -456,6 +456,7 @@
   export default {
     data() {
       return {
+        form: {
         radio1: 0,
         radio2: 0,
         radio3: 0,
@@ -464,18 +465,18 @@
         radio6: 0,
         radio7: 0,
         radio8: 0,
-        checkList:[],
+        checkList9:[],
         radio10: 0,
         radio11: 0,
         radio12: 0,
-        radio13: 0,
+        checkList13:[],
         radio14: 0,
         radio15: 0,
         checkList16:[],
-        checkList19:[],
         radio17: 0,
         radio18: 0,
-        radio19: 0,
+        checkList19:[]
+        },
         is_Show1: false,
         is_Show2: false,
         is_Show3: false,
@@ -491,8 +492,10 @@
         text15:'',
         text16:'',
         text19:'',
-        isShow: false
+        isShow: false,
+        isSubmitted: true
       }
+
     },
 
     methods: {
@@ -505,15 +508,42 @@
             name: 'userInfo',
             val: JSON.stringify(this.data)
           });
-          this.$dialog(["保存成功", "true"]);
-          setTimeout(() => {
-            this.$router.back()
-          }, 2000)
+
+          if(this.isSubmitted) {
+            if(this.form.radio1 === 0)  this.$dialog("请作答第1题");
+            else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
+            else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
+            else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
+            else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
+            else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
+            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            else if(this.form.checkList9.length === 0) this.$dialog("请作答第9题");
+            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
+            else if(this.form.radio12 === 121 && this.form.checkList13.length === 0) this.$dialog("请作答第13题");
+            else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
+            else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
+            else if(this.form.checkList16.length === 0) this.$dialog("请作答第16题");
+            else if(this.form.radio17 === 0) this.$dialog("请作答第15题");
+            else if(this.form.radio18 === 0) this.$dialog("请作答第15题");
+            else if (this.form.checkList19.length === 0) this.$dialog("请作答11题");
+            else {
+              this.isSubmitted = false;
+
+              this.$dialog(["保存成功", "true"]);
+              setTimeout(() => {
+                this.$router.back()
+              }, 2000)
+            }
+
+          }
       },
 
       showThirty() {
-        if(this.radio12 === 122) this.isShow = false
-        if(this.radio12 === 121) this.isShow = true
+        if(this.form.radio12 === 122) this.isShow = false
+        if(this.form.radio12 === 121) this.isShow = true
       },
 
       showOther13() {
@@ -527,7 +557,7 @@
       },
 
       showOther1() {
-        if(this.radio1 === 15) {
+        if(this.form.radio1 === 15) {
           this.is_Show1 = true
         }else{
           this.is_Show1 = false
@@ -536,7 +566,7 @@
       },
 
       showOther2() {
-        if(this.radio2 === 26) {
+        if(this.form.radio2 === 26) {
           this.is_Show2 = true
         }else{
           this.is_Show2 = false
@@ -545,7 +575,7 @@
       },
 
       showOther3() {
-        if(this.radio3 === 36) {
+        if(this.form.radio3 === 36) {
           this.is_Show3 = true
         }else{
           this.is_Show3 = false
@@ -554,7 +584,7 @@
       },
 
       showOther15() {
-        if(this.radio15 === 156) {
+        if(this.form.radio15 === 156) {
           this.is_Show15 = true
         }else{
           this.is_Show15 = false
@@ -563,7 +593,7 @@
       },
 
       showOther16() {
-       let str = this.checkList16.join('_');
+       let str = this.form.checkList16.join('_');
        if (str.indexOf("其他") != -1 ) {
          this.is_Show16 = true
        }else  {
@@ -573,7 +603,7 @@
       },
 
       showOther19() {
-       let str = this.checkList19.join('_');
+       let str = this.form.checkList19.join('_');
        if (str.indexOf("其他") != -1 ) {
          this.is_Show19 = true
        }else  {

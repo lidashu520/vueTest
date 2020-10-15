@@ -621,38 +621,33 @@ export default [{
       //   component: resolve => require(['./view/idpic/ceping/other/j'], resolve)
       // },
       {
-        path: 'test',
+        path: 'survival',
         meta: {
-          title: '其他症状'
+          title: '生存质量测评'
         },
         component: resolve => require(['./view/idpic/survival/suivivalList'], resolve)
       },
       {
-        path: 'survival',
-        component: resolve => require(['./view/idpic/survival/index'], resolve),
-        children: [{
-          path: '/',
-          meta: {
-            title: '生存质量测评'
-          },
-          component: resolve => require(['./view/idpic/survival/suivivalList'], resolve)
+        path: 'stpOne',
+        meta: {
+          title: '视功能量表'
         },
-          {
-            path: 'stpOne',
-            meta: {
-              title: '视功能量表'
-            },
-            component: resolve => require(['./view/idpic/survival/stpOne'], resolve)
-          },
-          {
-            path: 'stpTwo',
-            meta: {
-              title: '视功能量表Pro'
-            },
-            component: resolve => require(['./view/idpic/survival/stpTwo'], resolve)
-          }
-        ]
+        component: resolve => require(['./view/idpic/survival/stpOne'], resolve)
       },
+      {
+        path: 'stpTwo',
+        meta: {
+          title: '视功能量表Pro'
+        },
+        component: resolve => require(['./view/idpic/survival/stpTwo'], resolve)
+      },
+      // {
+      //   path: 'survival',
+      //   component: resolve => require(['./view/idpic/survival/index'], resolve),
+      //   meta: {
+      //     title: '其他症状'
+      //   },
+      // },
       ]
     },
     {

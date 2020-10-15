@@ -41,7 +41,7 @@
                     </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
                     <td style="width: 50%;" id="platPayorder">
                         <a  @click="centerDialogVisible = true" class="color545454 line_height">
                     <span style="" class="check08_bg">
@@ -51,7 +51,7 @@
                             弹框
                         </a>
                     </td>
-            </tr>
+            </tr> -->
         </table>
 
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <topComponent title='视功能量表'>
-      <span class="back" @click="$router.push('/idpic')" slot="left">返回</span>
+      <span class="back" @click="$router.push('/idpic/survival')" slot="left">返回</span>
       <!-- <span class="save" @click='saveInfo' slot='right'>保存</span> -->
     </topComponent>
      <!-- <p class="headBanner"><span class="look" >生存质量评估</span></p> -->
