@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <topComponent title='视功能量表'>
+    <topComponent title='视功能量表Pro'>
       <span class="back" @click="$router.push('/idpic')" slot="left">返回</span>
-      <span class="save" @click='saveInfo' slot='right'>保存</span>
+      <!-- <span class="save" @click='saveInfo' slot='right'>保存</span> -->
     </topComponent>
      <!-- <p class="headBanner"><span class="look" >生存质量评估</span></p> -->
     <div style="margin-top: 0.22rem" class="container">
@@ -1095,14 +1095,18 @@
       :visible.sync="centerDialogVisible"
       width="90%"
       center>
+
       <div class="container">
         <dt class="border ml20" style="line-height: 1.525rem;
           text-indent: 0.625rem;
-          font-size: 0.9125rem;">您的生存质量评分为{{this.form.total}}分。</dt>
+          font-size: 0.9125rem;">您的生存质量评分为<span style=" font-size: 1.275rem;line-height: 2rem;
+          font-weight: normal;text-indent: 0.825rem; color:red">{{this.form.total}}</span>分。</dt>
         <div class="hint">
             <dl>
             <dd>
-              <p><span>您的生存质量评分为{{this.form.total}}分，低于最低分值62分,请咨询您的主管医生和护士，进行对应的处理！！</span></p>
+              <p><span>您的生存质量评分为<span style=" font-size: 1.275rem;line-height: 2rem;
+              font-weight: normal;text-indent: 0.825rem; color:red">{{this.form.total}}</span>分，低于最低分值<span style=" font-size: 1.275rem;line-height: 2rem;
+              font-weight: normal;text-indent: 0.825rem; color:#73BD4C">62</span>分,请咨询您的主管医生和护士，进行对应的处理！！</span></p>
             </dd>
             </dl>
         </div>
@@ -1193,7 +1197,6 @@
         isShow15c: false,
         cls: 'subBtn',
         isSubmitted: true,
-        isAble: false,
         centerDialogVisible1: false,
         centerDialogVisible: false,
         tableData: [{
@@ -1256,44 +1259,44 @@
 
        if(this.isSubmitted) {
             if(this.form.radio1 === 0)  this.$dialog("请作答第1题");
-            // else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
-            // else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
-            // else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
-            // else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
-            // else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
-            // else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
-            // else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
-            // else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
-            // else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
-            // else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
-            // else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
-            // else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
-            // else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
-            // else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
-            // else if(this.form.radio15 === 151 && this.form.radio153 === 0) this.$dialog("请作答第15c题");
-            // else if(this.form.radio15 === 152 && this.form.radio151 === 0) this.$dialog("请作答第15a题");
-            // else if(this.form.radio15 === 152 && this.form.radio151 === 1512 && this.form.radio152 === 0) this.$dialog("请作答第15b题");
-            // else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
-            // else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
-            // else if(this.form.radio18 === 0)  this.$dialog("请作答第18题");
-            // else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
-            // else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
-            // else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
-            // else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
-            // else if(this.form.radio23 === 0) this.$dialog("请作答第23题");
-            // else if(this.form.radio24 === 0) this.$dialog("请作答第24题");
-            // else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
-            // else if(this.form.radio43 === 0) this.$dialog("请作答第A3题");
-            // else if(this.form.radio44 === 0) this.$dialog("请作答第A4题");
-            // else if(this.form.radio45 === 0) this.$dialog("请作答第A5题");
-            // else if(this.form.radio46 === 0) this.$dialog("请作答第A6题");
-            // else if(this.form.radio47 === 0) this.$dialog("请作答第A7题");
-            // else if(this.form.radio48 === 0) this.$dialog("请作答第A8题");
-            // else if(this.form.radio49 === 0) this.$dialog("请作答第A9题");
-            // else if(this.form.radio410 === 0) this.$dialog("请作答第A11a题");
-            // else if(this.form.radio411 === 0) this.$dialog("请作答第A11b题");
-            // else if(this.form.radio412 === 0) this.$dialog("请作答第A12题");
-            // else if(this.form.radio413 === 0) this.$dialog("请作答第A13题");
+            else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
+            else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
+            else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
+            else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
+            else if(this.form.radio6 === 0)  this.$dialog("请作答第6题");
+            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
+            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
+            else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
+            else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
+            else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
+            else if(this.form.radio15 === 151 && this.form.radio153 === 0) this.$dialog("请作答第15c题");
+            else if(this.form.radio15 === 152 && this.form.radio151 === 0) this.$dialog("请作答第15a题");
+            else if(this.form.radio15 === 152 && this.form.radio151 === 1512 && this.form.radio152 === 0) this.$dialog("请作答第15b题");
+            else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
+            else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
+            else if(this.form.radio18 === 0)  this.$dialog("请作答第18题");
+            else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
+            else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
+            else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
+            else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
+            else if(this.form.radio23 === 0) this.$dialog("请作答第23题");
+            else if(this.form.radio24 === 0) this.$dialog("请作答第24题");
+            else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
+            else if(this.form.radio43 === 0) this.$dialog("请作答第A3题");
+            else if(this.form.radio44 === 0) this.$dialog("请作答第A4题");
+            else if(this.form.radio45 === 0) this.$dialog("请作答第A5题");
+            else if(this.form.radio46 === 0) this.$dialog("请作答第A6题");
+            else if(this.form.radio47 === 0) this.$dialog("请作答第A7题");
+            else if(this.form.radio48 === 0) this.$dialog("请作答第A8题");
+            else if(this.form.radio49 === 0) this.$dialog("请作答第A9题");
+            else if(this.form.radio410 === 0) this.$dialog("请作答第A11a题");
+            else if(this.form.radio411 === 0) this.$dialog("请作答第A11b题");
+            else if(this.form.radio412 === 0) this.$dialog("请作答第A12题");
+            else if(this.form.radio413 === 0) this.$dialog("请作答第A13题");
             else {
              let num =0;
              if(this.form.radio153 != 0){
@@ -1464,7 +1467,6 @@
 
               this.cls = "subBtn grayBg";
               this.isSubmitted = false;
-              this.isAble = true;
               // this.$message({
               //   dangerouslyUseHTMLString: true,
               //   message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
@@ -1476,6 +1478,7 @@
               // });
               this.centerDialogVisible = true
               this.centerDialogVisible1 = true
+              this.$dialog(["提交完成", "true"]);
             }
 
             }

@@ -84,7 +84,7 @@
         </dd>
         <dd>
           <span class="questionsWord">午餐：</span>
-          <input class="questionsWord" type="text" placeholder="请填写具体食物和数量" v-model.trim='data.lunch'>
+          <input class="questionsWord" type="text42" placeholder="请填写具体食物和数量" v-model.trim='data.lunch'>
         </dd>
         <dd>
           <span class="questionsWord">晚餐：</span>
@@ -104,17 +104,17 @@
         </dd>
       </el-radio-group>
 
-        <dd>
+        <dd v-show="isShow">
           <span class="questionsWord">您服用的是什么牌子的营养补充剂呢？</span>
         </dd>
-        <dd>
+        <dd v-show="isShow">
           <input class="questionsWord" type="text" placeholder="请填写营养补充牌子" v-model.trim='data.sign'>
         </dd>
 
-        <dd>
+        <dd v-show="isShow">
           <span class="questionsWord">您的营养补充剂具体成分是什么呢？</span>
         </dd>
-        <dd>
+        <dd v-show="isShow">
           <input class="questionsWord" type="text" placeholder="请填写营养成分" v-model.trim='data.composition'>
         </dd>
      </dl>
@@ -181,6 +181,11 @@
           checkList: [],
           radio5: 0,
           radio6: 0,
+          breakfast: '',
+          lunch: '',
+          dinner: '',
+          sign: '',
+          composition: ''
         },
         is_Show: false,
         isShow: false
@@ -209,33 +214,30 @@
         // else if (checkAdd.test(this.data.addDetail) === false) this.$dialog("详细地址格式错误");
         // else if (this.data.checkTime === '') this.$dialog("请选择出生日期");
         if (this.data.radio1 === 0) this.$dialog("请作答1题");
-        else if (this.data.radio2 === 0) {
-          // console.log('this.data.tel:'+ this.data.tel)
-          // console.log('this.data.weixin:'+ this.data.weixin)
-          // console.log('this.data.name:'+ this.data.name)
-          // console.log('this.data.id:'+ this.data.id)
-          // console.log('data.selectSex:'+ this.data.selectSex)
-          // console.log('this.data.selectEdu:'+ this.data.selectEdu)
-          // console.log('this.data.selectMar:'+ this.data.selectMar)
-          // console.log('this.data.type:'+ this.data.type)
-          // console.log('this.data.selectPay:'+ this.data.selectPay)
-          // console.log('this.data.selectProy:'+ this.data.selectProy)
-          // console.log('this.data.selectCity:'+ this.data.selectCity)
-          // console.log('this.data.selectDist:'+ this.data.selectDist)
-          // console.log('this.data.addDetail:'+ this.data.addDetail)
-          // console.log('this.data.checkTime:'+ this.data.checkTime)
-          this.$dialog("请作答2题");
-          }
-        else if (this.checkList.length === 0) this.$dialog("请作答3题");
-        else if (this.data.radio3 === 0) this.$dialog("请作答3题");
+        else if (this.data.radio2 === 0) this.$dialog("请作答2题");
+        else if (this.data.checkList.length === 0) this.$dialog("请作答3题");
+        else if (this.data.breakfast === '') this.$dialog("请作答早餐食物和数量");
+        else if (this.data.lunch === '') this.$dialog("请作答中餐食物和数量");
+        else if (this.data.dinner === '') this.$dialog("请作答晚餐食物和数量")
         else if (this.data.radio5 === 0) this.$dialog("请作答5题");
         else if (this.data.radio5 === 51) {
-           console.log('data',this.data.radio6)
            if (this.data.radio6 === 0) this.$dialog("请作答6题");
-        }
-        else {
-          this.data.checkList = [];
-          this.data.checkList = this.checkList;
+           if (this.data.sign === '') this.$dialog("请填写营养补充牌子");
+           if (this.data.composition === '') this.$dialog("请填写营养成分");
+            this.$store.commit('uploadCreditStatu', {
+              name: 'userInfo',
+              val: true
+            });
+            this.$store.commit('uploadCreditData', {
+              name: 'userInfo',
+              val: JSON.stringify(this.data)
+            });
+            this.$dialog(["保存成功", "true"]);
+            setTimeout(() => {
+              this.$router.back()
+            }, 2000)
+
+        } else {
           this.$store.commit('uploadCreditStatu', {
             name: 'userInfo',
             val: true
@@ -283,13 +285,11 @@
       // },
 
       showSix() {
-        console.log('data',this.data.radio5)
         if(this.data.radio5 === 52) this.isShow = false
         if(this.data.radio5 === 51) this.isShow = true
       },
 
       showOther() {
-        console.log('data',this.data.radio6)
         if(this.data.radio6 === 66) {
           this.is_Show = true
         }else{
