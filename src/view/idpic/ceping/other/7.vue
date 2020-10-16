@@ -11,12 +11,15 @@
             <el-button style="margin-top:-20px" @click="change1">上一页</el-button>
             <el-button style="margin-top:-20px" @click="change2">下一页</el-button>
         </dt>
-          <pdf
+          <!-- <pdf
               :src="src"
               :page="currentPage"
               @num-pages="pageCount = $event"
               @page-loaded="currentPage = $event"
-          ></pdf>
+          ></pdf> -->
+        <div style="margin: 0 auto;text-align: center">
+        <img  :src="src" style="margin: 0 auto">
+        </div>
      </dl>
     </div>
       <dl>
@@ -43,10 +46,11 @@
     },
     data() {
       return {
-        src:'./static/MoCA.pdf',
+        // src:'./static/MoCA.pdf',
+        src:'./static/pdf1.png',
         msg: 'Welcome to Your Vue.js App',
         currentPage: 1,
-        pageCount: 1,
+        pageCount: 4,
         num: 0,
         cls: 'subBtn',
         isSubmitted: true,
@@ -64,11 +68,13 @@
       change1(){
       if(this.currentPage>1){
         this.currentPage--
+        this.src = "./static/pdf" + this.currentPage + ".png";
       }
       },
       change2(){
         if(this.currentPage < this.pageCount){
           this.currentPage++
+          this.src = "./static/pdf" + this.currentPage + ".png";
         }
       }
     }
