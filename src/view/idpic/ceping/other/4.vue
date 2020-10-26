@@ -489,7 +489,7 @@
                             showClose: true,
                             duration: 0
                           });
-                          this.$dialog("提交完成")
+                          this.$dialog(["提交完成", "true"]);
                           this.cls = "subBtn grayBg"
                           this.isSubmitted = false
                }

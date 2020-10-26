@@ -382,7 +382,7 @@
             else if(this.form.radio2_7 === 0) this.$dialog("请作答第二部分：请作答第7题");
             else if(this.form.radio2_8 === 0) this.$dialog("请作答第二部分：请作答第8题");
             else {
-              this.$dialog("提交完成");
+              this.$dialog(["提交完成", "true"]);;
               let total =  this.calculate(parseInt(this.form.radio2_1.toString().split(".")[1].charAt(1))) +
                            this.calculate(parseInt(this.form.radio2_2.toString().split(".")[1].charAt(1))) +
                            this.calculate(parseInt(this.form.radio2_3.toString().split(".")[1].charAt(1))) +
@@ -406,7 +406,7 @@
               // console.log("value1:"+ this.value);
             }
           }else {
-            this.$dialog("提交完成");
+            this.$dialog(["提交完成", "true"]);
             this.cls = "subBtn grayBg"
             this.isSubmitted = false
             this.isAble = true

@@ -366,7 +366,7 @@
      </dl>
   </div>
    <div class="btnWarp">
-        <span class="subBtn" @click='saveInfo'>提交</span>
+        <span :class="this.cls" @click='saveInfo'>提交</span>
    </div>
  </div>
 </template>
@@ -425,7 +425,7 @@
             else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
             else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
             else {
-                this.$dialog("提交完成");
+                this.$dialog(["提交完成", "true"]);;
                 this.cls = "subBtn grayBg"
                 this.isSubmitted = false
             }

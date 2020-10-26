@@ -14,7 +14,7 @@
         <span>
           <el-time-picker
             size="small"
-            v-model="value1"
+            v-model="form.value1"
             placeholder="选择时间">
           </el-time-picker>
           &nbsp;&nbsp;&nbsp; 点钟
@@ -26,7 +26,7 @@
       <dt style="padding-top: 0.325rem"><span>2、在最近一个月中，您每晚通常要多长时间才能入 </span></dt>
       <dt style="padding-top: 0.325rem"><span>睡(从上床到入睡） </span></dt>
 
-      <el-input-number style="margin:0.325rem 0 0 1.25rem" size="small" v-model="value2" controls-position="right" @change="handleChange" :min="1" :max="120"></el-input-number>
+      <el-input-number style="margin:0.325rem 0 0 1.25rem" size="small" v-model="form.value2" controls-position="right" @change="handleChange" :min="1" :max="120"></el-input-number>
         <span style="margin-top: 0.125rem;
                       color: #000000;
                       text-indent: 0.625rem;
@@ -43,7 +43,7 @@
         <span>
           <el-time-picker
             size="small"
-            v-model="value3"
+            v-model="form.value3"
             placeholder="选择时间">
           </el-time-picker>
           &nbsp;&nbsp;&nbsp;  点钟起床
@@ -53,7 +53,7 @@
 
       <dl>
       <dt style="padding-top: 0.325rem"><span>4、在最近一个月中，您每晚实际睡眠的时间为 </span></dt>
-          <el-input-number style="margin:0.325rem 0 0 1.25rem"  size="small" v-model="value4" :precision="2" :step="0.5" :min="1" :max="24"></el-input-number>
+          <el-input-number style="margin:0.325rem 0 0 1.25rem"  size="small" v-model="form.value4" :precision="2" :step="0.5" :min="1" :max="24"></el-input-number>
           &nbsp;&nbsp;&nbsp;
           <span style="margin-top: 0.125rem;
                       color: #000000;
@@ -75,7 +75,7 @@
       <dt style="padding-top: 0.325rem"><span>5、在最近一个月中，您是否因下列情况影响睡眠而</span></dt>
       <dt style="padding-top: 0.325rem"><span>烦恼，并描述其程度： </span></dt>
       <dt style="padding-top: 0.325rem"><span>A．不能在30分钟内入睡： </span></dt>
-        <el-radio-group v-model="radio51">
+        <el-radio-group v-model="form.radio51">
           <dd class="floatW50">
             <el-radio :label="511"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -94,7 +94,7 @@
      <dl>
         <dt style="padding-top: 0.325rem"><span>B．在晚上睡眠过程中醒来或早醒（凌晨醒后不容易 </span></dt>
         <dt style="padding-top: 0.325rem"><span>再次入睡）： </span></dt>
-        <el-radio-group v-model="radio52">
+        <el-radio-group v-model="form.radio52">
           <dd class="floatW50">
             <el-radio :label="521"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -112,7 +112,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>C．晚上起床上洗手间： </span></dt>
-        <el-radio-group v-model="radio53">
+        <el-radio-group v-model="form.radio53">
           <dd class="floatW50">
             <el-radio :label="531"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -130,7 +130,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>D．晚上睡觉时出现不舒服的呼吸： </span></dt>
-        <el-radio-group v-model="radio54">
+        <el-radio-group v-model="form.radio54">
           <dd class="floatW50">
             <el-radio :label="541"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -148,7 +148,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>E. 晚上睡觉出现大声咳嗽或鼾声：</span></dt>
-        <el-radio-group v-model="radio55">
+        <el-radio-group v-model="form.radio55">
           <dd class="floatW50">
             <el-radio :label="551"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -166,7 +166,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>F. 晚上睡觉感到寒冷：</span></dt>
-        <el-radio-group v-model="radio56">
+        <el-radio-group v-model="form.radio56">
           <dd class="floatW50">
             <el-radio :label="561"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -184,7 +184,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>G. 晚上睡觉感到太热：</span></dt>
-        <el-radio-group v-model="radio57">
+        <el-radio-group v-model="form.radio57">
           <dd class="floatW50">
             <el-radio :label="571"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -202,7 +202,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>H．晚上睡觉做恶梦： </span></dt>
-        <el-radio-group v-model="radio58">
+        <el-radio-group v-model="form.radio58">
           <dd class="floatW50">
             <el-radio :label="581"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -220,7 +220,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>I. 晚上睡觉身上出现疼痛不适： </span></dt>
-        <el-radio-group v-model="radio59">
+        <el-radio-group v-model="form.radio59">
           <dd class="floatW50">
             <el-radio :label="591"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -244,14 +244,14 @@
             type="textarea"
             :rows="3"
             placeholder="请输入内容"
-            v-model="textarea1"
+            v-model="form.textarea1"
             maxlength="150"
             show-word-limit
           >
           </el-input>
         </dt>
         <dt style="padding-top: 0.325rem"><span>并描述其程度： </span></dt>
-        <el-radio-group v-model="radio510">
+        <el-radio-group v-model="form.radio510">
           <dd class="floatW50">
             <el-radio :label="5101"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -270,7 +270,7 @@
       <dl>
         <dt style="padding-top: 0.325rem"><span>6. 在最近一个月中，总的来说，您认为自己的睡眠 </span></dt>
         <dt style="padding-top: 0.325rem"><span>质量： </span></dt>
-        <el-radio-group v-model="radio6">
+        <el-radio-group v-model="form.radio6">
           <dd class="floatW25">
             <el-radio :label="61"><span class="questionsWord">1).很好 </span></el-radio>
           </dd>
@@ -289,7 +289,7 @@
       <dl>
         <dt style="padding-top: 0.325rem"><span>7. 在最近一个月中，您是否要服药物（包括医院和 </span></dt>
         <dt style="padding-top: 0.325rem"><span>药店购买的药物）才能入睡：</span></dt>
-        <el-radio-group v-model="radio7">
+        <el-radio-group v-model="form.radio7">
           <dd class="floatW50">
             <el-radio :label="71"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -308,7 +308,7 @@
       <dl>
         <dt style="padding-top: 0.325rem"><span>8. 在最近一个月中，您是否在开车、吃饭、或参加 </span></dt>
         <dt style="padding-top: 0.325rem"><span>社会活动时时常感到困倦： </span></dt>
-        <el-radio-group v-model="radio8">
+        <el-radio-group v-model="form.radio8">
           <dd class="floatW50">
             <el-radio :label="81"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -328,7 +328,7 @@
       <dl>
         <dt style="padding-top: 0.325rem"><span>9. 在最近一个月中，您在积极完成事情上是否感到 </span></dt>
         <dt style="padding-top: 0.325rem"><span>精力不足： </span></dt>
-        <el-radio-group v-model="radio9">
+        <el-radio-group v-model="form.radio9">
           <dd class="floatW50">
             <el-radio :label="91"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -346,7 +346,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>10. 您是与人同睡一床，或有室友： </span></dt>
-        <el-radio-group v-model="radio10">
+        <el-radio-group v-model="form.radio10">
           <dd class="floatW50">
             <el-radio :label="101"><span class="questionsWord">1). 没有</span></el-radio>
           </dd>
@@ -366,7 +366,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>A. 在您睡觉时，有无打鼾声：</span></dt>
-        <el-radio-group v-model="radio101">
+        <el-radio-group v-model="form.radio101">
           <dd class="floatW50">
             <el-radio :label="1011"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -384,7 +384,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>B. 在您睡觉时，有无打鼾声：</span></dt>
-        <el-radio-group v-model="radio102">
+        <el-radio-group v-model="form.radio102">
           <dd class="floatW50">
             <el-radio :label="1021"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -402,7 +402,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>C. 在您睡觉时，呼吸之间有没有长时间停顿：</span></dt>
-        <el-radio-group v-model="radio103">
+        <el-radio-group v-model="form.radio103">
           <dd class="floatW50">
             <el-radio :label="1031"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -420,7 +420,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>D. 在您睡觉时，您的腿是否有抽动或痉挛：</span></dt>
-        <el-radio-group v-model="radio104">
+        <el-radio-group v-model="form.radio104">
           <dd class="floatW50">
             <el-radio :label="1041"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -444,14 +444,14 @@
             type="textarea"
             :rows="3"
             placeholder="请输入内容"
-            v-model="textarea2"
+            v-model="form.textarea2"
             maxlength="150"
             show-word-limit
           >
           </el-input>
         </dt>
         <dt style="padding-top: 0.325rem"><span>并描述其程度： </span></dt>
-        <el-radio-group v-model="radio510">
+        <el-radio-group v-model="form.radio510">
           <dd class="floatW50">
             <el-radio :label="5101"><span class="questionsWord">1). 过去一个月没有</span></el-radio>
           </dd>
@@ -469,7 +469,7 @@
 
       <dl>
         <dt style="padding-top: 0.325rem"><span>11.您认为您目前的作息制度是否适合您：</span></dt>
-        <el-radio-group v-model="radio11">
+        <el-radio-group v-model="form.radio11">
           <dd class="floatW50">
             <el-radio :label="11"><span class="questionsWord">1). 适合</span></el-radio>
           </dd>
@@ -486,7 +486,7 @@
             type="textarea"
             :rows="3"
             placeholder="请输入内容"
-            v-model="textarea3"
+            v-model="form.textarea3"
             maxlength="150"
             show-word-limit
           >
@@ -497,7 +497,7 @@
 
     </div>
    <div class="btnWarp">
-        <span class="subBtn" @click='saveInfo'>提交</span>
+        <span :class="this.cls" @click='saveInfo'>提交</span>
    </div>
  </div>
 </template>
@@ -506,39 +506,55 @@
   export default {
     data() {
       return {
-        value1:  new Date(),
-        value2: '',
-        value3: new Date(),
-        value4:  '',
-        radio51: 0,
-        radio52: 0,
-        radio53: 0,
-        radio54: 0,
-        radio55: 0,
-        radio56: 0,
-        radio57: 0,
-        radio58: 0,
-        radio59: 0,
-        radio510: 0,
-        textarea1: '',
-        radio6:0,
-        radio7:0,
-        radio8:0,
-        radio9:0,
-        radio10:0,
-        radio101:0,
-        radio102:0,
-        radio103:0,
-        radio104:0,
-        radio105:0,
-        textarea2: '',
-        radio11:0,
-        textarea3: '',
+        form:{
+          value1:  new Date(),
+          value2: '',
+          value3: new Date(),
+          value4:  '',
+          radio51: 0,
+          radio52: 0,
+          radio53: 0,
+          radio54: 0,
+          radio55: 0,
+          radio56: 0,
+          radio57: 0,
+          radio58: 0,
+          radio59: 0,
+          radio510: 0,
+          textarea1: '',
+          radio6:0,
+          radio7:0,
+          radio8:0,
+          radio9:0,
+          radio10:0,
+          radio101:0,
+          radio102:0,
+          radio103:0,
+          radio104:0,
+          radio105:0,
+          textarea2: '',
+          radio11:0,
+          textarea3: ''
+        },
+        cls: 'subBtn',
+        isSubmitted: true,
       }
     },
     methods: {
       saveInfo: function() {
-        console.log("提交")
+        if(this.isSubmitted) {
+            if(this.form.radio6 === 0) this.$dialog("请作答第6题");
+            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
+            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            else {
+                this.$dialog(["提交完成", "true"]);;
+                this.cls = "subBtn grayBg"
+                this.isSubmitted = false
+            }
+        }
       },
       handleChange(value) {
         console.log(value);

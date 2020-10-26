@@ -9,7 +9,7 @@
     <dl>
       <dt style="padding-top: 0.325rem"><span>1、您是否认为,您所照料的病人会向您提出过多的  </span></dt>
       <dt style="padding-top: 0.325rem"><span>照顾要求？  </span></dt>
-        <el-radio-group v-model="radio1">
+        <el-radio-group v-model="form.radio1">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="11"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -31,7 +31,7 @@
     <!---2---->
     <dl>
       <dt style="padding-top: 0.325rem"><span>2、您是否认为，由于护理病人会使自己时间不够？  </span></dt>
-        <el-radio-group v-model="radio2">
+        <el-radio-group v-model="form.radio2">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="21"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -54,7 +54,7 @@
     <dl>
       <dt style="padding-top: 0.325rem"><span>3、您是否认为，在照料病人和努力做好家务及工作 </span></dt>
       <dt style="padding-top: 0.325rem"><span>之间,你会感到有压力?  </span></dt>
-        <el-radio-group v-model="radio3">
+        <el-radio-group v-model="form.radio3">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="21"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -76,7 +76,7 @@
      <!---4---->
     <dl>
       <dt style="padding-top: 0.325rem"><span>4、您是否认为,因病人的行为而感到为难？ </span></dt>
-        <el-radio-group v-model="radio4">
+        <el-radio-group v-model="form.radio4">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="41"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -98,7 +98,7 @@
      <!---5---->
     <dl>
       <dt style="padding-top: 0.325rem"><span>5、您是否认为,有病人在您的身边而感到烦恼？ </span></dt>
-        <el-radio-group v-model="radio5">
+        <el-radio-group v-model="form.radio5">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="51"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -120,7 +120,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>6、您是否认为,您的病人己经影响到了您和您的家人 </span></dt>
       <dt style="padding-top: 0.325rem"><span>与朋友间的关系？  </span></dt>
-        <el-radio-group v-model="radio6">
+        <el-radio-group v-model="form.radio6">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="61"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -141,7 +141,7 @@
 
     <dl>
       <dt style="padding-top: 0.325rem"><span>7、您是否认为,对未来感到担心? </span></dt>
-        <el-radio-group v-model="radio7">
+        <el-radio-group v-model="form.radio7">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="71"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -162,7 +162,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>8、您是否认为,病人依赖于您？ </span></dt>
-        <el-radio-group v-model="radio8">
+        <el-radio-group v-model="form.radio8">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="81"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -183,7 +183,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>9、当病人在您身边时,您感到紧张吗？ </span></dt>
-        <el-radio-group v-model="radio9">
+        <el-radio-group v-model="form.radio9">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="91"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -204,7 +204,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>10、您是否认为,由于护理病人,您的健康受到影响？ </span></dt>
-        <el-radio-group v-model="radio10">
+        <el-radio-group v-model="form.radio10">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="101"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -226,7 +226,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>11、您是否认为,由于护理病人,您没有时间办自己的 </span></dt>
       <dt style="padding-top: 0.325rem"><span>私事？ </span></dt>
-        <el-radio-group v-model="radio11">
+        <el-radio-group v-model="form.radio11">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="111"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -248,7 +248,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>12、您是否认为，由于护理病人，您的社交受到影 </span></dt>
       <dt style="padding-top: 0.325rem"><span>响？ </span></dt>
-        <el-radio-group v-model="radio12">
+        <el-radio-group v-model="form.radio12">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="121"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -270,7 +270,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>13、您有没有由于病人在家，放弃请朋友来家的想 </span></dt>
       <dt style="padding-top: 0.325rem"><span>法？ </span></dt>
-        <el-radio-group v-model="radio13">
+        <el-radio-group v-model="form.radio13">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="131"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -292,7 +292,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>14、您是否认为，病人只期盼您的照顾，您好像是 </span></dt>
       <dt style="padding-top: 0.325rem"><span>她/他唯一可依赖的人？ </span></dt>
-        <el-radio-group v-model="radio14">
+        <el-radio-group v-model="form.radio14">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="141"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -314,7 +314,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>15、您是否认为，除外您的花费，您没有余钱用于 </span></dt>
       <dt style="padding-top: 0.325rem"><span>护理病人？ </span></dt>
-        <el-radio-group v-model="radio15">
+        <el-radio-group v-model="form.radio15">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="151"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -336,7 +336,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>16、您是否认为，您有可能花费更多的时间护理病</span></dt>
       <dt style="padding-top: 0.325rem"><span>人？</span></dt>
-        <el-radio-group v-model="radio16">
+        <el-radio-group v-model="form.radio16">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="161"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -358,7 +358,7 @@
      <dl>
       <dt style="padding-top: 0.325rem"><span>17、您是否认为，开始护理以来，按照自己的意愿</span></dt>
       <dt style="padding-top: 0.325rem"><span>生活已经不可能了？</span></dt>
-        <el-radio-group v-model="radio17">
+        <el-radio-group v-model="form.radio17">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="171"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -379,7 +379,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>18、您是否希望，能把病人留给别人来照顾？</span></dt>
-        <el-radio-group v-model="radio18">
+        <el-radio-group v-model="form.radio18">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="181"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -400,7 +400,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>19、您对病人有不知如何是好的情形吗？</span></dt>
-        <el-radio-group v-model="radio19">
+        <el-radio-group v-model="form.radio19">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="191"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -421,7 +421,7 @@
 
     <dl>
       <dt style="padding-top: 0.325rem"><span>20、您认为应该为病人做更多的事情是吗？</span></dt>
-        <el-radio-group v-model="radio20">
+        <el-radio-group v-model="form.radio20">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="201"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -442,7 +442,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>21、您认为在护理患者上您能做的更好吗？</span></dt>
-        <el-radio-group v-model="radio21">
+        <el-radio-group v-model="form.radio21">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="211"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -463,7 +463,7 @@
 
      <dl>
       <dt style="padding-top: 0.325rem"><span>22、综合看来您怎样评价自己在护理上的负担？</span></dt>
-        <el-radio-group v-model="radio22">
+        <el-radio-group v-model="form.radio22">
           <dd class="floatW28" style="width:28.5%">
             <el-radio :label="221"><span class="questionsWord">从来没有</span></el-radio>
           </dd>
@@ -484,7 +484,7 @@
 
     </div>
    <div class="btnWarp">
-        <span class="subBtn" @click='saveInfo'>提交</span>
+        <span :class="this.cls" @click='saveInfo'>提交</span>
    </div>
  </div>
 </template>
@@ -493,33 +493,65 @@
   export default {
     data() {
       return {
-        radio1: 0,
-        radio2: 0,
-        radio3: 0,
-        radio4: 0,
-        radio5: 0,
-        radio6: 0,
-        radio7: 0,
-        radio8: 0,
-        radio9: 0,
-        radio10: 0,
-        radio11: 0,
-        radio12: 0,
-        radio13: 0,
-        radio14: 0,
-        radio15: 0,
-        radio16: 0,
-        radio17: 0,
-        radio18: 0,
-        radio19: 0,
-        radio20: 0,
-        radio21: 0,
-        radio22: 0
+        form:{
+          radio1: 0,
+          radio2: 0,
+          radio3: 0,
+          radio4: 0,
+          radio5: 0,
+          radio6: 0,
+          radio7: 0,
+          radio8: 0,
+          radio9: 0,
+          radio10: 0,
+          radio11: 0,
+          radio12: 0,
+          radio13: 0,
+          radio14: 0,
+          radio15: 0,
+          radio16: 0,
+          radio17: 0,
+          radio18: 0,
+          radio19: 0,
+          radio20: 0,
+          radio21: 0,
+          radio22: 0
+        },
+        cls: 'subBtn',
+        isSubmitted: true,
       }
     },
     methods: {
       saveInfo: function() {
-        console.log("提交")
+        if(this.isSubmitted) {
+          if(this.form.radio1 === 0)  this.$dialog("请作答第1题");
+            else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
+            else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
+            else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
+            else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
+            else if(this.form.radio6 === 0) this.$dialog("请作答第6题");
+            else if(this.form.radio7 === 0) this.$dialog("请作答第7题");
+            else if(this.form.radio8 === 0) this.$dialog("请作答第8题");
+            else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
+            else if(this.form.radio10 === 0) this.$dialog("请作答第10题");
+            else if(this.form.radio11 === 0) this.$dialog("请作答第11题");
+            else if(this.form.radio12 === 0) this.$dialog("请作答第12题");
+            else if(this.form.radio13 === 0) this.$dialog("请作答第13题");
+            else if(this.form.radio14 === 0) this.$dialog("请作答第14题");
+            else if(this.form.radio15 === 0) this.$dialog("请作答第15题");
+            else if(this.form.radio16 === 0) this.$dialog("请作答第16题");
+            else if(this.form.radio17 === 0) this.$dialog("请作答第17题");
+            else if(this.form.radio18 === 0) this.$dialog("请作答第18题");
+            else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
+            else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
+            else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
+            else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
+            else {
+                this.$dialog(["提交完成", "true"]);;
+                this.cls = "subBtn grayBg"
+                this.isSubmitted = false
+            }
+        }
       }
     }
   }

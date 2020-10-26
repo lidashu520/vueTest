@@ -246,7 +246,7 @@
             }else{
               // 提交 1-2 ajax请求
             }
-              this.$dialog("提交完成");
+              this.$dialog(["提交完成", "true"]);
               this.cls = "subBtn grayBg"
               this.isSubmitted = false
         }

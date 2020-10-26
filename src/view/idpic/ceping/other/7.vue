@@ -50,7 +50,7 @@
         src:'./static/pdf1.png',
         msg: 'Welcome to Your Vue.js App',
         currentPage: 1,
-        pageCount: 4,
+        pageCount: 16,
         num: 0,
         cls: 'subBtn',
         isSubmitted: true,
@@ -60,7 +60,7 @@
       saveInfo: function() {
         if(this.isSubmitted) {
           if(this.num === 0)  { this.$dialog("请输入得分"); return; }
-              this.$dialog("提交完成");
+              this.$dialog(["提交完成", "true"]);;
               this.cls = "subBtn grayBg"
               this.isSubmitted = false
         }
