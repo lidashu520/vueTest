@@ -547,12 +547,63 @@
             else if(this.form.radio21 === 0) this.$dialog("请作答第21题");
             else if(this.form.radio22 === 0) this.$dialog("请作答第22题");
             else {
+                let total =  this.calculate(parseInt(this.form.radio1.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio2.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio3.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio4.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio5.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio6.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio7.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio8.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio9.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio10.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio11.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio12.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio13.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio14.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio15.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio16.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio17.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio18.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio19.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio20.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio21.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio22.toString().charAt(2)))
+
+                          this.$message({
+                            dangerouslyUseHTMLString: true,
+                            message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
+                            type: 'success',
+                            center: true,
+                            offset: 180,
+                            showClose: true,
+                            duration: 0
+                          });
+                          this.$dialog(["提交完成", "true"]);
+                          this.cls = "subBtn grayBg"
+                          this.isSubmitted = false
+
+
+
                 this.$dialog(["提交完成", "true"]);;
                 this.cls = "subBtn grayBg"
                 this.isSubmitted = false
             }
         }
-      }
+      },
+      calculate(val) {
+         if(val===1) {
+          return 0
+        } else if(val===2) {
+          return 1
+        } else if(val===3) {
+          return 2
+        } else if(val===4) {
+          return 3
+        } else if(val===5) {
+          return 4
+        }
+       },
     }
   }
 </script>

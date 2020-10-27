@@ -41,11 +41,11 @@
           tit: "个人信息",
           param: 'userInfo'
         },
-          // {
-          //   cls: "icon-jiangli",
-          //   push: "/idpic",
-          //   tit: "我的报告"
-          // },
+          {
+            cls: "icon-jiangli",
+            push: "/idpic",
+            tit: "我的报告"
+          },
           {
             cls: "icon-phone",
             push: "/forget",

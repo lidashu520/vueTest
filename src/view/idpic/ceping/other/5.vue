@@ -2,22 +2,26 @@
 <div class="container">
   <topComponent title='焦虑评估量表'>
   </topComponent>
-  <p class="listTop questionsWord mt10 mrl10">  &nbsp;&nbsp;&nbsp;本量表按最新中国常模结果设计，总分的正常上限为40分，标准分为50分，你焦虑评定的分界值是50分，
+  <!-- <p class="listTop questionsWord mt10 mrl10">  &nbsp;&nbsp;&nbsp;本量表按最新中国常模结果设计，总分的正常上限为40分，标准分为50分，你焦虑评定的分界值是50分，
     标准分低于50分值说明你心理状况正常，超过50分说明你有焦虑症状,分值越高，说明您的焦虑症状越严重，
-    需要接受心理咨询甚至需要在医生指导下服药。</p>
+    需要接受心理咨询甚至需要在医生指导下服药。</p> -->
+  <p class="mt10 mrl10">&nbsp;&nbsp;&nbsp;</p>
   <div class="questions">
     <!---1---->
     <dl>
       <dt style="padding-top: 0.325rem"><span>1、我觉得比平常容易紧张或着急  </span></dt>
         <el-radio-group v-model="form.radio1">
-          <dd class="floatW25">
-            <el-radio :label="11"><span class="questionsWord">有时有</span></el-radio>
+          <dd class="floatW32">
+            <el-radio :label="11"><span class="questionsWord">没有或很少有</span></el-radio>
           </dd>
           <dd class="floatW25">
-            <el-radio :label="12"><span class="questionsWord">经常</span></el-radio>
+            <el-radio :label="12"><span class="questionsWord">有时有</span></el-radio>
           </dd>
-          <dd class="floatW35">
-            <el-radio :label="13"><span class="questionsWord">大部分时间</span></el-radio>
+          <dd class="floatW32">
+            <el-radio :label="13"><span class="questionsWord">大部分时间有</span></el-radio>
+          </dd>
+          <dd class="floatW42" style="width:42.3%">
+            <el-radio :label="14"><span class="questionsWord">绝大部分时间有</span></el-radio>
           </dd>
         </el-radio-group>
      </dl>
@@ -425,12 +429,66 @@
             else if(this.form.radio19 === 0) this.$dialog("请作答第19题");
             else if(this.form.radio20 === 0) this.$dialog("请作答第20题");
             else {
+              let total =  this.calculate(parseInt(this.form.radio1.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio2.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio3.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio4.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio5.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio6.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio7.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio8.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio9.toString().charAt(1))) +
+                           this.calculate(parseInt(this.form.radio10.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio11.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio12.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio13.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio14.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio15.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio16.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio17.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio18.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio19.toString().charAt(2))) +
+                           this.calculate(parseInt(this.form.radio20.toString().charAt(2)))
+
+                          total = Math.floor(total*1.25)
+                          let info = ""
+                          if(total<53 && total>=25)  info = "您的焦虑评估正常"
+                          else if(total>=53 && total<=62) info= "您是轻度焦虑"
+                          else if(total>=63 && total<=72) info= "您是中度焦虑"
+                          else if(total>72) info= "您是重度焦虑"
+                          this.$message({
+                            dangerouslyUseHTMLString: true,
+                            message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>' +
+                            '<br> <b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;"> ' +  info +'  </b></br>',
+                            type: 'success',
+                            center: true,
+                            offset: 180,
+                            showClose: true,
+                            duration: 0
+                          });
+                          this.$dialog(["提交完成", "true"]);
+                          this.cls = "subBtn grayBg"
+                          this.isSubmitted = false
+
+
+
                 this.$dialog(["提交完成", "true"]);;
                 this.cls = "subBtn grayBg"
                 this.isSubmitted = false
             }
         }
-      }
+      },
+      calculate(val) {
+         if(val===1) {
+          return 0
+        } else if(val===2) {
+          return 1
+        } else if(val===3) {
+          return 2
+        } else if(val===4) {
+          return 3
+        }
+       },
     }
   }
 </script>

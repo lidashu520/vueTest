@@ -77,7 +77,7 @@
           {
             cls: 'icon-chuxu',
             tit: '视功能量表评估Pro',
-            push: '/idpic/stpTwo',
+            push: '/idpic/stpOne',
             isOk: false,
             param: 'userChuxu1'
           },

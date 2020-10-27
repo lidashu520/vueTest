@@ -59,7 +59,7 @@
         if (this.isSubmitted) {
           if (this.form.radio1 === 0) this.$dialog("请作答题目");
           else {
-            this.$dialog("提交完成");
+            this.$dialog(["提交完成", "true"]);
             this.cls = "subBtn grayBg"
             this.isSubmitted = false
           }

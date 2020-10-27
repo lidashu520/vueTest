@@ -630,14 +630,14 @@ export default [{
       {
         path: 'stpOne',
         meta: {
-          title: '视功能量表'
+          title: '视功能量表Pro'
         },
         component: resolve => require(['./view/idpic/survival/stpOne'], resolve)
       },
       {
         path: 'stpTwo',
         meta: {
-          title: '视功能量表Pro'
+          title: '视功能量表'
         },
         component: resolve => require(['./view/idpic/survival/stpTwo'], resolve)
       },

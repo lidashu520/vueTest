@@ -187,7 +187,7 @@
           else if (this.form.radio2_3 === 0) this.$dialog("请作答第二个方框的3题");
           else if (this.form.radio2_4 === 0) this.$dialog("请作答第二个方框的4题");
           else {
-              this.$dialog("提交完成");
+              this.$dialog(["提交完成", "true"]);
               this.cls = "subBtn grayBg"
               this.isSubmitted = false
           }

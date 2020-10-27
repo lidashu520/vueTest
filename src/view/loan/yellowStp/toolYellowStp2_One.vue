@@ -345,7 +345,7 @@
             this.$dialog('第六题起点和终点的值必须为零，请重新选择');
             return
           }else {
-                this.$dialog("提交完成");
+                this.$dialog(["提交完成", "true"]);
                 this.cls = "subBtn grayBg"
                 this.isSubmitted = false
           }

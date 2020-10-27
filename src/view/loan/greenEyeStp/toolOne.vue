@@ -165,7 +165,7 @@
           else if(this.form.radio2 === 0) this.$dialog("请作答第2题");
           else if(this.form.radio3 === 0) this.$dialog("请作答第3题");
           else {
-                this.$dialog("提交完成");
+                this.$dialog(["提交完成", "true"]);
                 this.cls = "subBtn grayBg"
                 this.isSubmitted = false
           }
