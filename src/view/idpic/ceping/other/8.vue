@@ -519,6 +519,7 @@
         },
         cls: 'subBtn',
         isSubmitted: true,
+        mess: null
       }
     },
     methods: {
@@ -570,7 +571,7 @@
                            this.calculate(parseInt(this.form.radio21.toString().charAt(2))) +
                            this.calculate(parseInt(this.form.radio22.toString().charAt(2)))
 
-                          this.$message({
+                          this.mess = this.$message({
                             dangerouslyUseHTMLString: true,
                             message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
                             type: 'success',
@@ -604,6 +605,11 @@
           return 4
         }
        },
+    },
+    destroyed(){
+      if(this.mess!=null){
+        this.mess.close();
+      }
     }
   }
 </script>

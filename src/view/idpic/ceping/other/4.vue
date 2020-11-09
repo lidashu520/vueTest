@@ -425,6 +425,7 @@
         },
         cls: 'subBtn',
         isSubmitted: true,
+        mess: null
       }
     },
     methods: {
@@ -479,7 +480,7 @@
                           else if(total>=53 && total<=62) info= "您是轻度抑郁"
                           else if(total>=63 && total<=72) info= "您是中度抑郁"
                           else if(total>72) info= "您是重度抑郁"
-                          this.$message({
+                          this.mess = this.$message({
                             dangerouslyUseHTMLString: true,
                             message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>' +
                             '<br> <b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;"> ' +  info +'  </b></br>',
@@ -507,5 +508,10 @@
         }
        },
       },
+      destroyed(){
+      if(this.mess!=null){
+        this.mess.close();
+      }
+    }
     }
 </script>

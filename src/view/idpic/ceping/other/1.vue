@@ -360,7 +360,8 @@
         },
         cls: 'subBtn',
         isSubmitted: true,
-        isAble: false
+        isAble: false,
+        mess: null
       }
     },
     methods: {
@@ -394,7 +395,7 @@
               this.cls = "subBtn grayBg";
               this.isSubmitted = false;
               this.isAble = true;
-              this.$message({
+              this.mess = this.$message({
                 dangerouslyUseHTMLString: true,
                 message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
                 type: 'success',
@@ -437,6 +438,11 @@
         }
        },
 
+    },
+    destroyed(){
+      if(this.mess!=null){
+        this.mess.close();
+      }
     }
   }
 </script>

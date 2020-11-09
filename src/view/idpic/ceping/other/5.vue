@@ -403,6 +403,7 @@
         },
         cls: 'subBtn',
         isSubmitted: true,
+        mess: null
       }
     },
     methods: {
@@ -452,11 +453,11 @@
 
                           total = Math.floor(total*1.25)
                           let info = ""
-                          if(total<53 && total>=25)  info = "您的焦虑评估正常"
+                          if(total<53 && total>=0)  info = "您的焦虑评估正常"
                           else if(total>=53 && total<=62) info= "您是轻度焦虑"
                           else if(total>=63 && total<=72) info= "您是中度焦虑"
                           else if(total>72) info= "您是重度焦虑"
-                          this.$message({
+                        this.mess = this.$message({
                             dangerouslyUseHTMLString: true,
                             message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>' +
                             '<br> <b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;"> ' +  info +'  </b></br>',
@@ -466,15 +467,13 @@
                             showClose: true,
                             duration: 0
                           });
+
                           this.$dialog(["提交完成", "true"]);
                           this.cls = "subBtn grayBg"
-                          this.isSubmitted = false
-
-
+                          // this.isSubmitted = false
 
                 this.$dialog(["提交完成", "true"]);;
                 this.cls = "subBtn grayBg"
-                this.isSubmitted = false
             }
         }
       },
@@ -489,6 +488,11 @@
           return 3
         }
        },
+    },
+    destroyed(){
+      if(this.mess!=null){
+        this.mess.close();
+      }
     }
   }
 </script>
