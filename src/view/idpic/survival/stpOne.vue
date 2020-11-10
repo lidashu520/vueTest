@@ -1022,7 +1022,7 @@
           <dd class="floatW24">
             <el-radio :label="4121"><span class="questionsWord">全部符合</span></el-radio>
           </dd>
-          <dd class="floatW25">
+          <dd class="floatW30">
             <el-radio :label="4122"><span class="questionsWord">大部分符合</span></el-radio>
           </dd>
           <dd class="floatW30">
@@ -1044,7 +1044,7 @@
             <dd class="floatW24">
               <el-radio :label="4131"><span class="questionsWord">全部符合</span></el-radio>
             </dd>
-            <dd class="floatW25">
+            <dd class="floatW30">
               <el-radio :label="4132"><span class="questionsWord">大部分符合</span></el-radio>
             </dd>
             <dd class="floatW30">
@@ -1092,7 +1092,7 @@
     <!----- dialog1  end ----->
 
     <el-dialog
-      :visible.sync="centerDialogVisible"
+      :visible.sync="centerDialogVisible_bad"
       width="90%"
       center>
 
@@ -1107,6 +1107,28 @@
               <p><span>您的生存质量评分为<span style=" font-size: 1.275rem;line-height: 2rem;
               font-weight: normal;text-indent: 0.825rem; color:red">{{this.form.total}}</span>分，低于最低分值<span style=" font-size: 1.275rem;line-height: 2rem;
               font-weight: normal;text-indent: 0.825rem; color:#73BD4C">62</span>分,请咨询您的主管医生和护士，进行对应的处理！！</span></p>
+            </dd>
+            </dl>
+        </div>
+        <img src="../../../assets/img/hushi.png"  class="fr" style="margin-top: 23px; "/>
+      </div>
+    </el-dialog>
+
+    <el-dialog
+      :visible.sync="centerDialogVisible_good"
+      width="90%"
+      center>
+
+      <div class="container">
+        <dt class="border ml20" style="line-height: 1.525rem;
+          text-indent: 0.625rem;
+          font-size: 0.9125rem;">您的生存质量评分为<span style=" font-size: 1.275rem;line-height: 2rem;
+          font-weight: normal;text-indent: 0.825rem; color:#73BD4C">{{this.form.total}}</span>分。</dt>
+        <div class="hint">
+            <dl>
+            <dd>
+              <p><span style=" font-size: 1.275rem;line-height: 2rem;
+              font-weight: normal;text-indent: 0.825rem; color:#73BD4C">您的生存质量评分正常，请继续保持 !</span></p>
             </dd>
             </dl>
         </div>
@@ -1198,7 +1220,8 @@
         cls: 'subBtn',
         isSubmitted: true,
         centerDialogVisible1: false,
-        centerDialogVisible: false,
+        centerDialogVisible_bad: false,
+        centerDialogVisible_good: false,
         tableData: [{
           content: '生存质量(总分)',
           score: 0
@@ -1316,44 +1339,44 @@
               // calculate_4
               // A1,A2
               // 一共39
-               console.log("form.radio1:" + this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) )
-               console.log("form.radio3:" + this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) )
-               console.log("form.radio4:" + this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) )
-               console.log("form.radio5:" + this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) )
-               console.log("form.radio6:" + this.calculate_1(parseInt(this.form.radio6.toString().charAt(1))) )
-               console.log("form.radio7:" + this.calculate_1(parseInt(this.form.radio7.toString().charAt(1))) )
-               console.log("form.radio8:" + this.calculate_1(parseInt(this.form.radio8.toString().charAt(1))) )
-               console.log("form.radio9:" + this.calculate_1(parseInt(this.form.radio9.toString().charAt(1))) )
-               console.log("form.radio10:" + this.calculate_1(parseInt(this.form.radio10.toString().charAt(2))) )
-               console.log("form.radio11:" + this.calculate_1(parseInt(this.form.radio11.toString().charAt(2))) )
-               console.log("form.radio12:" + this.calculate_1(parseInt(this.form.radio12.toString().charAt(2))) )
-               console.log("form.radio13:" + this.calculate_1(parseInt(this.form.radio13.toString().charAt(2))) )
-               console.log("form.radio14:" + this.calculate_1(parseInt(this.form.radio14.toString().charAt(2))) )
-               console.log("form.radio16:" + this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) )
-               console.log("form.radio161:" + this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) )
-               console.log("form.radio43:" + this.calculate_1(parseInt(this.form.radio43.toString().charAt(2))) )
-               console.log("form.radio44:" + this.calculate_1(parseInt(this.form.radio44.toString().charAt(2))) )
-               console.log("form.radio45:" + this.calculate_1(parseInt(this.form.radio45.toString().charAt(2))) )
-               console.log("form.radio46:" + this.calculate_1(parseInt(this.form.radio46.toString().charAt(2))) )
-               console.log("form.radio47:" + this.calculate_1(parseInt(this.form.radio47.toString().charAt(2))) )
-               console.log("form.radio48:" + this.calculate_1(parseInt(this.form.radio48.toString().charAt(2))) )
-               console.log("form.radio49:" + this.calculate_1(parseInt(this.form.radio49.toString().charAt(2))) )
-               console.log("form.radio2:" + this.calculate_2(parseInt(this.form.radio2.toString().charAt(1)))  )
-               console.log("form.radio17:" + this.calculate_3(parseInt(this.form.radio17.toString().charAt(2))) )
-               console.log("form.radio18:" + this.calculate_3(parseInt(this.form.radio18.toString().charAt(2))) )
-               console.log("form.radio19:" + this.calculate_3(parseInt(this.form.radio19.toString().charAt(2))) )
-               console.log("form.radio20:" + this.calculate_3(parseInt(this.form.radio20.toString().charAt(2))) )
-               console.log("form.radio21:" + this.calculate_3(parseInt(this.form.radio21.toString().charAt(2))) )
-               console.log("form.radio22:" + this.calculate_3(parseInt(this.form.radio22.toString().charAt(2))) )
-               console.log("form.radio23:" + this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) )
-               console.log("form.radio24:" + this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) )
-               console.log("form.radio25:" + this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) )
-               console.log("form.radio410:" + this.calculate_3(parseInt(this.form.radio410.toString().charAt(3))) )
-               console.log("form.radio411:" + this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) )
-               console.log("form.radio412:" + this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) )
-               console.log("form.radio413:" + this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) )
-               console.log("value1:" + this.calculate_4(this.form.value1) )
-               console.log("value2:" + this.calculate_4(this.form.value2) )
+              //  console.log("form.radio1:" + this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) )
+              //  console.log("form.radio3:" + this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) )
+              //  console.log("form.radio4:" + this.calculate_1(parseInt(this.form.radio4.toString().charAt(1))) )
+              //  console.log("form.radio5:" + this.calculate_1(parseInt(this.form.radio5.toString().charAt(1))) )
+              //  console.log("form.radio6:" + this.calculate_1(parseInt(this.form.radio6.toString().charAt(1))) )
+              //  console.log("form.radio7:" + this.calculate_1(parseInt(this.form.radio7.toString().charAt(1))) )
+              //  console.log("form.radio8:" + this.calculate_1(parseInt(this.form.radio8.toString().charAt(1))) )
+              //  console.log("form.radio9:" + this.calculate_1(parseInt(this.form.radio9.toString().charAt(1))) )
+              //  console.log("form.radio10:" + this.calculate_1(parseInt(this.form.radio10.toString().charAt(2))) )
+              //  console.log("form.radio11:" + this.calculate_1(parseInt(this.form.radio11.toString().charAt(2))) )
+              //  console.log("form.radio12:" + this.calculate_1(parseInt(this.form.radio12.toString().charAt(2))) )
+              //  console.log("form.radio13:" + this.calculate_1(parseInt(this.form.radio13.toString().charAt(2))) )
+              //  console.log("form.radio14:" + this.calculate_1(parseInt(this.form.radio14.toString().charAt(2))) )
+              //  console.log("form.radio16:" + this.calculate_1(parseInt(this.form.radio16.toString().charAt(2))) )
+              //  console.log("form.radio161:" + this.calculate_1(parseInt(this.form.radio161.toString().charAt(3))) )
+              //  console.log("form.radio43:" + this.calculate_1(parseInt(this.form.radio43.toString().charAt(2))) )
+              //  console.log("form.radio44:" + this.calculate_1(parseInt(this.form.radio44.toString().charAt(2))) )
+              //  console.log("form.radio45:" + this.calculate_1(parseInt(this.form.radio45.toString().charAt(2))) )
+              //  console.log("form.radio46:" + this.calculate_1(parseInt(this.form.radio46.toString().charAt(2))) )
+              //  console.log("form.radio47:" + this.calculate_1(parseInt(this.form.radio47.toString().charAt(2))) )
+              //  console.log("form.radio48:" + this.calculate_1(parseInt(this.form.radio48.toString().charAt(2))) )
+              //  console.log("form.radio49:" + this.calculate_1(parseInt(this.form.radio49.toString().charAt(2))) )
+              //  console.log("form.radio2:" + this.calculate_2(parseInt(this.form.radio2.toString().charAt(1)))  )
+              //  console.log("form.radio17:" + this.calculate_3(parseInt(this.form.radio17.toString().charAt(2))) )
+              //  console.log("form.radio18:" + this.calculate_3(parseInt(this.form.radio18.toString().charAt(2))) )
+              //  console.log("form.radio19:" + this.calculate_3(parseInt(this.form.radio19.toString().charAt(2))) )
+              //  console.log("form.radio20:" + this.calculate_3(parseInt(this.form.radio20.toString().charAt(2))) )
+              //  console.log("form.radio21:" + this.calculate_3(parseInt(this.form.radio21.toString().charAt(2))) )
+              //  console.log("form.radio22:" + this.calculate_3(parseInt(this.form.radio22.toString().charAt(2))) )
+              //  console.log("form.radio23:" + this.calculate_3(parseInt(this.form.radio23.toString().charAt(2))) )
+              //  console.log("form.radio24:" + this.calculate_3(parseInt(this.form.radio24.toString().charAt(2))) )
+              //  console.log("form.radio25:" + this.calculate_3(parseInt(this.form.radio25.toString().charAt(2))) )
+              //  console.log("form.radio410:" + this.calculate_3(parseInt(this.form.radio410.toString().charAt(3))) )
+              //  console.log("form.radio411:" + this.calculate_3(parseInt(this.form.radio411.toString().charAt(3))) )
+              //  console.log("form.radio412:" + this.calculate_3(parseInt(this.form.radio412.toString().charAt(3))) )
+              //  console.log("form.radio413:" + this.calculate_3(parseInt(this.form.radio413.toString().charAt(3))) )
+              //  console.log("value1:" + this.calculate_4(this.form.value1) )
+              //  console.log("value2:" + this.calculate_4(this.form.value2) )
 
               this.form.total =  this.calculate_1(parseInt(this.form.radio1.toString().charAt(1))) +
                            this.calculate_1(parseInt(this.form.radio3.toString().charAt(1))) +
@@ -1467,16 +1490,11 @@
 
               this.cls = "subBtn grayBg";
               this.isSubmitted = false;
-              // this.$message({
-              //   dangerouslyUseHTMLString: true,
-              //   message: '<b style="font-size: 1.575rem;line-height: 4rem; font-weight: normal;text-indent: 1.225rem;">您的得分： ' +  total +'  </b>',
-              //   type: 'success',
-              //   center: true,
-              //   offset: 180,
-              //   showClose: true,
-              //   duration: 0
-              // });
-              this.centerDialogVisible = true
+              if(this.form.total<62){
+                this.centerDialogVisible_bad = true
+              }else if(this.form.total>=62) {
+                this.centerDialogVisible_good = true
+              }
               this.centerDialogVisible1 = true
               this.$dialog(["提交完成", "true"]);
             }

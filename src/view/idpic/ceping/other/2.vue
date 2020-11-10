@@ -226,13 +226,13 @@
     },
     methods: {
       saveInfo: function() {
+
         if(this.isSubmitted) {
           if(this.form.radio1 === 0)  { this.$dialog("请作答第1题"); return; }
             else if(this.form.radio2 === 0) {
               this.$dialog("请作答第2题");
               return;
             }else if(this.isShow) {
-              console.log('xxxx')
               if(this.form.radio3 === 0) this.$dialog("请作答第3题");
               else if(this.form.radio4 === 0) this.$dialog("请作答第4题");
               else if(this.form.radio5 === 0) this.$dialog("请作答第5题");
@@ -242,7 +242,6 @@
               else if(this.form.radio9 === 0) this.$dialog("请作答第9题");
 
               // 提交 1-9 ajax请求
-              return;
             }else{
               // 提交 1-2 ajax请求
             }

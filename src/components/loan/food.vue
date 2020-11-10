@@ -10,7 +10,7 @@
     </dl>
     <div class="yinYang">
     <dl>
-      <dt>什么是营养补充什么？</dt>
+      <dt>什么是营养补充？</dt>
          <template v-for='item in data.yinYang'>
       <dd>
        <p><span>{{item.con}}</span></p>

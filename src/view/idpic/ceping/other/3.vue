@@ -581,7 +581,6 @@
               else if(this.form.radio25 === 0) this.$dialog("请作答第25题");
               else if(this.form.radio26 === 0) this.$dialog("请作答第26题");
               // 请求1-26 ajax
-              return;
             } else {
               // 请求1 ajax
             }

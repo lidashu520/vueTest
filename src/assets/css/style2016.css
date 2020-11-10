@@ -1339,7 +1339,7 @@ h2.title {
      .loanDetail dl dt {
       margin-top: 0.625rem;
       color: #F3D421;
-      text-shadow:0 0 0.3rem #010101;
+      /* text-shadow:0 0 0.3rem #010101; */
       line-height: 1.525rem;
       text-indent: 0.625rem;
       font-size: 0.9125rem;
@@ -1554,7 +1554,7 @@ h2.title {
 
           .yellowColor{
             color: #F3D421;
-      text-shadow:0 0 0.3rem #010101;
+      /* text-shadow:0 0 0.3rem #010101; */
       line-height: 1.525rem;
             text-indent: 0.625rem;
             font-size: 0.9125rem;
@@ -1748,7 +1748,7 @@ h2.title {
               }
               .partGreenColor{
                 color: #73BD4C;
-                text-shadow:0 0 0.3rem #010101;
+                /* text-shadow:0 0 0.3rem #010101; */
                 line-height: 1.525rem;
                 text-indent: 0.625rem;
                 font-size: 0.9125rem;
