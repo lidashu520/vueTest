@@ -41,6 +41,7 @@ import foodTitle from './reward/foodTitle';		  //foodTitle
 import foodMatchTitle from './reward/foodMatchTitle';		  //foodMatchTitle
 import supBanner from './loan/supTop';			   // sup-top
 import hint from './common/hint';			   // hint
+import calculate from './common/calculate';			   // calculate
 // import CPdf from './common/CPdf';			   // CPdf
 
 
@@ -87,5 +88,6 @@ export default {
   foodMatchTitle,
   supBanner,
   hint,
+  calculate
   // CPdf
 }

@@ -41,7 +41,7 @@
                     </td>
             </tr>
 
-            <!-- <tr>
+            <tr>
                     <td style="width: 50%;" id="platPayorder">
                         <a  @click="centerDialogVisible = true" class="color545454 line_height">
                     <span style="" class="check08_bg">
@@ -51,22 +51,25 @@
                             弹框
                         </a>
                     </td>
-            </tr> -->
+            </tr>
         </table>
 
     </div>
     <el-dialog
+       class="abow_dialog"
       :visible.sync="centerDialogVisible"
-      width="90%"
-      center>
-      <hint></hint>
+      :close-on-click-modal= false
+      :close-on-press-escape= false
+      width="100%"
+      :destroy-on-close= true
+      :show-close= false>
+      <!-- <hint></hint> -->
+      <calculate @child-event='parentEvent'></calculate>
     </el-dialog>
     <footComponent :idx='2'></footComponent>
   </div>
 </template>
 <script>
-  // 引入banner组件
-  import loanBanner from '../../components/loan/banner'
   export default {
     data() {
       return {
@@ -79,8 +82,13 @@
         centerDialogVisible: false
     }
     },
-    components: {
-      loanBanner
+    methods: {
+      parentEvent(data) {
+        if(data!=null && data!=undefined){
+          console.log(data)
+        }
+        this.centerDialogVisible = false;
+      }
     }
   }
 </script>
@@ -101,4 +109,27 @@
   .el-carousel__item:nth-child(2n+1) {
     background-color: #d3dce6;
   }
+
+  .abow_dialog {
+    display: flex;
+    justify-content: center;
+    align-items: Center;
+    overflow: hidden;
+    }
+    .abow_dialog .el-dialog {
+        margin: 0 auto !important;
+        overflow: hidden;
+    }
+        .abow_dialog .el-dialog .el-dialog__body {
+            position: fixed;
+            left: 0;
+            top: 10rem;
+            bottom: 0;
+            right: 0;
+            padding: 0;
+            /* z-index: 1;*/
+            /* overflow: hidden; */
+            /* overflow-y: auto; */
+        }
+
 </style>

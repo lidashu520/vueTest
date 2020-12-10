@@ -3868,3 +3868,53 @@ h2.title {
           border-right: 3px solid #73BD4C;
           color:  #73BD4C;
         }
+
+        .centerTitle {
+          height: 2.3125rem;
+          font-size: 1.1525rem;
+          background-color: #fff;
+          text-align: center;
+          overflow: hidden; }
+          .centerTitle li {
+            display: inline-block;
+            height: 2.1875rem;
+            line-height: 2.175rem;
+            padding: 0 10px;
+            cursor: pointer; }
+            .centerTitle li.on {
+              border-bottom: 2px solid #00ACC2;
+              color:#00ACC2;
+            }
+
+      .choiceTitle {
+        height: 1.8125rem;
+        font-size: 0.6525rem;
+        background-color: #fff;
+        text-align: center;
+        overflow: hidden; }
+        .choiceTitle li {
+          display: inline-block;
+          height: 1.2875rem;
+          line-height: 1.575rem;
+          padding: 0 10px;
+          cursor: pointer; }
+          .choiceTitle li.on {
+            color:#00ACC2;
+          }
+
+      .buttonTitle {
+        height: 2.3125rem;
+        font-size: 0.8125rem;
+        background-color: #fff;
+        /* border-bottom: 1px solid #ccc; */
+        text-align: center;
+        overflow: hidden; }
+        .buttonTitle li {
+          display: inline-block;
+          height: 2.1875rem;
+          line-height: 2.375rem;
+          padding: 0 10px;
+          cursor: pointer; }
+          .buttonTitle li.on {
+            color:#00ACC2;
+          }

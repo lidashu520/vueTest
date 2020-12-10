@@ -8,6 +8,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '../theme/index.css'
 import Mui from 'vue-awesome-mui';
+// import LyTab from '../packages/tab'
 
 
 Vue.prototype.$ajax = axios
@@ -17,6 +18,8 @@ Vue.use(ElementUI)
 Vue.use(Mui);
 //引入根模板
 import home from './components/home'
+
+// Vue.use(LyTab)
 
 //引入路由配置信息
 import routes from './router'
