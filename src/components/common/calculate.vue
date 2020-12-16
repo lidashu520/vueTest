@@ -1,72 +1,8 @@
 
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        html,body{
-            overflow: hidden;
-            background-color: #fff;
-        }
-        /* .calculator{
-            width: 100px;
-            margin: 10px auto;
-            border: 1px solid #E4E4E4;
-        } */
-        .calc-screen p{
-            background-color: #fff;
-            height: 60px;
-            line-height: 60px;
-            text-align: right;
-            padding: 0px 10px;
-            overflow-x: hidden;
-        }
-        .calc-in{
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .calc-out{
-            color: darkgray;
-        }
-        table{
-            border-collapse: collapse;
-            width: 100%;
-            /* position: fixed; */
-            bottom: 0;
-        }
-        .calc-btn td{
-            width: 33.3%;
-            height: 30px;
-            line-height: 0px;
-            text-align: center;
-            background-color: #ffffff;
-            border: 1px solid #E4E4E4;
-            margin-left: -1px;
-            margin-right: -1px;
-            font-size: 20px;
-            cursor: pointer;
-        }
-        .calc-btn td:hover{
-            background-color: #EAEAEA;
-        }
-        .del{
-            background: url("del.jpg") no-repeat 50px;
-        }
-        .calc-btn .bc{
-            background-color: #F5F5F5;
-        }
-        .calc-btn td.eq:hover{
-            background-color: #019DB1
-        }
-        .fcg{
-            color: #00ACC2;
-        }
-    </style>
 <template>
-<html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<body>
-<div class="calculator" id="calculator">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<body style="background-color: #fff;">
+<div>
     <form action="" name="calculator" method="get">
         <ul class="buttonTitle" >
           <li @click="emitToParent(false)" style="float: left;"><b style="color:#00ACC2;">取消</b></li>
@@ -118,7 +54,6 @@
     </form>
 </div>
 </body>
-</html>
 </template>
 
 
@@ -300,40 +235,3 @@
     }
   }
 </script>
-
-<style>
-  .food-item{
-    display: flex;
-    margin: 10px;
-    padding-bottom: 5px;
-    position: relative;
-  }
-     .food-item .icon{
-        flex: 0 0 57px;
-        margin-right: 10px;
-
-      }
-    .food-item .icon img{
-       height: auto
-    }
-
-    .food-item .content{
-        flex: 1
-      }
-      .food-item .content .name{
-        margin: 2px 0 8px 0;
-        height: 14px;
-        line-height: 14px;
-        color: "#000";
-      }
-        /* .desc, .extra
-          line-height: 10px
-          font-size: $fontsize-small-s
-          color: $color-light-grey */
-     .food-item .content .desc{
-       line-height: 12px;
-       margin-bottom: 8px;
-     }
-
-
-</style>

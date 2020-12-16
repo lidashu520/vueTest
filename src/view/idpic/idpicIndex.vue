@@ -40,32 +40,9 @@
                         </a>
                     </td>
             </tr>
-
-            <tr>
-                    <td style="width: 50%;" id="platPayorder">
-                        <a  @click="centerDialogVisible = true" class="color545454 line_height">
-                    <span style="" class="check08_bg">
-                        <img src="../../assets/img/goods_icon.png"
-                             style="width: 54px;margin-top: 23px;"/>
-                    </span><br/>
-                            弹框
-                        </a>
-                    </td>
-            </tr>
         </table>
 
     </div>
-    <el-dialog
-       class="abow_dialog"
-      :visible.sync="centerDialogVisible"
-      :close-on-click-modal= false
-      :close-on-press-escape= false
-      width="100%"
-      :destroy-on-close= true
-      :show-close= false>
-      <!-- <hint></hint> -->
-      <calculate @child-event='parentEvent'></calculate>
-    </el-dialog>
     <footComponent :idx='2'></footComponent>
   </div>
 </template>
@@ -79,57 +56,7 @@
         {url: require('../../assets/img/loanBanner3.jpg'), link: '/content1'},
         {url: require('../../assets/img/banner_2.jpg'), link: '/content1'},
       ],
-        centerDialogVisible: false
     }
-    },
-    methods: {
-      parentEvent(data) {
-        if(data!=null && data!=undefined){
-          console.log(data)
-        }
-        this.centerDialogVisible = false;
-      }
     }
   }
 </script>
-
-<style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-
-  .abow_dialog {
-    display: flex;
-    justify-content: center;
-    align-items: Center;
-    overflow: hidden;
-    }
-    .abow_dialog .el-dialog {
-        margin: 0 auto !important;
-        overflow: hidden;
-    }
-        .abow_dialog .el-dialog .el-dialog__body {
-            position: fixed;
-            left: 0;
-            top: 10rem;
-            bottom: 0;
-            right: 0;
-            padding: 0;
-            /* z-index: 1;*/
-            /* overflow: hidden; */
-            /* overflow-y: auto; */
-        }
-
-</style>

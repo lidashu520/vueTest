@@ -44,13 +44,13 @@
           //   isOk: false,
           //   param: 'userPhone'
           // },
-          // {
-          //   cls: 'icon-work',
-          //   tit: '工作信息',
-          //   push: '/credit/work',
-          //   isOk: false,
-          //   param: 'userWork'
-          // },
+          {
+            cls: 'icon-work',
+            tit: '每日营养测评',
+            push: '/ganyusys/ganyu/daily',
+            isOk: false,
+            param: 'userWork'
+          },
           {
             cls: 'icon-idPic',
             tit: '营养处方',

@@ -819,7 +819,26 @@ export default [{
           },
           component: resolve => require(['./view/ganyusys/food/ganyuThree'], resolve)
         },
-        ]
+        // {
+        //   path: 'daily',
+        //   meta: {
+        //     title: '每日营养测评'
+        //   },
+        //   component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve)
+        // },
+        {
+          path: 'daily',
+          component: resolve => require(['./view/ganyusys/food/ganyuTwo'], resolve),
+          children: [{
+            path: '/',
+            meta: {
+              title: '每日营养测评'
+            },
+            component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve),
+          },
+          ]
+        }
+      ]
       },
       {
         path: 'manager',
