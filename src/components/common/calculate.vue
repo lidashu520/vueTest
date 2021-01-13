@@ -15,14 +15,14 @@
               </div>
                 <div class="content">
                   <h6 class="name">皮蛋瘦肉粥</h6>
-                  <p class="desc"><span style="color:red; font-size: 0.1525rem;">{{unit}}</span> <span style="color:gray; font-size: 0.1525rem;">千卡/100克</span></p>
+                  <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{unit}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
                 </div>
             </li>
         </ul>
         <ul class="centerTitle" style="margin-bottom:1rem">
-          <li v-for='(item,index) of items'  :class='{on : index === 0}' >{{result}}<span style="font-size: 0.1rem;padding:0 0 0 0.5rem">{{listOfName}}</span></li>
-          <li style="float: left;"><span style="color:gray; font-size: 0.1525rem;">{{kj}}千卡</span></li>
-          <li style="float: right;"><span style="color:gray; font-size: 0.1525rem;">{{value}}克</span></li>
+          <li v-for='(item,index) of items'  :class='{on : index === 0}' >{{result}}<span style="font-size: 0.5rem;padding:0 0 0 0.5rem">{{listOfName}}</span></li>
+          <li style="float: left;"><span style="color:gray; font-size: 0.5525rem;">{{kj}}千卡</span></li>
+          <li style="float: right;"><span style="color:gray; font-size: 0.5525rem;">{{g}}克</span></li>
         </ul>
         <ul class="choiceTitle" style="margin-bottom:1rem">
           <li v-for='(item,index) of list' :class='{on : index === idx}' @click="choiceUnit(index)">{{item.name}}</li>
@@ -56,59 +56,12 @@
 </body>
 </template>
 
-
-
-<!--<script>
-    //兼容屏幕
-    screenW = window.screen.width;//屏幕分辨率
-    screenH = window.screen.height;//屏幕分辨率
-    var calculator = document.getElementById("calculator");
-    var calc_btn = document.getElementById("calc-btn").getElementsByTagName("td");
-    console.log(document.body.clientWidth)
-    if(document.body.clientWidth<600){
-        calculator.style.width = screenW+"px";
-        calculator.style.height = screenH+"px";
-        calculator.style.border = "none";
-        calculator.style.margin = "0";
-        for(var i = 0;i<calc_btn.length;i++){
-            calc_btn[i].style.width = screenW/3+"px";
-            calc_btn[i].style.height = (screenH-80)/8 + "px";
-        }
-    }
-
-    var calcIn = document.getElementById("calc-in");
-    var calcOut = document.getElementById("calc-out");
-
-    //输入数据函数
-    function command(str) {
-        calcIn.innerHTML = "" ? calcIn.innerHTML = str : calcIn.innerHTML =calcIn.innerHTML+str;
-    }
-    //计算数据函数
-    function calc() {
-        calcOut.innerHTML = eval(calcIn.innerHTML.replace(/×/g,"*").replace(/÷/g,"/").replace(/%/,"/100"));
-        if(calcOut.innerHTML == "undefined"){
-            calcOut.innerHTML = "";
-        }
-    }
-    //清屏函数
-    function clearScreen() {
-        calcIn.innerHTML = "";
-        calcOut.innerHTML = "";
-    }
-    //每次删除一位数据的函数
-    function del() {
-        calcIn.innerHTML = calcIn.innerHTML.substr(0,calcIn.innerHTML.length-1);
-    }
-
-</script>-->
-
-
 <script>
   export default {
     data() {
       return {
         result: '0.0',
-        value: 0,
+        g: 0,
         unit:1000,
         kj: 0,
         listOfName:'',
@@ -130,21 +83,21 @@
         list: [
           {
             name: "克",
-            val: "100.0",
+            val: "1.0",
             unit: 10,
-            value: 100
+            g: 1
           },
           {
             name: "碗(中)",
             val: "1.0",
             unit: 10,
-            value: 125
+            g: 125
           },
           {
             name: "碗(大)",
             val: "1.0",
             unit: 10,
-            value: 150
+            g: 150
           }
         ]
       }
@@ -169,8 +122,8 @@
          }
         this.isPoint = false
         this.result = left + "." + right
-        this.value = this.list[this.idx].value * parseInt(this.result)
-        this.kj = this.list[this.idx].unit * this.value * parseInt(this.result)
+        this.g = this.list[this.idx].g * parseInt(this.result)
+        this.kj = this.list[this.idx].unit * this.g
       },
       command(str) {
         let  temp = this.result.split(".")
@@ -195,8 +148,8 @@
           }
         }
         this.result = left + "." + right
-        this.value = this.list[this.idx].value * parseInt(this.result)
-        this.kj = this.list[this.idx].unit * this.value * parseInt(this.result)
+        this.g = this.list[this.idx].g * parseInt(this.result)
+        this.kj = this.list[this.idx].unit * this.g
       },
     choiceUnit(index){
       if(this.idx === index){
@@ -205,8 +158,8 @@
         this.idx = index
         this.listOfName = this.list[index].name
         this.result = this.list[index].val
-        this.value = this.list[index].value
-        this.kj = this.list[index].unit * this.value
+        this.g = this.list[index].g
+        this.kj = this.list[index].unit * this.g
       }
 
     },
@@ -230,8 +183,8 @@
       this.idx = index;
       this.listOfName = this.list[index].name
       this.result = this.list[index].val
-      this.value = this.list[index].value
-      this.kj = this.list[index].unit * this.value
+      this.g = this.list[index].g
+      this.kj = this.list[index].unit * this.g
     }
   }
 </script>

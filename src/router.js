@@ -834,6 +834,13 @@ export default [{
             meta: {
               title: '每日营养测评'
             },
+            component: resolve => require(['./view/ganyusys/food/daily/foodAnalysis'], resolve),
+          },
+          {
+            path: 'search',
+            meta: {
+              title: '每日营养测评'
+            },
             component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve),
           },
           ]

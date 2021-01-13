@@ -83,6 +83,11 @@ a {
       background: #F1F3B1;
     }
 
+    .foodDailyLog {
+      margin: 1rem;
+      border-radius: 1rem;
+      border-color: #555;
+    }
 
     /**partthree**/
     .container .part {
@@ -3981,7 +3986,7 @@ h2.title {
         }
         .calc-btn td{
             width: 33.3%;
-            height: 30px;
+            height: 45px;
             line-height: 0px;
             text-align: center;
             background-color: #ffffff;
@@ -3995,10 +4000,10 @@ h2.title {
             background-color: #EAEAEA;
         }
         .del{
-            background: url("../img/del.jpg") no-repeat 50px;
+            background: url("../img/del.jpg") no-repeat 60px;
         }
         .calc-btn .bc{
-            background-color: #F5F5F5;
+            background-color: #fff;
         }
         .calc-btn td.eq:hover{
             background-color: #019DB1
@@ -4007,4 +4012,68 @@ h2.title {
             color: #00ACC2;
         }
 
+
+        .analys .tabDiv {
+          font-weight: bold;
+          border-bottom: none;
+          height:2.75rem;
+          line-height: 2.75rem;
+          position: relative;
+          margin: 2rem;
+        }
+          .analys .tabDiv li {
+            padding: 0;
+            margin: 0rem 1.5625rem 0rem 1.5625rem; }
+
+
+    .footerFoodLog  {
+      height: 2.75rem; }
+      .footerFoodLog  ul {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-top: 0.15625rem;
+        height: 2.59375rem;
+        font-size: 0.6625rem;
+        /* background: #e3e3e3; */
+        background: #fff;
+        /* border-top: 1px #dcdcdc solid; */
+        border-top: 1px #E6F0DF solid;
+        }
+
+    .footerFoodLog li {
+      float: left;
+      width: 25%;
+      overflow: hidden;
+      text-align: center; }
+      .footerFoodLog li i {
+        font-size: 1.525rem;
+       }
+      .footerFoodLog li:before {
+        display: block;
+        font-family: 'icons';
+        line-height: 1.5625rem;
+        font-size: 1.4375rem;
+        color: #777; }
+      .footerFoodLog li.on, .footer li.on:before {
+        color: #73BD4C; }
+
+        .foodLogDetail  {
+          height: 8.35rem; }
+          .foodLogDetail  ul {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding-top: 0.15625rem;
+            height: 6.09375rem;
+            background: #fff;
+            border-top: 1px #E6F0DF solid;
+            }
+
+        .foodLogDetail li {
+          float: left;
+          width: 20%;
+          overflow: hidden;
+          padding-top: 0.1rem;
+          text-align: center; }
 
