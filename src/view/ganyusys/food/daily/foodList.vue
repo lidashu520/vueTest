@@ -19,7 +19,7 @@
         </div>
         <div class="content">
           <h6 class="name">皮蛋瘦肉粥</h6>
-          <p class="desc"><span style="color:red; font-size: 0.1525rem;">{{i}}</span> <span style="color:gray; font-size: 0.1525rem;">千卡/100克</span></p>
+          <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{i}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
         </div>
       </li>
        <!-- <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
@@ -128,7 +128,7 @@
         console.log("保存")
         this.eatCount = 0
         this.isShow = false
-        this.$router.push('/ganyusys/ganyu')
+        this.$router.push('/ganyusys/ganyu/daily')
       },
       parentEvent(data) {
         if(data!=null && data!=undefined){
