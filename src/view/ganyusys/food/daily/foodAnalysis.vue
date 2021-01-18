@@ -8,12 +8,8 @@
   <div class="partThreeSelect">
     <dl>
       <dt style="color: #8B4513">经典均衡饮食</dt>
-      <ul class="foodLogDetail ">
-        <li style="width:20%">
-            <dt style="color:gray;">摄入</dt>
-            <dt style="font-size: 0.8025rem;">123456</dt>
-        </li>
-        <li style="width:51%">
+        <!--2，3 li 展示  before(仿造薄荷)-->
+        <!-- <li style="width:51%">
             <dt><el-progress type="circle" :percentage="15" color="#73BD4C"></el-progress></dt>
         </li>
         <li style="width:28%">
@@ -21,6 +17,56 @@
             <dt style="font-size: 0.8025rem;">158080</dt>
             <dt style="color:gray">推荐预算</dt>
             <dt style="font-size: 0.8025rem;">1390</dt>
+        </li> -->
+      <ul class="foodLogDetail ">
+        <li style="width:20%">
+            <dt style="color:gray;">叶黄素:</dt>
+        </li>
+        <li style="width:45%">
+          <el-progress :percentage="40" :stroke-width="18" text-inside="true" color="#FFD700"></el-progress>
+        </li>
+        <li style="width:35%">
+          <dt >4/10 mg</dt>
+        </li>
+
+        <li style="width:20%">
+            <dt style="color:gray;">维生素C:</dt>
+        </li>
+        <li style="width:45%">
+          <el-progress :percentage="30" :stroke-width="18" text-inside="true" color="#ADFF2F"></el-progress>
+        </li>
+        <li style="width:35%">
+          <dt >150/500 mg</dt>
+        </li>
+
+        <li style="width:20%">
+            <dt style="color:gray;">维生素D:</dt>
+        </li>
+         <li style="width:45%">
+          <el-progress :percentage="55" :stroke-width="18" text-inside="true" status="success"></el-progress>
+        </li>
+        <li style="width:35%">
+          <dt >146.85/267 mg</dt>
+        </li>
+
+        <li style="width:20%">
+            <dt style="color:gray;">氧化锌:</dt>
+        </li>
+         <li style="width:45%">
+          <el-progress :percentage="85" :stroke-width="18" text-inside="true" color="#1E90FF"></el-progress>
+        </li>
+        <li style="width:35%">
+          <dt >21.25/25 mg</dt>
+        </li>
+
+        <li style="width:20%">
+            <dt style="color:gray;">氧化铜:</dt>
+        </li>
+         <li style="width:45%">
+          <el-progress :percentage="100" :stroke-width="18" text-inside="true" color="#EA7F21"></el-progress>
+        </li>
+        <li style="width:35%">
+          <dt >2/2 mg</dt>
         </li>
       </ul>
     </dl>
@@ -71,90 +117,12 @@
   export default {
     data () {
       return {
-        centerDialogVisible: false,
+        a:12,
+        aSum:20,
         loading: false,
-        count: 1,
-        list: [],
-        pageForm: {
-          page: 1,
-        },
-        pageTotal:9999,
-        isShow: false,
-        eatCount: 0
       }
     },
-    computed: {
-      noMore () {
-        // return this.pageTotal <  this.pageForm.page
-        //====================
-         return this.count >= 20
-      },
-      disabled () {
-        console.log("this.loading:" + this.loading)
-        console.log("this.noMore:" + this.noMore)
-        console.log("end:" + (this.loading || this.noMore))
-        return (this.loading || this.noMore)
-        // ===========return this.loading || this.noMore
-      }
-    },
-      created(){
-        this.load();
-          },
     methods: {
-      //======================
-      load () {
-        this.loading = true
-        setTimeout(() => {
-          this.count += 2
-          this.loading = false
-        }, 2000)
-      },
-      // load(){
-      //   console.log("this.pageTotal：" + this.pageTotal)
-      //   console.log("this.pageForm.page：" + this.pageForm.page)
-      //   this.loading = true
-      //   if(this.pageTotal >=  this.pageForm.page){
-      //     setTimeout(() => {
-      //     this.$ajax({
-      //       async: false,
-      //       method: 'post',
-      //       url: '/info/page',
-      //       data: this.pageForm
-      //     }).then(res => {
-      //       console.log(res)
-      //       this.list = [...this.list, ...res.data.data.data]
-      //       this.pageTotal = res.data.data.totalPage;
-      //       this.pageForm.page ++;
-      //       console.log("list.length:" + this.list.length)
-      //       console.log("pageIndex:" + this.pageForm.page)
-      //       console.log("Total:" + this.pageTotal)
-      //       console.log("=================")
-      //       this.loading = false
-      //     }).catch(error => {
-      //       alert('获取数据错误');
-      //       console.log(error);
-      //     });
-      //   }, 1000)
-      //   }else {
-      //     console.log("没有更多")
-      //     this.loading = false
-      //     this.noMore = true
-      //   }
-      // },
-      saveInfo() {
-        console.log("保存")
-        this.eatCount = 0
-        this.isShow = false
-        this.$router.push('/ganyusys/ganyu')
-      },
-      parentEvent(data) {
-        if(data!=null && data!=undefined){
-          console.log(data)
-          this.eatCount +=1
-          this.isShow = true
-        }
-        this.centerDialogVisible = false;
-      }
     }
   }
 </script>

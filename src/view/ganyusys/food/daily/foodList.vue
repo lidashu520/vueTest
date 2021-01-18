@@ -90,7 +90,7 @@
         setTimeout(() => {
           this.count += 2
           this.loading = false
-        }, 2000)
+        }, 800)
       },
       // load(){
       //   console.log("this.pageTotal：" + this.pageTotal)
