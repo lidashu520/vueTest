@@ -50,14 +50,11 @@
     margin-top:2rem;
     height: 2rem;
     position: relative;">
-  <el-button
+<el-button
     style="
     position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;"
+    left: 50%;
+    transform: translateX(-50%);"
     type="success" round>营养分析
   </el-button>
 </div>

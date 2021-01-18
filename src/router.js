@@ -660,13 +660,13 @@ export default [{
         },
         component: resolve => require(['./view/ganyusys/ganyusysIndex'], resolve)
       },
-      {
-        path: 'yingYang',
-        meta: {
-          title: '营养含量'
-        },
-        component: resolve => require(['./view/ganyusys/yingYang'], resolve)
-      },
+      // {
+      //   path: 'yingYang',
+      //   meta: {
+      //     title: '营养含量'
+      //   },
+      //   component: resolve => require(['./view/ganyusys/yingYang'], resolve)
+      // },
       {
         path: 'pinggu',
         component: resolve => require(['./view/ganyusys/food/pingguIndex'], resolve),

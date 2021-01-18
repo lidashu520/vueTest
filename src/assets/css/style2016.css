@@ -4077,3 +4077,16 @@ h2.title {
           padding-top: 0.1rem;
           text-align: center; }
 
+
+    .threeNutri {
+      height: 2.3125rem;
+      font-size: 1.1525rem;
+      background-color: #fff;
+      text-align: center;
+      overflow: hidden; }
+      .threeNutri li {
+        display: inline-block;
+        height: 2.1875rem;
+        line-height: 2.175rem;
+        padding: 0px;
+        cursor: pointer; }

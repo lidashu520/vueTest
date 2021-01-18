@@ -172,7 +172,7 @@
         .abow_dialog .el-dialog .el-dialog__body {
             position: fixed;
             left: 0;
-            top: 10rem;
+            top: 6rem;
             bottom: 0;
             right: 0;
             padding: 0;

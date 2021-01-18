@@ -19,9 +19,19 @@
                 </div>
             </li>
         </ul>
+         <table style="
+            color:gray;
+            font-size: 0.5525rem;
+            margin: 5px;">
+          <tr>
+              <td>叶黄素:{{kj}}mg</td>
+              <td>维生素C:{{kj}}mg</td>
+              <td>维生素E:{{kj}}mg</td>
+          </tr>
+         </table>
         <ul class="centerTitle" style="margin-bottom:1rem">
           <li v-for='(item,index) of items'  :class='{on : index === 0}' >{{result}}<span style="font-size: 0.5rem;padding:0 0 0 0.5rem">{{listOfName}}</span></li>
-          <li style="float: left;"><span style="color:gray; font-size: 0.5525rem;">{{kj}}千卡</span></li>
+          <!-- <li style="float: left;"><span style="color:gray; font-size: 0.5525rem;">{{kj}}千卡</span></li> -->
           <li style="float: right;"><span style="color:gray; font-size: 0.5525rem;">{{g}}克</span></li>
         </ul>
         <ul class="choiceTitle" style="margin-bottom:1rem">
