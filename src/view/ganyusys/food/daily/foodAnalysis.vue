@@ -23,7 +23,7 @@
             <dt style="color:gray;">叶黄素:</dt>
         </li>
         <li style="width:45%">
-          <el-progress :percentage="40" :stroke-width="18" text-inside="true" color="#FFD700"></el-progress>
+          <el-progress :percentage="40" :stroke-width="18" :text-inside='true' color="#FFD700"></el-progress>
         </li>
         <li style="width:35%">
           <dt >4/10 mg</dt>
@@ -33,7 +33,7 @@
             <dt style="color:gray;">维生素C:</dt>
         </li>
         <li style="width:45%">
-          <el-progress :percentage="30" :stroke-width="18" text-inside="true" color="#ADFF2F"></el-progress>
+          <el-progress :percentage="30" :stroke-width="18" :text-inside='true' color="#ADFF2F"></el-progress>
         </li>
         <li style="width:35%">
           <dt >150/500 mg</dt>
@@ -43,7 +43,7 @@
             <dt style="color:gray;">维生素D:</dt>
         </li>
          <li style="width:45%">
-          <el-progress :percentage="55" :stroke-width="18" text-inside="true" status="success"></el-progress>
+          <el-progress :percentage="55" :stroke-width="18" :text-inside='true' ></el-progress>
         </li>
         <li style="width:35%">
           <dt >146.85/267 mg</dt>
@@ -53,7 +53,7 @@
             <dt style="color:gray;">氧化锌:</dt>
         </li>
          <li style="width:45%">
-          <el-progress :percentage="85" :stroke-width="18" text-inside="true" color="#1E90FF"></el-progress>
+          <el-progress :percentage="85" :stroke-width="18" :text-inside='true' color="#1E90FF"></el-progress>
         </li>
         <li style="width:35%">
           <dt >21.25/25 mg</dt>
@@ -63,7 +63,7 @@
             <dt style="color:gray;">氧化铜:</dt>
         </li>
          <li style="width:45%">
-          <el-progress :percentage="100" :stroke-width="18" text-inside="true" color="#EA7F21"></el-progress>
+          <el-progress :percentage="100" :stroke-width="18" :text-inside='true' color="#EA7F21"></el-progress>
         </li>
         <li style="width:35%">
           <dt >2/2 mg</dt>
@@ -87,7 +87,7 @@
     </div>
       <div class="content">
         <h6 class="name">皮蛋瘦肉粥</h6>
-        <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{unit}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
+        <p class="desc"><span style="color:red; font-size: 0.5525rem;">1000</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
       </div>
   </li>
 </ul>
@@ -101,7 +101,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);"
-    type="success" round>营养分析
+    type="success" round @click='toPage'>营养分析
   </el-button>
 </div>
   <p style="
@@ -123,43 +123,9 @@
       }
     },
     methods: {
+      toPage(){
+        this.$router.push('/ganyusys/ganyu/daily/detail')
+      }
     }
   }
 </script>
-
-<style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-
-  .abow_dialog {
-    display: flex;
-    justify-content: center;
-    align-items: Center;
-    overflow: hidden;
-    }
-    .abow_dialog .el-dialog {
-        margin: 0 auto !important;
-        overflow: hidden;
-    }
-        .abow_dialog .el-dialog .el-dialog__body {
-            position: fixed;
-            left: 0;
-            top: 10rem;
-            bottom: 0;
-            right: 0;
-            padding: 0;
-        }
-</style>

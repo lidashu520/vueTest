@@ -120,7 +120,7 @@
           },
           {
             buchong: '维生素E',
-            weight: '400mg'
+            weight: '267mg'
           },
           {
             buchong: '氧化锌',

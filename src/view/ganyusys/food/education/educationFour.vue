@@ -3,7 +3,7 @@
   <foodMatchTitle :idx='3' />
     <div style="margin:0rem 0.5rem 0rem 15%" class="container goodFood">
         <p class="headGood"><span class="look" >食物搭配建议</span></p>
-          <img style="transform:translate(25%)" src="../../../../assets/img/educationFour.png"/>
+        <div align="center"><img src="../../../../assets/img/educationFour.png"/></div>
         <dl>
           <dt class="goodFoodSpecial" style="  margin: 0.625rem 8rem 0 0.25rem;">第四天食物搭配</dt>
           <el-table

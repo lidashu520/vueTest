@@ -4059,7 +4059,7 @@ h2.title {
         color: #73BD4C; }
 
         .foodLogDetail  {
-          height: 8.35rem; }
+          height: 8.55rem; }
           .foodLogDetail  ul {
             position: relative;
             bottom: 0;
@@ -4076,3 +4076,13 @@ h2.title {
           overflow: hidden;
           padding-top: 0.1rem;
           text-align: center; }
+
+      .foodAnalysisDetail {
+        background:#F5F5F5;
+        border-radius: 1rem;
+        border: 0.1rem solid #F5F5F5;
+        line-height: 1.525rem;
+        font-size: 0.7125rem;
+        text-indent: 0.155rem;
+        margin: 1rem;
+      }

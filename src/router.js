@@ -832,16 +832,23 @@ export default [{
           children: [{
             path: '/',
             meta: {
-              title: '每日营养测评'
+              title: '每日营养记录'
             },
             component: resolve => require(['./view/ganyusys/food/daily/foodAnalysis'], resolve),
           },
           {
             path: 'search',
             meta: {
-              title: '每日营养测评'
+              title: '每日营养食物列表'
             },
             component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve),
+          },
+          {
+            path: 'detail',
+            meta: {
+              title: '每日营养分析'
+            },
+            component: resolve => require(['./view/ganyusys/food/daily/foodAnalysisDetail'], resolve),
           },
           ]
         }

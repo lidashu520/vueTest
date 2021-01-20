@@ -8,18 +8,21 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '../theme/index.css'
 import Mui from 'vue-awesome-mui';
+import * as echarts from 'echarts';
 // import LyTab from '../packages/tab'
-
-
 Vue.prototype.$ajax = axios
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 //手机点击返回键，返回上一个目录
 Vue.use(Mui);
+// 引入echarts
+Vue.prototype.$echarts = echarts;
 //引入根模板
 import home from './components/home'
 
 // Vue.use(LyTab)
+
+
 
 //引入路由配置信息
 import routes from './router'

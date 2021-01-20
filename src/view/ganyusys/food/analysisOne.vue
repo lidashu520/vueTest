@@ -112,7 +112,7 @@
           leibie: '主食类',
           food: '玉米(黄干)',
           weight: '2两',
-          yehuangsu: '1.5mg',
+          yehuangsu: '2.2mg',
           vC: '-',
           vE: '3.89mg',
           ZnO: '1.7mg',
