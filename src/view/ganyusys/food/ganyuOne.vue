@@ -73,13 +73,6 @@
             param: 'userSB'
           },
           // {
-          //   cls: 'icon-chuxu',
-          //   tit: '营养知识测评',
-          //   push: '/credit/waterBank',
-          //   isOk: false,
-          //   param: 'userChuxu'
-          // },
-          // {
           //   cls: 'icon-zhima',
           //   tit: '芝麻信用授权',
           //   push: '/credit/zhima',
@@ -113,7 +106,14 @@
             // push: '/ganyusys/ganyu/notice',
             isOk: false,
             param: 'userOhter'
-          }
+          },
+          {
+            cls: 'icon-chuxu',
+            tit: '五大营养素排行榜',
+            push: '/ganyusys/ganyu/rank',
+            isOk: false,
+            param: 'userChuxu'
+          },
         ]
       }
     },

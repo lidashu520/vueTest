@@ -1,7 +1,7 @@
 <template>
   <div>
   <foodMatchTitle :idx='6' />
-    <div style="margin:0rem 0.5rem 0rem 15%" class="container goodFood">
+    <div style="margin:0rem 0.5rem 0rem 18%" class="container goodFood">
         <p class="headGood"><span class="look" >食物搭配建议</span></p>
         <div align="center"><img src="../../../../assets/img/educationSeven.png"/></div>
         <dl>

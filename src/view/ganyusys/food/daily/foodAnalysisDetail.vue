@@ -13,7 +13,7 @@
     <ul class="footer">
       <!-- <li style="color:#696969; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#EA7F21;" class="el-icon-top"></i>偏高</li> -->
       <li style="color:#696969; width:30%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#FFD700" class="el-icon-bottom"></i>偏低</li>
-      <li style="color:#696969; width:30%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:green" class="el-icon-check"></i>满足</li>
+      <li style="color:#696969; width:30%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#73BD4C" class="el-icon-check"></i>满足</li>
     </ul>
   </div>
         <div style="width:355px;height:280px" ref="chart"></div>
@@ -25,7 +25,7 @@
     </ul>
     <ul class="footer">
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">叶黄素</li>
-      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%"><i style="color:green;" class="el-icon-check"></i>20.2</li>
+      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%"><i style="color:#73BD4C" class="el-icon-check"></i>20.2</li>
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">10</li>
     </ul>
     <ul class="footer">
@@ -34,7 +34,7 @@
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">500</li>
     </ul>
     <ul class="footer">
-      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">维生素D</li>
+      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">维生素E</li>
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%"><i style="color:#FFD700" class="el-icon-bottom"></i>122.5</li>
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">267</li>
     </ul>
@@ -45,7 +45,7 @@
     </ul>
     <ul class="footer">
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">氧化铜</li>
-      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%"><i style="color:green" class="el-icon-check"></i>2.1</li>
+      <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%"><i style="color:#73BD4C" class="el-icon-check"></i>2.1</li>
       <li style="color:#000; font-size: 0.7525rem;padding-top:0.5rem;width:33.3333%">2</li>
     </ul>
   </div>
@@ -88,7 +88,7 @@
               },
               {
                 value: 234,
-                name: '维生素D'
+                name: '维生素E'
               },
               {
                 value: 335,

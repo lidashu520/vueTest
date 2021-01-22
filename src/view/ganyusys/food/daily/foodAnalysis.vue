@@ -40,7 +40,7 @@
         </li>
 
         <li style="width:20%">
-            <dt style="color:gray;">维生素D:</dt>
+            <dt style="color:gray;">维生素E:</dt>
         </li>
          <li style="width:45%">
           <el-progress :percentage="55" :stroke-width="18" :text-inside='true' ></el-progress>

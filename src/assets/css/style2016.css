@@ -3858,7 +3858,7 @@ h2.title {
       position: fixed;
       top: 5.75rem;
       z-index: 9;
-      width: 15%;
+      width: 18%;
       font-size: 0.8125rem;
       background-color: #fff;
       text-align: center;
@@ -3871,6 +3871,7 @@ h2.title {
         cursor: pointer; }
         .tabsTitle li.on {
           border-right: 3px solid #73BD4C;
+          font-size: 1.025rem;
           color:  #73BD4C;
         }
 
@@ -3950,10 +3951,6 @@ h2.title {
             line-height: 14px;
             color: "#000";
           }
-            /* .desc, .extra
-              line-height: 10px
-              font-size: $fontsize-small-s
-              color: $color-light-grey */
           .food-item .content .desc{
             line-height: 12px;
             margin-bottom: 8px;
@@ -4085,4 +4082,28 @@ h2.title {
         font-size: 0.7125rem;
         text-indent: 0.155rem;
         margin: 1rem;
+      }
+
+  .tabsRankTitle {
+    font-weight: bold;
+    border-bottom: none;
+    height: 100%;
+    line-height: 7.75rem;
+    position: fixed;
+    z-index: 9;
+    width: 23%;
+    font-size: 0.8125rem;
+    background-color: #F5F5F5;
+    text-align: center;
+    overflow: hidden; }
+    .tabsRankTitle li {
+      display: block;
+      height: 2.1875rem;
+      line-height: 2.375rem;
+      padding-top: 0.5rem;
+      cursor: pointer; }
+      .tabsRankTitle li.on {
+        /* border-right: 3px solid #1E90FF; */
+        font-size: 1.025rem;
+        color:  #1E90FF;
       }

@@ -179,7 +179,8 @@
 
      <!-- 8 -->
      <dl>
-     <dt style="padding-top: 0.325rem"><span>8. 您一般在哪里购买食物？</span></dt>
+     <dt style="padding-top: 0.325rem"><span>8. 您知道以下哪些抗氧化物质有益年龄相关性黄斑</span></dt>
+     <dt style="padding-top: 0.325rem"><span>变性的治疗吗（多选）？</span></dt>
       <el-checkbox-group v-model="form.checkList8">
             <dd class="floatW45">
               <el-checkbox label="A"><span class="questionsWord">A.叶黄素/玉米黄素</span></el-checkbox>

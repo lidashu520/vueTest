@@ -43,6 +43,7 @@ import supBanner from './loan/supTop';			   // sup-top
 import hint from './common/hint';			   // hint
 import calculate from './common/calculate';			   // calculate
 import footerFoodLog from './common/footerFoodLog';			   // footerFoodLog
+import nutriRankTitle from './reward/nutriRankTitle';		  //nutriRankTitle
 // import CPdf from './common/CPdf';			   // CPdf
 
 
@@ -90,6 +91,7 @@ export default {
   supBanner,
   hint,
   calculate,
-  footerFoodLog
+  footerFoodLog,
+  nutriRankTitle
   // CPdf
 }

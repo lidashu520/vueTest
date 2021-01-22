@@ -819,13 +819,6 @@ export default [{
           },
           component: resolve => require(['./view/ganyusys/food/ganyuThree'], resolve)
         },
-        // {
-        //   path: 'daily',
-        //   meta: {
-        //     title: '每日营养测评'
-        //   },
-        //   component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve)
-        // },
         {
           path: 'daily',
           component: resolve => require(['./view/ganyusys/food/ganyuTwo'], resolve),
@@ -851,7 +844,47 @@ export default [{
             component: resolve => require(['./view/ganyusys/food/daily/foodAnalysisDetail'], resolve),
           },
           ]
-        }
+        },
+        {
+          path: 'rank',
+          component: resolve => require(['./view/ganyusys/food/rank/rankIndex'], resolve),
+          children: [{
+            path: '/',
+            meta: {
+              title: '叶黄素排行榜'
+            },
+            component: resolve => require(['./view/ganyusys/food/rank/rankLeaf'], resolve)
+          },
+          {
+            path: 'vc',
+            meta: {
+              title: '维生素C排行榜'
+            },
+            component: resolve => require(['./view/ganyusys/food/rank/rankVc'], resolve)
+          },
+          {
+            path: 've',
+            meta: {
+              title: '维生素E排行榜'
+            },
+            component: resolve => require(['./view/ganyusys/food/rank/rankVe'], resolve)
+          },
+          {
+            path: 'zno',
+            meta: {
+              title: '氧化锌排行榜'
+            },
+            component: resolve => require(['./view/ganyusys/food/rank/rankZnO'], resolve)
+          },
+          {
+            path: 'cuo',
+            meta: {
+              title: '氧化铜排行榜'
+            },
+            component: resolve => require(['./view/ganyusys/food/rank/rankCuO'], resolve)
+          },
+          ]
+        },
       ]
       },
       {
