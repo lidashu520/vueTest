@@ -17,15 +17,15 @@
           name: "营养评估",
           push: "/ganyusys/pinggu"
         },
-        {
-          cls: "stpTwo",
-          name: "数据分析",
-          push: "/ganyusys/analysis"
-        },
          {
           cls: "stpThree",
           name: "营养干预",
           push: "/ganyusys/ganyu"
+        },
+        {
+          cls: "stpTwo",
+          name: "数据分析",
+          push: "/ganyusys/analysis"
         },
         {
           cls: "stpFour",

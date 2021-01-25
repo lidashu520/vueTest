@@ -7,7 +7,7 @@
         </template>
       </listComponent>
     </ul>
-    <foodFooter :idx='2'></foodFooter>
+    <foodFooter :idx='1'></foodFooter>
   </div>
 </template>
 <script>

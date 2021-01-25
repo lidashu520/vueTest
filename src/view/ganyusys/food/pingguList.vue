@@ -51,13 +51,14 @@
           //   isOk: false,
           //   param: 'userWork'
           // },
-          {
-            cls: 'icon-idPic',
-            tit: '营养状况测评',
-            push: '/ganyusys/pinggu/one',
-            isOk: false,
-            param: 'userIdpic'
-          },
+          // 111111111
+          // {
+          //   cls: 'icon-idPic',
+          //   tit: '营养状况测评',
+          //   push: '/ganyusys/pinggu/one',
+          //   isOk: false,
+          //   param: 'userIdpic'
+          // },
           // {
           //   cls: 'icon-fund',
           //   tit: '公积金授权',
@@ -66,18 +67,18 @@
           //   param: 'userFund'
           // },
           {
-            cls: 'icon-shebao',
-            tit: '营养态度和行为测评',
-            push: '/ganyusys/pinggu/two',
-            isOk: false,
-            param: 'userSB'
-          },
-          {
             cls: 'icon-chuxu',
             tit: '营养知识测评',
             push: '/ganyusys/pinggu/three',
             isOk: false,
             param: 'userChuxu'
+          },
+          {
+            cls: 'icon-shebao',
+            tit: '营养态度和行为测评',
+            push: '/ganyusys/pinggu/two',
+            isOk: false,
+            param: 'userSB'
           },
           // {
           //   cls: 'icon-zhima',
@@ -107,13 +108,14 @@
           //   isOk: false,
           //   param: 'userAlipay'
           // },
-          {
-            cls: 'icon-other',
-            tit: '营养结果评估',
-            push: '/ganyusys/pinggu/four',
-            isOk: false,
-            param: 'userOhter'
-          }
+          // 44444444444444
+          // {
+          //   cls: 'icon-other',
+          //   tit: '营养结果评估',
+          //   push: '/ganyusys/pinggu/four',
+          //   isOk: false,
+          //   param: 'userOhter'
+          // }
         ]
       }
     },

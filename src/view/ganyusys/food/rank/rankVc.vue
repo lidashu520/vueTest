@@ -25,63 +25,63 @@
         count: 10,
         items: [
           {
-            name: "胡麻油",
-            mg: "389.9",
-            src:"../../../../static/VeRank1.png",
+            name: "酸枣",
+            mg: "900.00",
+            src:"../../../../static/VcRank1.png",
             rank: 1
           },
           {
-            name: "豆油",
-            mg: "93.08",
-            src:"../../../../static/VeRank2.png",
+            name: "红椒",
+            mg: "130.00",
+            src:"../../../../static/VcRank2.png",
             rank: 2
           },
           {
-            name: "芝麻油",
-            mg: "68.53",
-            src:"../../../../static/VeRank3.png",
+            name: "羽衣甘蓝(熟)",
+            mg: "63.00",
+            src:"../../../../static/VcRank3.png",
             rank: 3
           },
           {
-            name: "菜籽油",
-            mg: "60.89",
-            src:"../../../../static/VeRank4.png",
+            name: "猕猴桃",
+            mg: "62.00",
+            src:"../../../../static/VcRank4.png",
             rank: 4
           },
           {
-            name: "葵花籽油",
-            mg: "54.60",
-            src:"../../../../static/VeRank5.png",
+            name: "花菜",
+            mg: "61.00",
+            src:"../../../../static/VcRank5.png",
             rank: 5
           },
           {
-            name: "小麦胚粉",
-            mg: "23.20",
-            src:"../../../../static/CuRank7.png",
+            name: "青椒",
+            mg: "59.00",
+            src:"../../../../static/VcRank6.png",
             rank: 6
           },
           {
-            name: "鸡肉(均值)",
-            mg: "14.58",
-            src:"../../../../static/VeRank7.png",
+            name: "西兰花",
+            mg: "51.00",
+            src:"../../../../static/VcRank7.png",
             rank: 7
           },
           {
-            name: "茄子(紫,长)",
-            mg: "7.00",
-            src:"../../../../static/VeRank8.png",
+            name: "草莓",
+            mg: "47.00",
+            src:"../../../../static/VcRank8.png",
             rank: 8
           },
           {
-            name: "玉米(黄干)",
-            mg: "3.89",
-            src:"../../../../static/VeRank9.png",
+            name: "菜心",
+            mg: "44.00",
+            src:"../../../../static/VcRank9.png",
             rank: 9
           },
           {
-            name: "小米",
-            mg: "3.63",
-            src:"../../../../static/CuRank8.png",
+            name: "菠菜(熟)",
+            mg: "32.00",
+            src:"../../../../static/VcRank10.png",
             rank: 10
           },
         ]

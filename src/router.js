@@ -713,7 +713,7 @@ export default [{
         children: [{
           path: '/',
           meta: {
-            title: '营养标准'
+            title: '数据分析'
           },
           component: resolve => require(['./view/ganyusys/food/analysisOne'], resolve)
         },
@@ -725,7 +725,7 @@ export default [{
         children: [{
           path: '/',
           meta: {
-            title: '营养处方'
+            title: '营养干预'
           },
           component: resolve => require(['./view/ganyusys/food/ganyuOne'], resolve)
         },
