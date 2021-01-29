@@ -12,13 +12,13 @@
       <li>
         <canvasCode @codeHasChange='sendCode' name='图片验证码'></canvasCode>
       </li>
-      <li>
+      <!-- <li>
         <label>
           <span>短信验证码</span>
           <input type="number" placeholder="请输入短信验证码" v-model.number='reqForm.smsCode'>
         </label>
         <sendSMS @sentAjax='smsAjax'></sendSMS>
-      </li>
+      </li> -->
       <li :class="showPwdOne?'icon-eye1':'icon-eye2'">
         <label>
           <span>登录密码</span>
@@ -69,21 +69,20 @@
         if (this.checked === false) this.$dialog('请阅读并同意协议');
         else if (checkPhone.test(this.reqForm.phone) === false) this.$dialog('手机格式不正确');
         else if (this.imgCode.toUpperCase() !== this.canvasCode.codeNums.toUpperCase()) this.$dialog('图片验证码不正确');
-        else if (checkSMS.test(this.reqForm.smsCode) === false) this.$dialog('短信验证码不正确');
+        // else if (checkSMS.test(this.reqForm.smsCode) === false) this.$dialog('短信验证码不正确');
         else if (checkPwdOne.test(this.reqForm.pwdOne) === false) this.$dialog('密码格式不正确');
         else if (this.reqForm.pwdTwo !== this.reqForm.pwdOne) this.$dialog('确认密码不正确');
         else {
-          //先由跳到登录页暂代，后期ajax
-          // this.$router.push('/login')
           this.$ajax({
           method: 'post',
           url: '/platUser/register',
           data: this.reqForm
         }).then(res => {
-          if(res.data.code==200){
+          if(res.code==200){
+          this.$dialog("注册成功")
           this.$router.push('/login');
           }else{
-            alert("注册失败:" + res.data.msg);
+            this.$dialog("注册失败")
           }
         }).catch(error => {
           alert("系统异常");

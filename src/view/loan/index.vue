@@ -86,6 +86,20 @@
     },
     components: {
       loanBanner
+    },
+
+    created(){
+      this.$ajax({
+      method: 'get',
+      url: '/validate',
+      }).then(res => {
+        if(res.success){
+          return
+        }
+      }).catch(error => {
+        this.$dialog("登录过期或请求超时,系统异常")
+        this.$router.push('/login');
+      });
     }
   }
 </script>

@@ -127,5 +127,7 @@
         this.$router.push('/ganyusys/ganyu/daily/detail')
       }
     }
+
+
   }
 </script>

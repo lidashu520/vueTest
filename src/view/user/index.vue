@@ -27,6 +27,7 @@
 <script>
   //引入页面数据
   import userData from '../../data/user/get_info_new.json';
+  import { mapMutations } from 'vuex'
 
   export default {
     data() {
@@ -74,7 +75,9 @@
       }
     },
     methods: {
+      ...mapMutations(['delUser']),
       loginOut() {
+        this.delUser();
         this.$router.push('/login')    // 暂时不做处理只去登录页面
       },
 

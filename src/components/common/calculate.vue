@@ -20,9 +20,10 @@
             </li>
         </ul>
          <table style="
+            width: 100%;
             color:gray;
             font-size: 0.5525rem;
-            margin: 5px;">
+            margin: 5px 5px 5px 1rem;">
           <tr>
               <td>叶黄素:{{kj}}mg</td>
               <td>维生素C:{{kj}}mg</td>
@@ -34,11 +35,11 @@
           <!-- <li style="float: left;"><span style="color:gray; font-size: 0.5525rem;">{{kj}}千卡</span></li> -->
           <li style="float: right;"><span style="color:gray; font-size: 0.5525rem;">{{g}}克</span></li>
         </ul>
-        <ul class="choiceTitle" style="margin-bottom:1rem">
+        <ul class="choiceTitle">
           <li v-for='(item,index) of list' :class='{on : index === idx}' @click="choiceUnit(index)">{{item.name}}</li>
         </ul>
         <div class="calc-btn" id="calc-btn">
-            <table>
+            <table  class="table201031001201">
                 <tr>
                     <td @click="command(7)">7</td>
                     <td @click="command(8)">8</td>

@@ -4,12 +4,14 @@ import Vue from 'vue';
 import knowDatas from './../data/alertKnow.json';
 // 引入canvas验证码用于全局
 import canvasCode from './../assets/lib/canvasCode';
-
 // 引入全局dialog组件
 import $dialog from './../components/dialog/index.js'
+// 引入公共的方法引入全局
+import commonFun from './../assets/lib/commonFun.js';
 
 var methods = {
-
+  //公用的方法
+  commonFun,
   canvasCode,
 
   $dialog,

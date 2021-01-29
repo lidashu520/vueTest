@@ -1,4 +1,9 @@
 <template>
+<div>
+  <topComponent title='营养测评'>
+    <span class="back" @click="$router.push('/ganyusys/ganyu/daily')" slot="left">返回</span>
+    <span class="save" @click='saveInfo' slot='right'>完成<el-badge v-show="isShow" class="mark" :value="eatCount" :max="10"/></span>
+  </topComponent>
   <div  class="infinite-list-wrapper" style="overflow:auto; height:100%">
     <ul
       style="height:100%"
@@ -7,16 +12,16 @@
       infinite-scroll-distance = 50
       infinite-scroll-disabled="disabled">
       <!-- <li v-for="i in count" class="list-item">{{ i }}</li> -->
-      <!-- <li v-for="i in count" class="food-item"  @click="centerDialogVisible = true">
+      <li v-for="i in count" class="food-item"  @click="centerDialogVisible = true">
         <div class="icon" >
           <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
         </div>
         <div class="content">
           <h6 class="name">皮蛋瘦肉粥</h6>
-          <p class="desc"><span style="color:red; font-size: 0.1525rem;">{{i}}</span> <span style="color:gray; font-size: 0.1525rem;">千卡/100克</span></p>
+          <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{i}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
         </div>
-      </li> -->
-       <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
+      </li>
+       <!-- <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
         <div class="icon" >
           <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
         </div>
@@ -24,7 +29,7 @@
           <h6 class="name">{{data.name}}</h6>
           <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{data.name}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
         </div>
-      </li>
+      </li> -->
     </ul>
     <p class="noMore" v-if="loading">加载中...</p>
     <p class="noMore" v-if="noMore">没有更多了</p>
@@ -41,6 +46,7 @@
         <calculate @child-event='parentEvent'></calculate>
     </el-dialog>
   </div>
+  </div>
 </template>
 
 <script>
@@ -55,12 +61,15 @@
           page: 1,
         },
         pageTotal:9999,
+        isShow: false,
+        eatCount: 0
       }
     },
     computed: {
       noMore () {
-        return this.pageTotal <  this.pageForm.page
-        //  return this.count >= 20
+        // return this.pageTotal <  this.pageForm.page
+        //====================
+         return this.count >= 20
       },
       disabled () {
         console.log("this.loading:" + this.loading)
@@ -75,48 +84,56 @@
           },
     methods: {
       //======================
-      // load () {
-      //   this.loading = true
-      //   setTimeout(() => {
-      //     this.count += 2
-      //     this.loading = false
-      //   }, 2000)
-      // },
-      load(){
-        console.log("this.pageTotal：" + this.pageTotal)
-        console.log("this.pageForm.page：" + this.pageForm.page)
+      load () {
         this.loading = true
-        if(this.pageTotal >=  this.pageForm.page){
-          setTimeout(() => {
-          this.$ajax({
-            async: false,
-            method: 'post',
-            url: '/info/page',
-            data: this.pageForm
-          }).then(res => {
-            console.log(res)
-            this.list = [...this.list, ...res.data.data.data]
-            this.pageTotal = res.data.data.totalPage;
-            this.pageForm.page ++;
-            console.log("list.length:" + this.list.length)
-            console.log("pageIndex:" + this.pageForm.page)
-            console.log("Total:" + this.pageTotal)
-            console.log("=================")
-            this.loading = false
-          }).catch(error => {
-            alert('获取数据错误');
-            console.log(error);
-          });
-        }, 1000)
-        }else {
-          console.log("没有更多")
+        setTimeout(() => {
+          this.count += 2
           this.loading = false
-          this.noMore = true
-        }
+        }, 800)
+      },
+      // load(){
+      //   console.log("this.pageTotal：" + this.pageTotal)
+      //   console.log("this.pageForm.page：" + this.pageForm.page)
+      //   this.loading = true
+      //   if(this.pageTotal >=  this.pageForm.page){
+      //     setTimeout(() => {
+      //     this.$ajax({
+      //       async: false,
+      //       method: 'post',
+      //       url: '/info/page',
+      //       data: this.pageForm
+      //     }).then(res => {
+      //       console.log(res)
+      //       this.list = [...this.list, ...res.data.data.data]
+      //       this.pageTotal = res.data.data.totalPage;
+      //       this.pageForm.page ++;
+      //       console.log("list.length:" + this.list.length)
+      //       console.log("pageIndex:" + this.pageForm.page)
+      //       console.log("Total:" + this.pageTotal)
+      //       console.log("=================")
+      //       this.loading = false
+      //     }).catch(error => {
+      //       alert('获取数据错误');
+      //       console.log(error);
+      //     });
+      //   }, 1000)
+      //   }else {
+      //     console.log("没有更多")
+      //     this.loading = false
+      //     this.noMore = true
+      //   }
+      // },
+      saveInfo() {
+        console.log("保存")
+        this.eatCount = 0
+        this.isShow = false
+        this.$router.push('/ganyusys/ganyu/daily')
       },
       parentEvent(data) {
         if(data!=null && data!=undefined){
           console.log(data)
+          this.eatCount +=1
+          this.isShow = true
         }
         this.centerDialogVisible = false;
       }
@@ -154,7 +171,7 @@
         .abow_dialog .el-dialog .el-dialog__body {
             position: fixed;
             left: 0;
-            top: 10rem;
+            top: 12rem;
             bottom: 0;
             right: 0;
             padding: 0;

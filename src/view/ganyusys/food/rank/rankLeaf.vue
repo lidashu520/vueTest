@@ -27,37 +27,37 @@
           {
             name: "羽衣甘蓝(熟)",
             mg: "20.50",
-            src:"../../../../static/VcRank3.png",
+            src:"./static/VcRank3.png",
             rank: 1
           },
           {
             name: "菠菜(熟)",
             mg: "12.60",
-            src:"../../../../static/VcRank10.png",
+            src:"./static/VcRank10.png",
             rank: 2
           },
           {
             name: "鸡蛋(均值)",
             mg: "6.00",
-            src:"../../../../static/LeafRank.png",
+            src:"./static/LeafRank.png",
             rank: 3
           },
           {
             name: "猕猴桃",
             mg: "5.00",
-            src:"../../../../static/VcRank4.png",
+            src:"./static/VcRank4.png",
             rank: 4
           },
           {
             name: "西兰花",
             mg: "4.00",
-            src:"../../../../static/VcRank7.png",
+            src:"./static/VcRank7.png",
             rank: 5
           },
           {
             name: "玉米(黄干)",
             mg: "2.20",
-            src:"../../../../static/VeRank9.png",
+            src:"./static/VeRank9.png",
             rank: 6
           }
         ]

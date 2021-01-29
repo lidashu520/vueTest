@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
   <topComponent title='营养测评'>
     <span class="back" @click="$router.push('/ganyusys/ganyu/daily')" slot="left">返回</span>
     <span class="save" @click='saveInfo' slot='right'>完成<el-badge v-show="isShow" class="mark" :value="eatCount" :max="10"/></span>
@@ -12,17 +12,7 @@
       v-infinite-scroll="load"
       infinite-scroll-distance = 50
       infinite-scroll-disabled="disabled">
-      <!-- <li v-for="i in count" class="list-item">{{ i }}</li> -->
-      <li v-for="i in count" class="food-item"  @click="centerDialogVisible = true">
-        <div class="icon" >
-          <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
-        </div>
-        <div class="content">
-          <h6 class="name">皮蛋瘦肉粥</h6>
-          <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{i}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
-        </div>
-      </li>
-       <!-- <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
+       <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
         <div class="icon" >
           <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
         </div>
@@ -30,7 +20,7 @@
           <h6 class="name">{{data.name}}</h6>
           <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{data.name}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
         </div>
-      </li> -->
+      </li>
     </ul>
     <p class="noMore" v-if="loading">加载中...</p>
     <p class="noMore" v-if="noMore">没有更多了</p>
@@ -41,13 +31,10 @@
         width="100%"
         :destroy-on-close= true
         :show-close= false>
-        <!-- <hint></hint> -->
-              <!-- :close-on-click-modal= false
-        :close-on-press-escape= false -->
         <calculate @child-event='parentEvent'></calculate>
     </el-dialog>
   </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -68,67 +55,61 @@
     },
     computed: {
       noMore () {
-        // return this.pageTotal <  this.pageForm.page
-        //====================
-         return this.count >= 20
+        return this.pageTotal <  this.pageForm.page
       },
       disabled () {
-        console.log("this.loading:" + this.loading)
-        console.log("this.noMore:" + this.noMore)
-        console.log("end:" + (this.loading || this.noMore))
         return (this.loading || this.noMore)
-        // ===========return this.loading || this.noMore
       }
     },
-      created(){
-        this.load();
-          },
+    mounted(){
+      this.$ajax({
+      method: 'get',
+      url: '/validate',
+      }).then(res => {
+        if(res.success){
+          this.load()
+          return
+        }
+      }).catch(error => {
+        this.$dialog("登录过期或请求超时,系统异常")
+        this.$router.push('/login');
+      });
+    },
     methods: {
-      //======================
-      load () {
+      load(){
         this.loading = true
-        setTimeout(() => {
-          this.count += 2
+        if(this.pageTotal >=  this.pageForm.page){
+          setTimeout(() => {
+          this.$ajax({
+            async: false,
+            method: 'post',
+            url: '/info/page',
+            data: this.pageForm
+          }).then(res => {
+            console.log(res)
+            this.list = [...this.list, ...res.data.data]
+            this.pageTotal = res.data.totalPage;
+            this.pageForm.page ++;
+            console.log("list.length:" + this.list.length)
+            console.log("pageIndex:" + this.pageForm.page)
+            console.log("Total:" + this.pageTotal)
+            console.log("=================")
+            this.loading = false
+          }).catch(error => {
+            this.$dialog("token失效，请重新登录!")
+            this.$router.push('/login')
+          });
+        }, 200)
+        }else {
+          console.log("没有更多")
           this.loading = false
-        }, 800)
+          this.noMore = true
+        }
       },
-      // load(){
-      //   console.log("this.pageTotal：" + this.pageTotal)
-      //   console.log("this.pageForm.page：" + this.pageForm.page)
-      //   this.loading = true
-      //   if(this.pageTotal >=  this.pageForm.page){
-      //     setTimeout(() => {
-      //     this.$ajax({
-      //       async: false,
-      //       method: 'post',
-      //       url: '/info/page',
-      //       data: this.pageForm
-      //     }).then(res => {
-      //       console.log(res)
-      //       this.list = [...this.list, ...res.data.data.data]
-      //       this.pageTotal = res.data.data.totalPage;
-      //       this.pageForm.page ++;
-      //       console.log("list.length:" + this.list.length)
-      //       console.log("pageIndex:" + this.pageForm.page)
-      //       console.log("Total:" + this.pageTotal)
-      //       console.log("=================")
-      //       this.loading = false
-      //     }).catch(error => {
-      //       alert('获取数据错误');
-      //       console.log(error);
-      //     });
-      //   }, 1000)
-      //   }else {
-      //     console.log("没有更多")
-      //     this.loading = false
-      //     this.noMore = true
-      //   }
-      // },
       saveInfo() {
-        console.log("保存")
         this.eatCount = 0
         this.isShow = false
-        this.$router.push('/ganyusys/ganyu/daily')
+        this.$router.push('/ganyusys/ganyu/daily',)
       },
       parentEvent(data) {
         if(data!=null && data!=undefined){
@@ -143,22 +124,6 @@
 </script>
 
 <style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-
   .abow_dialog {
     display: flex;
     justify-content: center;
@@ -172,7 +137,7 @@
         .abow_dialog .el-dialog .el-dialog__body {
             position: fixed;
             left: 0;
-            top: 6rem;
+            top: 10rem;
             bottom: 0;
             right: 0;
             padding: 0;

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from "vue-router";
 import store from './store'
-
 import axios from 'axios'
 import './config/axios'
 import ElementUI from 'element-ui'
@@ -10,7 +9,9 @@ import '../theme/index.css'
 import Mui from 'vue-awesome-mui';
 import * as echarts from 'echarts';
 // import LyTab from '../packages/tab'
+// axios请求
 Vue.prototype.$ajax = axios
+//封装后的请求
 Vue.use(VueRouter)
 Vue.use(ElementUI)
 //手机点击返回键，返回上一个目录
@@ -70,13 +71,15 @@ Object.keys(methods).forEach((key) => {
 	Vue.prototype[key] = methods[key];
 });
 
+//验证页面是否有token
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login') {
+  if (to.path === '/login' || to.path === '/reg') {
     next();
   } else {
-    let token = localStorage.getItem('Authorization');
-    console.log('token='+token)
-    if (token === 'null' || token === '') {
+    let token = localStorage.getItem('token');
+    let phone = localStorage.getItem('phone');
+    console.log('token='+token +  ' _phone=' + phone)
+    if (token === null || token === '' || phone=== null || phone ==='' ) {
       next('/login');
     } else {
       next();

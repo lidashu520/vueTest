@@ -42,6 +42,12 @@ export const state = {
   },
 
   // 存储token
-  Authorization: localStorage.getItem('Authorization') ? localStorage.getItem('Authorization') : '',
+  token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
+  phone: localStorage.getItem('phone') ? localStorage.getItem('phone') : '',
+  // 存储token和phone
+  // token: { //贷款详情页里面的小图标
+	// 	token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
+	// 	phone: localStorage.getItem('phone') ? localStorage.getItem('phone') : ''
+  // },
   themecolor:'73BD4C'//默认为20a0ff
 }

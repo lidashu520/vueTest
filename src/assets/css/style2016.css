@@ -3975,10 +3975,10 @@ h2.title {
         .calc-out{
             color: darkgray;
         }
-        table{
+        .table201031001201{
             border-collapse: collapse;
             width: 100%;
-            /* position: fixed; */
+            position: fixed;
             bottom: 0;
         }
         .calc-btn td{
@@ -4008,19 +4008,6 @@ h2.title {
         .fcg{
             color: #00ACC2;
         }
-
-
-        .analys .tabDiv {
-          font-weight: bold;
-          border-bottom: none;
-          height:2.75rem;
-          line-height: 2.75rem;
-          position: relative;
-          margin: 2rem;
-        }
-          .analys .tabDiv li {
-            padding: 0;
-            margin: 0rem 1.5625rem 0rem 1.5625rem; }
 
 
     .footerFoodLog  {

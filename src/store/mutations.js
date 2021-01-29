@@ -49,10 +49,23 @@ export const mutations = {
   },
 
    // 修改token，并将token存入localStorage
-   changeLogin (state, user) {
-    state.Authorization = user.Authorization;
-    localStorage.setItem('Authorization', user.Authorization);
+  changeLogin(state, user) {
+    state.token = user.token;
+    localStorage.setItem('token', user.token);
   },
+  changePhone(state, user) {
+    state.phone = user.phone;
+    localStorage.setItem('phone', user.phone);
+  },
+
+   delUser(state) {
+    state.token = '';
+    state.phone = '';
+    localStorage.removeItem("token");
+    localStorage.removeItem("phone");
+    console.log('state_phone:' + state.phone)
+    console.log('state_token:' + state.token)
+   },
 
   setThemeColor(state,curcolor){
     state.themecolor = curcolor;

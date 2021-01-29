@@ -1,4 +1,10 @@
 <template>
+  <div>
+  <topComponent title='营养测评'>
+    <span class="back" @click="$router.push('/ganyusys/ganyu/daily')" slot="left">返回</span>
+    <span class="save" @click='saveInfo' slot='right'>完成<el-badge v-show="isShow" class="mark" :value="eatCount" :max="10"/></span>
+  </topComponent>
+  <router-view></router-view>
   <div  class="infinite-list-wrapper" style="overflow:auto; height:100%">
     <ul
       style="height:100%"
@@ -41,6 +47,7 @@
         <calculate @child-event='parentEvent'></calculate>
     </el-dialog>
   </div>
+</div>
 </template>
 
 <script>
@@ -74,14 +81,6 @@
         this.load();
           },
     methods: {
-      //======================
-      // load () {
-      //   this.loading = true
-      //   setTimeout(() => {
-      //     this.count += 2
-      //     this.loading = false
-      //   }, 2000)
-      // },
       load(){
         console.log("this.pageTotal：" + this.pageTotal)
         console.log("this.pageForm.page：" + this.pageForm.page)
@@ -95,8 +94,8 @@
             data: this.pageForm
           }).then(res => {
             console.log(res)
-            this.list = [...this.list, ...res.data.data.data]
-            this.pageTotal = res.data.data.totalPage;
+            this.list = [...this.list, ...res.data.data]
+            this.pageTotal = res.data.totalPage;
             this.pageForm.page ++;
             console.log("list.length:" + this.list.length)
             console.log("pageIndex:" + this.pageForm.page)
@@ -104,8 +103,8 @@
             console.log("=================")
             this.loading = false
           }).catch(error => {
-            alert('获取数据错误');
-            console.log(error);
+            this.$dialog("token失效，请重新登录!")
+            this.$router.push('/login')
           });
         }, 1000)
         }else {
