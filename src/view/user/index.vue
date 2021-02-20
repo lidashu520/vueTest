@@ -77,7 +77,22 @@
     methods: {
       ...mapMutations(['delUser']),
       loginOut() {
-        this.delUser();
+        this.$ajax({
+          method: 'post',
+          url: '/platUser/exit',
+          data: { name: localStorage.getItem('phone')}
+          }).then(res => {
+          if(res.success===true){
+          this.delUser();
+          this.$router.push('/login');
+        }else if(res.data.code='201'){
+          this.count++;
+          this.$dialog("账号异常!")
+        }
+      }).catch(error => {
+          this.count++;
+          this.$dialog("请求超时或系统异常!")
+          });
         this.$router.push('/login')    // 暂时不做处理只去登录页面
       },
 
@@ -88,8 +103,8 @@
       // 循环获取vuex保存的信用中心状态值
       for (let i = 0; i < this.items.length; i++) {
         this.items[i].isOk = this.$store.state.creditStatus[this.items[i].param]
-        console.log('--------')
-        console.log(this.items[i].isOk)
+        // console.log('--------')
+        // console.log(this.items[i].isOk)
       }
     }
   }

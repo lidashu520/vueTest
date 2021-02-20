@@ -70,7 +70,6 @@ import {Message} from 'element-ui'
           }).then(res => {
           if(res.success===true){
           _this.userToken = res.data.token;
-          console.log(_this.res);
           // 将用户token保存到vuex中
           _this.changeLogin({ token: _this.userToken });
           _this.changePhone({ phone: _this.loginForm.name });

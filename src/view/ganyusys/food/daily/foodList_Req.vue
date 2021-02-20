@@ -12,16 +12,6 @@
       v-infinite-scroll="load"
       infinite-scroll-distance = 50
       infinite-scroll-disabled="disabled">
-      <!-- <li v-for="i in count" class="list-item">{{ i }}</li> -->
-      <!-- <li v-for="i in count" class="food-item"  @click="centerDialogVisible = true">
-        <div class="icon" >
-          <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
-        </div>
-        <div class="content">
-          <h6 class="name">皮蛋瘦肉粥</h6>
-          <p class="desc"><span style="color:red; font-size: 0.1525rem;">{{i}}</span> <span style="color:gray; font-size: 0.1525rem;">千卡/100克</span></p>
-        </div>
-      </li> -->
        <li v-for='(data,index) in list' :key='index' class="food-item"  @click="centerDialogVisible = true">
         <div class="icon" >
           <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
@@ -41,9 +31,6 @@
         width="100%"
         :destroy-on-close= true
         :show-close= false>
-        <!-- <hint></hint> -->
-              <!-- :close-on-click-modal= false
-        :close-on-press-escape= false -->
         <calculate @child-event='parentEvent'></calculate>
     </el-dialog>
   </div>
@@ -62,28 +49,34 @@
           page: 1,
         },
         pageTotal:9999,
+        isShow: false,
+        eatCount: 0
       }
     },
     computed: {
       noMore () {
         return this.pageTotal <  this.pageForm.page
-        //  return this.count >= 20
       },
       disabled () {
-        console.log("this.loading:" + this.loading)
-        console.log("this.noMore:" + this.noMore)
-        console.log("end:" + (this.loading || this.noMore))
         return (this.loading || this.noMore)
-        // ===========return this.loading || this.noMore
       }
     },
-      created(){
-        this.load();
-          },
+    mounted(){
+      this.$ajax({
+      method: 'get',
+      url: '/validate',
+      }).then(res => {
+        if(res.success){
+          this.load()
+          return
+        }
+      }).catch(error => {
+        this.$dialog("登录过期或请求超时,系统异常")
+        this.$router.push('/login');
+      });
+    },
     methods: {
       load(){
-        console.log("this.pageTotal：" + this.pageTotal)
-        console.log("this.pageForm.page：" + this.pageForm.page)
         this.loading = true
         if(this.pageTotal >=  this.pageForm.page){
           setTimeout(() => {
@@ -106,16 +99,23 @@
             this.$dialog("token失效，请重新登录!")
             this.$router.push('/login')
           });
-        }, 1000)
+        }, 200)
         }else {
           console.log("没有更多")
           this.loading = false
           this.noMore = true
         }
       },
+      saveInfo() {
+        this.eatCount = 0
+        this.isShow = false
+        this.$router.push('/ganyusys/ganyu/daily',)
+      },
       parentEvent(data) {
         if(data!=null && data!=undefined){
           console.log(data)
+          this.eatCount +=1
+          this.isShow = true
         }
         this.centerDialogVisible = false;
       }
@@ -124,22 +124,6 @@
 </script>
 
 <style>
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
-
   .abow_dialog {
     display: flex;
     justify-content: center;
