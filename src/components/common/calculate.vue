@@ -1,6 +1,5 @@
 
 <template>
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <body style="background-color: #fff;">
 <div>
     <form action="" name="calculator" method="get">
@@ -11,29 +10,33 @@
         <ul style="border-bottom: 1px solid #E4E4E4;">
             <li class="food-item">
               <div class="icon">
-                <img width="57" height="57" src="http://fuss10.elemecdn.com/c/cd/c12745ed8a5171e13b427dbc39401jpeg.jpeg?imageView2/1/w/114/h/114">
+                <img width="57" height="57" :src="listData.src">
               </div>
                 <div class="content">
-                  <h6 class="name">皮蛋瘦肉粥</h6>
-                  <p class="desc"><span style="color:red; font-size: 0.5525rem;">{{unit}}</span> <span style="color:gray; font-size: 0.5525rem;">千卡/100克</span></p>
+                  <h6 style="font-size: 0.6525rem;" class="name">{{listData.name}}</h6>
+                  <p class="desc"><span style="color:red; font-size: 0.6525rem;">{{listData.mg}}</span> <span style="color:gray; font-size: 0.6525rem;">/100克</span></p>
                 </div>
             </li>
         </ul>
          <table style="
             width: 100%;
             color:gray;
-            font-size: 0.5525rem;
+            font-size: 0.7525rem;
             margin: 5px 5px 5px 1rem;">
           <tr>
-              <td>叶黄素:{{kj}}mg</td>
-              <td>维生素C:{{kj}}mg</td>
-              <td>维生素E:{{kj}}mg</td>
+              <td style="color:#00ACC2" v-show="isShow_leaf">{{listData.leafName}} : {{leaf_kj}}mg</td>
+              <td style="color:#00ACC2" v-show="isShow_vc">{{listData.vcName}} : {{vc_kj}}mg</td>
+              <td style="color:#00ACC2" v-show="isShow_ve">{{listData.veName}} : {{ve_kj}}mg</td>
+          </tr>
+          <tr>
+              <td style="color:#00ACC2" v-show="isShow_zno">{{listData.znoName}} : {{zno_kj}}mg</td>
+              <td style="color:#00ACC2" v-show="isShow_cuo">{{listData.cuoName}} : {{cuo_kj}}mg</td>
           </tr>
          </table>
         <ul class="centerTitle" style="margin-bottom:1rem">
           <li v-for='(item,index) of items'  :class='{on : index === 0}' >{{result}}<span style="font-size: 0.5rem;padding:0 0 0 0.5rem">{{listOfName}}</span></li>
           <!-- <li style="float: left;"><span style="color:gray; font-size: 0.5525rem;">{{kj}}千卡</span></li> -->
-          <li style="float: right;"><span style="color:gray; font-size: 0.5525rem;">{{g}}克</span></li>
+          <li style="float: right;"><span style="color:gray; font-size: 0.7525rem;">{{g}}克</span></li>
         </ul>
         <ul class="choiceTitle">
           <li v-for='(item,index) of list' :class='{on : index === idx}' @click="choiceUnit(index)">{{item.name}}</li>
@@ -69,48 +72,31 @@
 
 <script>
   export default {
+    props:['listData'],
     data() {
       return {
         result: '0.0',
+        isShow_leaf: false,
+        isShow_vc: false,
+        isShow_ve: false,
+        isShow_cuo: false,
+        isShow_zno: false,
         g: 0,
-        unit:1000,
-        kj: 0,
+        leaf_kj: 0,
+        vc_kj: 0,
+        ve_kj: 0,
+        zno_kj: 0,
+        cuo_kj: 0,
         listOfName:'',
         isPoint: false,
         idx: 1,
         items: [
-          // {
-          //   name: "老年黄斑",
-          //   push: "/loan/yellowHomeList"
-          // },
           {
             name: "0.0",
           },
-          // {
-          //   name: "工具作用",
-          //   push: "/loan/yellowHomeList/homeThree"
-          // }
         ],
-        list: [
-          {
-            name: "克",
-            val: "1.0",
-            unit: 10,
-            g: 1
-          },
-          {
-            name: "碗(中)",
-            val: "1.0",
-            unit: 10,
-            g: 125
-          },
-          {
-            name: "碗(大)",
-            val: "1.0",
-            unit: 10,
-            g: 150
-          }
-        ]
+        selectData:{},
+        list: [],
       }
 
     },
@@ -134,7 +120,7 @@
         this.isPoint = false
         this.result = left + "." + right
         this.g = this.list[this.idx].g * parseInt(this.result)
-        this.kj = this.list[this.idx].unit * this.g
+        this.setKj()
       },
       command(str) {
         let  temp = this.result.split(".")
@@ -160,7 +146,7 @@
         }
         this.result = left + "." + right
         this.g = this.list[this.idx].g * parseInt(this.result)
-        this.kj = this.list[this.idx].unit * this.g
+        this.setKj()
       },
     choiceUnit(index){
       if(this.idx === index){
@@ -170,7 +156,7 @@
         this.listOfName = this.list[index].name
         this.result = this.list[index].val
         this.g = this.list[index].g
-        this.kj = this.list[index].unit * this.g
+        this.setKj()
       }
 
     },
@@ -179,23 +165,77 @@
           if(parseInt(this.result)===0){
             this.$dialog("输入不能为0");
           }else {
-            this.$emit('child-event',{"data":100,"renliang": 471})
+            this.selectData.name = this.listData.name
+            this.selectData.eatTime = this.listData.eatTime
+            this.selectData.src = this.listData.src
+            this.selectData.leaf_kj = this.leaf_kj
+            this.selectData.vc_kj = this.vc_kj
+            this.selectData.ve_kj = this.ve_kj
+            this.selectData.cuo_kj = this.cuo_kj
+            this.selectData.zno_kj = this.zno_kj
+            this.selectData.g = this.g
+            this.selectData.result = this.result
+            this.selectData.listOfName = this.listOfName
+            this.$emit('child-event', this.selectData)
           }
         }else {
           this.$emit('child-event')
         }
+    },
 
+    setKj(){
+      if(this.listData.leafName!='') {
+        this.leaf_kj = this.mul(this.listData.leaf_unit, this.g)
+      }
+      if(this.listData.vcName!='') {
+        this.vc_kj = this.mul(this.listData.vc_unit, this.g)
+      }
+      if(this.listData.veName!='') {
+        this.ve_kj = this.mul(this.listData.ve_unit, this.g)
+      }
+      if(this.listData.znoName!='') {
+        this.zno_kj = this.mul(this.listData.zno_unit, this.g)
+      }
+      if(this.listData.cuoName!='') {
+        this.cuo_kj = this.mul(this.listData.cuo_unit, this.g)
+      }
+    },
+      mul(arg1, arg2) {
+        var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+        try { m += s1.split(".")[1].length } catch (e) { }
+        try { m += s2.split(".")[1].length } catch (e) { }
+        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
     }
 
     },
     mounted() {
       // 根据传入的uid来，拉取该页面数据
+      this.list = this.listData.listChoice
       let index = Math.floor(this.list.length/2)
       this.idx = index;
       this.listOfName = this.list[index].name
       this.result = this.list[index].val
       this.g = this.list[index].g
-      this.kj = this.list[index].unit * this.g
+      if(this.listData.leafName!='') {
+        this.isShow_leaf = true
+        this.leaf_kj = this.mul(this.listData.leaf_unit, this.g)
+      }
+      if(this.listData.vcName!='') {
+        this.isShow_vc = true
+        this.vc_kj = this.mul(this.listData.vc_unit, this.g)
+      }
+      if(this.listData.veName!='') {
+        this.isShow_ve = true
+        this.ve_kj = this.mul(this.listData.ve_unit, this.g)
+      }
+      if(this.listData.znoName!='') {
+        this.isShow_zno = true
+        this.zno_kj = this.mul(this.listData.zno_unit, this.g)
+      }
+      if(this.listData.cuoName!='') {
+        this.isShow_cuo = true
+        this.cuo_kj = this.mul(this.listData.cuo_unit, this.g)
+      }
     }
   }
 </script>

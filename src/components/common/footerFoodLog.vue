@@ -1,7 +1,7 @@
 <template>
   <div class="footerFoodLog">
     <ul>
-      <li v-for='(item,index) of items' :class='[{on:index === idx} ]' @click="$router.push(item.push)">
+      <li v-for='(item,index) of items' :class='[{on:index === idx} ]' @click="$router.push({path:item.push, query:{value:item.name}})">
        <dl>
           <dt><i :class="item.cls"></i></dt>
           <dt>{{item.name}}</dt>

@@ -1875,6 +1875,22 @@ h2.title {
             padding: 0.1rem 0.3rem 0.3rem 0.3rem;
           }
 
+          .partThreeGray{
+            padding-bottom: 0.625rem;
+            }
+            .partThreeGray dl {
+              background: #fff;
+              margin: 0.625rem;
+              border-radius: 1rem;
+              border: 0.1rem solid gray;
+            }
+              .partThreeGray dd {
+                line-height: 1.525rem;
+                font-size: 0.7125rem;
+                text-indent: 0.155rem;
+                padding: 0.1rem 0.3rem 0.3rem 0.3rem;
+              }
+
       .tableList{
         margin: auto;
         }
