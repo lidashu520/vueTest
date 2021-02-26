@@ -2,7 +2,7 @@
   {
     "name": "米饭",
     "mg": "0.92mg氧化锌 0.06mg氧化铜",
-    "src": "./static/food/1_米饭.jpg",
+    "src": "./static/food/1mifan.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "",
@@ -37,8 +37,8 @@
     "veName": "维生素E",
     "znoName": "氧化锌",
     "cuoName":  "氧化铜",
-    "ve_unit": 0.00363,
-    "zno_unit": 0.00187,
+    "ve_unit": 0.0363,
+    "zno_unit": 0.0187,
     "cuo_unit": 0.0054,
     "listChoice": [
     {
@@ -61,14 +61,14 @@
   {
     "name": "挂面",
     "mg": "1.11mg维生素E 1.22mg氧化锌 0.44mg氧化铜",
-    "src": "./static/food/3_挂面.jpg",
+    "src": "./static/food/3guamian.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
     "znoName": "氧化锌",
     "cuoName":  "氧化铜",
-    "ve_unit": 0.00111,
-    "zno_unit": 0.00122,
+    "ve_unit": 0.0111,
+    "zno_unit": 0.0122,
     "cuo_unit": 0.0044,
     "listChoice": [
     {
@@ -91,7 +91,7 @@
   {
     "name": "馒头",
     "mg": "0.65mg维生素E 0.71mg氧化锌 0.10mg氧化铜",
-    "src":"./static/food/4_馒头.jpg",
+    "src":"./static/food/4mantou.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
@@ -127,9 +127,9 @@
     "veName": "维生素E",
     "znoName": "氧化锌",
     "cuoName":  "氧化铜",
-    "leaf_unit": 0.0022,
-    "ve_unit": 0.00389,
-    "zno_unit": 0.0017,
+    "leaf_unit": 0.022,
+    "ve_unit": 0.0389,
+    "zno_unit": 0.017,
     "cuo_unit": 0.0010,
     "listChoice": [
     {
@@ -219,7 +219,7 @@
     "cuoName":  "氧化铜",
     "ve_unit": 0.0307,
     "zno_unit": 0.0290,
-    "cuo_unit": 0.1405,
+    "cuo_unit": 0.0045,
     "listChoice": [
     {
       "name": "克",
@@ -303,7 +303,7 @@
   {
     "name": "白菜",
     "mg": "31mg维生素C 0.76mg维生素E 0.38mg氧化锌 0.05mg氧化铜",
-    "src":"./static/food/2_白菜.jpg",
+    "src":"./static/food/2baicai.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -334,7 +334,7 @@
   {
     "name": "西红柿",
     "mg": "14mg维生素C 0.42mg维生素E 0.12mg氧化锌 0.04mg氧化铜",
-    "src":"./static/food/5_番茄.jpg",
+    "src":"./static/food/5fanqie.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -365,7 +365,7 @@
   {
     "name": "西芹(芹菜)",
     "mg": "4mg维生素C 0.32mg维生素E 0.10mg氧化锌 0.02mg氧化铜",
-    "src":"./static/food/6_西芹.jpg",
+    "src":"./static/food/6xiqin.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -396,7 +396,7 @@
   {
     "name": "黄瓜",
     "mg": "9mg维生素C 0.49mg维生素E 0.18mg氧化锌 0.05mg氧化铜",
-    "src":"./static/food/7_黄瓜.jpg",
+    "src":"./static/food/7huanggua.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -427,7 +427,7 @@
   {
     "name": "南瓜",
     "mg": "8mg维生素C 0.36mg维生素E 0.14mg氧化锌 0.03mg氧化铜",
-    "src":"./static/food/8_南瓜.jpg",
+    "src":"./static/food/8nangua.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -458,7 +458,7 @@
   {
     "name": "胡萝卜",
     "mg": "16mg维生素C 0.14mg氧化锌 0.03mg氧化铜",
-    "src":"./static/food/9_胡卜.jpg",
+    "src":"./static/food/9huluobo.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "znoName": "氧化锌",
@@ -487,7 +487,7 @@
   {
     "name": "红薯",
     "mg": "26mg维生素C 0.28mg维生素E 0.15mg氧化锌 0.18mg氧化铜",
-    "src":"./static/food/10_红薯.jpg",
+    "src":"./static/food/10hongshu.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -974,7 +974,7 @@
   {
     "name": "鸡肉(均值)",
     "mg": "14.58mg维生素E 0.58mg氧化锌 0.07mg氧化铜",
-    "src":"./static/food/11_鸡肉.jpg",
+    "src":"./static/food/11jirou.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
@@ -1004,7 +1004,7 @@
   {
     "name": "鸭肉(均值)",
     "mg": "0.27mg维生素E 1.33mg氧化锌 0.21mg氧化铜",
-    "src":"./static/food/12_鸭肉.jpg",
+    "src":"./static/food/12yarou.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
@@ -1034,7 +1034,7 @@
   {
     "name": "鲫鱼",
     "mg": "1.94mg氧化锌 0.08mg氧化铜",
-    "src":"./static/food/13_鲫鱼.jpg",
+    "src":"./static/food/13jiyu.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "",
@@ -1063,7 +1063,7 @@
   {
     "name": "草鱼",
     "mg": "2.03mg维生素E 0.87mg氧化锌 0.05mg氧化铜",
-    "src":"./static/food/14_草鱼.jpg",
+    "src":"./static/food/14caoyu.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
@@ -1093,7 +1093,7 @@
   {
     "name": "生蚝",
     "mg": "71.20mg氧化锌 11.50mg氧化铜",
-    "src":"./static/food/13_鲫鱼.jpg",
+    "src":"./static/CuRank2.png",
      "leafName": "",
     "vcName": "",
     "veName": "",
@@ -1211,13 +1211,13 @@
   {
     "name": "鸡蛋",
     "mg": "6mg叶黄素 1.84mg维生素E 1.10mg氧化锌 0.15mg氧化铜",
-    "src":"./static/food/15_鸡蛋.jpg",
+    "src":"./static/food/15jidan.jpg",
      "leafName": "叶黄素",
     "vcName": "",
     "veName": "维生素E",
     "znoName": "氧化锌",
     "cuoName":  "氧化铜",
-    "leaf_unit": 0.006,
+    "leaf_unit": 0.06,
     "ve_unit": 0.0184,
     "zno_unit": 0.0110,
     "cuo_unit": 0.0015,
@@ -1242,7 +1242,7 @@
   {
     "name": "鹌鹑蛋",
     "mg": "3.08mg维生素E 1.61mg氧化锌 0.09mg氧化铜",
-    "src":"./static/food/16_鹌鹑蛋.jpg",
+    "src":"./static/food/16anchundan.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",
@@ -1278,7 +1278,7 @@
     "veName": "维生素E",
     "znoName": "",
     "cuoName":  "",
-    "vc_unit": 0.047,
+    "vc_unit": 0.47,
     "ve_unit": 0.0071,
     "listChoice": [
     {
@@ -1363,7 +1363,7 @@
   {
     "name": "苹果",
     "mg": "4mg维生素C 2.12mg维生素E 0.19mg氧化锌 0.06mg氧化铜",
-    "src":"./static/food/17_苹果.jpg",
+    "src":"./static/food/17pingguo.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -1394,7 +1394,7 @@
   {
     "name": "牛奶(纯牛奶)",
     "mg": "2.5mg维生素C 0.52mg维生素E 1.05mg氧化锌 0.05mg氧化铜",
-    "src":"./static/food/18_牛奶.jpg",
+    "src":"./static/food/18niunai.jpg",
     "leafName": "",
     "vcName": "维生素C",
     "veName": "维生素E",
@@ -1425,7 +1425,7 @@
   {
     "name": "豆浆",
     "mg": "0.80mg维生素E 0.24mg氧化锌 0.07mg氧化铜",
-    "src":"./static/food/19_豆浆.jpg",
+    "src":"./static/food/19doujiang.jpg",
     "leafName": "",
     "vcName": "",
     "veName": "维生素E",

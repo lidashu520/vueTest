@@ -213,6 +213,7 @@
           this.lunchList = this.foodData.lunchList
           this.dinnerList = this.foodData.dinnerList
           this.addList = this.foodData.addList
+          console.log(this.foodData)
         } else {
           // 如果vuex中未存储数据则发送ajax
           console.log('发送ajax')
@@ -220,25 +221,20 @@
       }
       let data = null
       let index = -1
-      if(this.$route.query){
+      if(JSON.stringify(this.$route.query) != '{}'){
         data = this.$route.query
         if(data.eatTime === '早餐') {
           this.breakList = this.addData(index,this.breakList,data)
-          this.addElement(this.breakList)
         }
         if(data.eatTime === '午餐') {
           this.lunchList= this.addData(index,this.lunchList,data)
-          this.addElement(this.lunchList)
         }
         if(data.eatTime === '晚餐') {
           this.dinnerList = this.addData(index,this.dinnerList,data)
-          this.addElement(this.dinnerList)
         }
         if(data.eatTime === '加餐') {
           this.addList = this.addData(index,this.addList,data)
-          this.addElement(this.addList)
         }
-        this.finalNum()
         this.foodData.breakList = this.breakList
         this.foodData.lunchList = this.lunchList
         this.foodData.dinnerList = this.dinnerList
@@ -260,8 +256,12 @@
         if(this.dinnerList.length!=0) this.isDinner = true; this.showAdd = false
         if(this.addList.length!=0) this.isAdd = true; this.showAdd = false
         this.cssType = 'partThreeSelect'
-        this.finalNum()
       }
+        this.addElement(this.breakList)
+        this.addElement(this.lunchList)
+        this.addElement(this.dinnerList)
+        this.addElement(this.addList)
+        this.finalNum()
 
     },
     methods: {
@@ -276,7 +276,6 @@
             }
           }
           if(index!=-1){
-            console.log('xxxxxxx')
             arryList.splice(index,1,data);
           }else{
             arryList.push(data)
@@ -302,37 +301,37 @@
           this.cssType = 'partThreeRed'
           this.leafPer = 100
         }else{
-          this.leafPer = this.leafPer.toFixed(2)
+          if(this.leafPer!=0) this.leafPer = parseFloat((this.leafPer).toFixed(2))
         }
         if(this.vcPer>100) {
           this.cssType = 'partThreeRed'
           this.vcPer = 100
         }else{
-          this.vcPer = this.vcPer.toFixed(2)
+          if(this.vcPer!=0) this.vcPer = parseFloat((this.vcPer).toFixed(2))
         }
         if(this.vePer>100) {
           this.cssType = 'partThreeRed'
           this.vePer = 100
         }else{
-          this.vePer = this.vePer.toFixed(2)
+          if(this.vePer!=0) this.vePer = parseFloat((this.vePer).toFixed(2))
         }
         if(this.znoPer>100) {
           this.cssType = 'partThreeRed'
           this.znoPer = 100
         }else{
-          this.znoPer = this.znoPer.toFixed(2)
+          if(this.znoPer!=0) this.znoPer = parseFloat((this.znoPer).toFixed(2))
         }
         if(this.cuoPer>100) {
           this.cssType = 'partThreeRed'
           this.cuoPer = 100
         }else{
-          this.cuoPer = this.cuoPer.toFixed(2)
+          if(this.cuoPer!=0) this.cuoPer = parseFloat((this.cuoPer).toFixed(2))
         }
-        this.leaf_kj = this.leaf_kj.toFixed(3)
-        this.vc_kj = this.vc_kj.toFixed(3)
-        this.ve_kj = this.ve_kj.toFixed(3)
-        this.zno_kj = this.zno_kj.toFixed(3)
-        this.cuo_kj = this.cuo_kj.toFixed(3)
+        this.leaf_kj = parseFloat((this.leaf_kj).toFixed(3))
+        this.vc_kj = parseFloat((this.vc_kj).toFixed(3))
+        this.ve_kj = parseFloat((this.ve_kj).toFixed(3))
+        this.zno_kj = parseFloat((this.zno_kj).toFixed(3))
+        this.cuo_kj = parseFloat((this.cuo_kj).toFixed(3))
       }
     }
 
