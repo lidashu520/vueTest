@@ -76,25 +76,29 @@
     },
     methods: {
       ...mapMutations(['delUser']),
+      /**ajax */
+      // loginOut() {
+      //   this.$ajax({
+      //     method: 'post',
+      //     url: '/platUser/exit',
+      //     data: { name: localStorage.getItem('phone')}
+      //     }).then(res => {
+      //     if(res.success===true){
+      //     this.delUser();
+      //     this.$router.push('/login');
+      //   }else if(res.data.code='201'){
+      //     this.count++;
+      //     this.$dialog("账号异常!")
+      //   }
+      // }).catch(error => {
+      //     this.count++;
+      //     this.$dialog("请求超时或系统异常!")
+      //     });
+      //   this.$router.push('/login')    // 暂时不做处理只去登录页面
+      // },
       loginOut() {
-        this.$ajax({
-          method: 'post',
-          url: '/platUser/exit',
-          data: { name: localStorage.getItem('phone')}
-          }).then(res => {
-          if(res.success===true){
-          this.delUser();
-          this.$router.push('/login');
-        }else if(res.data.code='201'){
-          this.count++;
-          this.$dialog("账号异常!")
-        }
-      }).catch(error => {
-          this.count++;
-          this.$dialog("请求超时或系统异常!")
-          });
-        this.$router.push('/login')    // 暂时不做处理只去登录页面
-      },
+        this.$router.push('/login')
+      }
 
     },
     mounted() {

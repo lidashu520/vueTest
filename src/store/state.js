@@ -13,8 +13,9 @@ export const state = {
 		userBank: false,
 		userCredit: false,
 		userAlipay: false,
-		userOhter: false
-	},
+    userOhter: false,
+    userDailyFood: false
+  },
 	ohterPicStatus: {
 		otherFile: false,
 		salaryFile: false,
@@ -24,7 +25,7 @@ export const state = {
 		workFile: false,
 		marriageFile: false,
 		businessLicenseFile: false,
-		loanAgreementFile: false
+    loanAgreementFile: false,
 	},
 	creditDatas: {}, //保存信用中心数据的
 	ohterPicDatas: {}, //保存其它资料

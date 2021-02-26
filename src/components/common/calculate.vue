@@ -119,7 +119,7 @@
          }
         this.isPoint = false
         this.result = left + "." + right
-        this.g = this.list[this.idx].g * parseInt(this.result)
+        this.g = this.list[this.idx].g * parseFloat(this.result)
         this.setKj()
       },
       command(str) {
@@ -141,11 +141,11 @@
             }
           }else if (parseInt(left)==0 && str!="."){
               left = str;
-            }
+          }
           }
         }
         this.result = left + "." + right
-        this.g = this.list[this.idx].g * parseInt(this.result)
+        this.g = this.list[this.idx].g * parseFloat(this.result)
         this.setKj()
       },
     choiceUnit(index){
@@ -185,27 +185,27 @@
 
     setKj(){
       if(this.listData.leafName!='') {
-        this.leaf_kj = this.mul(this.listData.leaf_unit, this.g)
+        this.leaf_kj = this.commonFun.mul(this.listData.leaf_unit, this.g)
       }
       if(this.listData.vcName!='') {
-        this.vc_kj = this.mul(this.listData.vc_unit, this.g)
+        this.vc_kj = this.commonFun.mul(this.listData.vc_unit, this.g)
       }
       if(this.listData.veName!='') {
-        this.ve_kj = this.mul(this.listData.ve_unit, this.g)
+        this.ve_kj = this.commonFun.mul(this.listData.ve_unit, this.g)
       }
       if(this.listData.znoName!='') {
-        this.zno_kj = this.mul(this.listData.zno_unit, this.g)
+        this.zno_kj = this.commonFun.mul(this.listData.zno_unit, this.g)
       }
       if(this.listData.cuoName!='') {
-        this.cuo_kj = this.mul(this.listData.cuo_unit, this.g)
+        this.cuo_kj = this.commonFun.mul(this.listData.cuo_unit, this.g)
       }
     },
-      mul(arg1, arg2) {
-        var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
-        try { m += s1.split(".")[1].length } catch (e) { }
-        try { m += s2.split(".")[1].length } catch (e) { }
-        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
-    }
+      // mul(arg1, arg2) {
+      //   var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+      //   try { m += s1.split(".")[1].length } catch (e) { }
+      //   try { m += s2.split(".")[1].length } catch (e) { }
+      //   return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+      // }
 
     },
     mounted() {
@@ -218,23 +218,23 @@
       this.g = this.list[index].g
       if(this.listData.leafName!='') {
         this.isShow_leaf = true
-        this.leaf_kj = this.mul(this.listData.leaf_unit, this.g)
+        this.leaf_kj = this.commonFun.mul(this.listData.leaf_unit, this.g)
       }
       if(this.listData.vcName!='') {
         this.isShow_vc = true
-        this.vc_kj = this.mul(this.listData.vc_unit, this.g)
+        this.vc_kj = this.commonFun.mul(this.listData.vc_unit, this.g)
       }
       if(this.listData.veName!='') {
         this.isShow_ve = true
-        this.ve_kj = this.mul(this.listData.ve_unit, this.g)
+        this.ve_kj = this.commonFun.mul(this.listData.ve_unit, this.g)
       }
       if(this.listData.znoName!='') {
         this.isShow_zno = true
-        this.zno_kj = this.mul(this.listData.zno_unit, this.g)
+        this.zno_kj = this.commonFun.mul(this.listData.zno_unit, this.g)
       }
       if(this.listData.cuoName!='') {
         this.isShow_cuo = true
-        this.cuo_kj = this.mul(this.listData.cuo_unit, this.g)
+        this.cuo_kj = this.commonFun.mul(this.listData.cuo_unit, this.g)
       }
     }
   }

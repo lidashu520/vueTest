@@ -76,14 +76,18 @@ router.beforeEach((to, from, next) => {
   if (to.path === '/login' || to.path === '/reg') {
     next();
   } else {
-    let token = localStorage.getItem('token');
-    let phone = localStorage.getItem('phone');
-    console.log('token='+token +  ' _phone=' + phone)
-    if (token === null || token === '' || phone=== null || phone ==='' ) {
-      next('/login');
-    } else {
-      next();
-    }
+    /***请求的时候回把这段放开 */
+    // let token = localStorage.getItem('token');
+    // let phone = localStorage.getItem('phone');
+    // console.log('token='+token +  ' _phone=' + phone)
+    // if (token === null || token === '' || phone=== null || phone ==='' ) {
+    //   next('/login');
+    // } else {
+    //   next();
+    // }
+    /***请求的时候回把这段放开 */
+    //这个next()需要删掉
+    next();
   }
 });
 

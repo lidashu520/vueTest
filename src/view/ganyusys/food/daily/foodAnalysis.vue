@@ -12,51 +12,51 @@
           <li style="width:20%">
               <dt style="color:gray;">叶黄素:</dt>
           </li>
-          <li style="width:45%">
+          <li style="width:35%">
             <el-progress :percentage="leafPer" :stroke-width="18" :text-inside='true' color="#FFD700"></el-progress>
           </li>
-          <li style="width:35%">
-            <dt >4/10 mg</dt>
+          <li style="width:45%">
+            <dt >{{leaf_kj}}/10 mg</dt>
           </li>
 
           <li style="width:20%">
               <dt style="color:gray;">维生素C:</dt>
           </li>
-          <li style="width:45%">
+          <li style="width:35%">
             <el-progress :percentage="vcPer" :stroke-width="18" :text-inside='true' color="#ADFF2F"></el-progress>
           </li>
-          <li style="width:35%">
-            <dt >150/500 mg</dt>
+          <li style="width:45%">
+            <dt >{{vc_kj}}/500 mg</dt>
           </li>
 
           <li style="width:20%">
               <dt style="color:gray;">维生素E:</dt>
           </li>
-          <li style="width:45%">
+          <li style="width:35%">
             <el-progress :percentage="vePer" :stroke-width="18" :text-inside='true' ></el-progress>
           </li>
-          <li style="width:35%">
-            <dt >146.85/267 mg</dt>
+          <li style="width:45%">
+            <dt >{{ve_kj}}/267 mg</dt>
           </li>
 
           <li style="width:20%">
               <dt style="color:gray;">氧化锌:</dt>
           </li>
-          <li style="width:45%">
+          <li style="width:35%">
             <el-progress :percentage="znoPer" :stroke-width="18" :text-inside='true' color="#1E90FF"></el-progress>
           </li>
-          <li style="width:35%">
-            <dt >21.25/25 mg</dt>
+          <li style="width:45%">
+            <dt >{{zno_kj}}/25 mg</dt>
           </li>
 
           <li style="width:20%">
               <dt style="color:gray;">氧化铜:</dt>
           </li>
-          <li style="width:45%">
+          <li style="width:35%">
             <el-progress :percentage="cuoPer" :stroke-width="18" :text-inside='true' color="#EA7F21"></el-progress>
           </li>
-          <li style="width:35%">
-            <dt >2/2 mg</dt>
+          <li style="width:45%">
+            <dt >{{cuo_kj}}/2 mg</dt>
           </li>
         </ul>
       </dl>
@@ -163,7 +163,7 @@
     </el-button>
   </div>
     <p v-show="showAdd" style="
-      margin-top:1.5rem;
+      margin-top:2rem;
       text-align: center;
       margin:auto;
       color:gray; font-size: 0.6525rem;">还没有记录请添加屏幕下方按钮来添加
@@ -188,6 +188,11 @@
         isLunch: false,
         isDinner: false,
         isAdd: false,
+        leaf_kj: 0,
+        vc_kj: 0,
+        ve_kj: 0,
+        zno_kj: 0,
+        cuo_kj: 0,
         leafPer: 0,
         vcPer: 0,
         vePer: 0,
@@ -196,32 +201,138 @@
         breakList: [],
         lunchList: [],
         dinnerList: [],
-        addList: []
+        addList: [],
+        foodData: {}
       }
     },
     mounted() {
+      if (this.$store.state.creditStatus['userDailyFood'] === true) {
+        if (this.$store.state.creditDatas['userDailyFood'] !== undefined) {
+          this.foodData = JSON.parse(this.$store.state.creditDatas['userDailyFood'])
+          this.breakList = this.foodData.breakList
+          this.lunchList = this.foodData.lunchList
+          this.dinnerList = this.foodData.dinnerList
+          this.addList = this.foodData.addList
+        } else {
+          // 如果vuex中未存储数据则发送ajax
+          console.log('发送ajax')
+        }
+      }
       let data = null
+      let index = -1
       if(this.$route.query){
         data = this.$route.query
-        if(data.eatTime === '早餐') this.breakList.push(data)
-        if(data.eatTime === '午餐') this.lunchList.push(data)
-        if(data.eatTime === '晚餐') this.dinnerList.push(data)
-        if(data.eatTime === '加餐') this.addList.push(data)
+        if(data.eatTime === '早餐') {
+          this.breakList = this.addData(index,this.breakList,data)
+          this.addElement(this.breakList)
+        }
+        if(data.eatTime === '午餐') {
+          this.lunchList= this.addData(index,this.lunchList,data)
+          this.addElement(this.lunchList)
+        }
+        if(data.eatTime === '晚餐') {
+          this.dinnerList = this.addData(index,this.dinnerList,data)
+          this.addElement(this.dinnerList)
+        }
+        if(data.eatTime === '加餐') {
+          this.addList = this.addData(index,this.addList,data)
+          this.addElement(this.addList)
+        }
+        this.finalNum()
+        this.foodData.breakList = this.breakList
+        this.foodData.lunchList = this.lunchList
+        this.foodData.dinnerList = this.dinnerList
+        this.foodData.addList = this.addList
+        this.$store.commit('uploadCreditStatu', {
+            name: 'userDailyFood',
+            val: true
+          });
+          this.$store.commit('uploadCreditData', {
+            name: 'userDailyFood',
+            val: JSON.stringify(this.foodData)
+          });
       }
       if(this.breakList.length ===0 && this.lunchList.length===0 && this.dinnerList.length ===0 && this.addList.length ===0){
           this.cssType = 'partThreeGray'
       }else{
-        if(this.breakList.length!=0) this.isBreak = true
-        if(this.lunchList.length!=0) this.isLunch = true
-        if(this.dinnerList.length!=0) this.isDinner = true
-        if(this.addList.length!=0) this.isAdd = true
+        if(this.breakList.length!=0) this.isBreak = true; this.showAdd = false
+        if(this.lunchList.length!=0) this.isLunch = true; this.showAdd = false
+        if(this.dinnerList.length!=0) this.isDinner = true; this.showAdd = false
+        if(this.addList.length!=0) this.isAdd = true; this.showAdd = false
         this.cssType = 'partThreeSelect'
+        this.finalNum()
       }
 
     },
     methods: {
       toPage(){
         this.$router.push('/ganyusys/ganyu/daily/detail')
+      },
+      addData(index,arryList,data) {
+        for(let i = 0; i < arryList.length; i++) {
+            if(arryList[i].name === data.name){
+               index = i
+               break
+            }
+          }
+          if(index!=-1){
+            console.log('xxxxxxx')
+            arryList.splice(index,1,data);
+          }else{
+            arryList.push(data)
+          }
+          return arryList
+      },
+      addElement(arryList){
+        for(let i = 0; i < arryList.length; i++) {
+            this.leaf_kj = this.commonFun.add(this.leaf_kj , arryList[i].leaf_kj)
+            this.vc_kj = this.commonFun.add(this.vc_kj , arryList[i].vc_kj)
+            this.ve_kj = this.commonFun.add(this.ve_kj , arryList[i].ve_kj)
+            this.zno_kj = this.commonFun.add(this.zno_kj , arryList[i].zno_kj)
+            this.cuo_kj = this.commonFun.add(this.cuo_kj , arryList[i].cuo_kj)
+          }
+      },
+      finalNum(){
+        this.leafPer = this.commonFun.mul(this.commonFun.div(this.leaf_kj , 10) , 100)
+        this.vcPer = this.commonFun.mul(this.commonFun.div(this.vc_kj , 500) , 100)
+        this.vePer = this.commonFun.mul(this.commonFun.div(this.ve_kj , 267) , 100)
+        this.znoPer = this.commonFun.mul(this.commonFun.div(this.zno_kj , 25) , 100)
+        this.cuoPer = this.commonFun.mul(this.commonFun.div(this.cuo_kj , 2) , 100)
+        if(this.leafPer>100) {
+          this.cssType = 'partThreeRed'
+          this.leafPer = 100
+        }else{
+          this.leafPer = this.leafPer.toFixed(2)
+        }
+        if(this.vcPer>100) {
+          this.cssType = 'partThreeRed'
+          this.vcPer = 100
+        }else{
+          this.vcPer = this.vcPer.toFixed(2)
+        }
+        if(this.vePer>100) {
+          this.cssType = 'partThreeRed'
+          this.vePer = 100
+        }else{
+          this.vePer = this.vePer.toFixed(2)
+        }
+        if(this.znoPer>100) {
+          this.cssType = 'partThreeRed'
+          this.znoPer = 100
+        }else{
+          this.znoPer = this.znoPer.toFixed(2)
+        }
+        if(this.cuoPer>100) {
+          this.cssType = 'partThreeRed'
+          this.cuoPer = 100
+        }else{
+          this.cuoPer = this.cuoPer.toFixed(2)
+        }
+        this.leaf_kj = this.leaf_kj.toFixed(3)
+        this.vc_kj = this.vc_kj.toFixed(3)
+        this.ve_kj = this.ve_kj.toFixed(3)
+        this.zno_kj = this.zno_kj.toFixed(3)
+        this.cuo_kj = this.cuo_kj.toFixed(3)
       }
     }
 
