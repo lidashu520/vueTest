@@ -59,10 +59,16 @@
   export default {
     data () {
       return {
-
+        foodData:[]
       }
     },
+    created(){
+      this.foodData = this.$route.query
+    },
      mounted() {
+
+      console.log(this.foodData[0].value)
+      console.log(JSON.stringify(this.$route.query))
 	    this.initCharts();
 	  },
     methods: {
@@ -79,23 +85,23 @@
             radius: '70%',
             center: ['50%', '50%'],
             data: [{
-                value: 748,
+                value: 10,
                 name: '叶黄素'
               },
               {
-                value: 410,
+                value: 50,
                 name: '维生素C'
               },
               {
-                value: 234,
+                value: this.foodData[2].value,
                 name: '维生素E'
               },
               {
-                value: 335,
+                value: this.foodData[3].value,
                 name: '氧化锌'
               },
               {
-                value: 445,
+                value: 100,
                 name: '氧化铜'
               }
             ],

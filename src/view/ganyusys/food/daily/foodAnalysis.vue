@@ -7,7 +7,7 @@
   <div class="partThree">
     <div :class="cssType">
       <dl>
-        <dt style="color: #8B4513">经典均衡饮食</dt>
+        <dt style="color: #8B4513">经典均衡饮食 &nbsp;&nbsp;&nbsp;&nbsp;(分号"/"下表示每日最大摄入量)</dt>
         <ul class="foodLogDetail ">
           <li style="width:20%">
               <dt style="color:gray;">叶黄素:</dt>
@@ -16,7 +16,7 @@
             <el-progress :percentage="leafPer" :stroke-width="18" :text-inside='true' color="#FFD700"></el-progress>
           </li>
           <li style="width:45%">
-            <dt >{{leaf_kj}}/10 mg</dt>
+            <dt >{{leaf_kj}}/40 mg</dt>
           </li>
 
           <li style="width:20%">
@@ -26,7 +26,7 @@
             <el-progress :percentage="vcPer" :stroke-width="18" :text-inside='true' color="#ADFF2F"></el-progress>
           </li>
           <li style="width:45%">
-            <dt >{{vc_kj}}/500 mg</dt>
+            <dt >{{vc_kj}}/2000 mg</dt>
           </li>
 
           <li style="width:20%">
@@ -36,7 +36,7 @@
             <el-progress :percentage="vePer" :stroke-width="18" :text-inside='true' ></el-progress>
           </li>
           <li style="width:45%">
-            <dt >{{ve_kj}}/267 mg</dt>
+            <dt >{{ve_kj}}/468 mg</dt>
           </li>
 
           <li style="width:20%">
@@ -46,7 +46,7 @@
             <el-progress :percentage="znoPer" :stroke-width="18" :text-inside='true' color="#1E90FF"></el-progress>
           </li>
           <li style="width:45%">
-            <dt >{{zno_kj}}/25 mg</dt>
+            <dt >{{zno_kj}}/2000 mg</dt>
           </li>
 
           <li style="width:20%">
@@ -56,7 +56,7 @@
             <el-progress :percentage="cuoPer" :stroke-width="18" :text-inside='true' color="#EA7F21"></el-progress>
           </li>
           <li style="width:45%">
-            <dt >{{cuo_kj}}/2 mg</dt>
+            <dt >{{cuo_kj}}/8 mg</dt>
           </li>
         </ul>
       </dl>
@@ -202,7 +202,8 @@
         lunchList: [],
         dinnerList: [],
         addList: [],
-        foodData: {}
+        foodData: {},
+        paramsData: []
       }
     },
     mounted() {
@@ -266,7 +267,12 @@
     },
     methods: {
       toPage(){
-        this.$router.push('/ganyusys/ganyu/daily/detail')
+        this.paramsData.push({"value": this.leaf_kj, "name": "叶黄素"})
+        this.paramsData.push({"value": this.vc_kj, "name": "维生素C"})
+        this.paramsData.push({"value": this.ve_kj, "name": "维生素E"})
+        this.paramsData.push({"value": this.zno_kj, "name": "氧化锌"})
+        this.paramsData.push({"value": this.cuo_kj, "name": "氧化铜"})
+        this.$router.push({ path: '/ganyusys/ganyu/daily/detail', query: this.paramsData})
       },
       addData(index,arryList,data) {
         for(let i = 0; i < arryList.length; i++) {
@@ -292,11 +298,11 @@
           }
       },
       finalNum(){
-        this.leafPer = this.commonFun.mul(this.commonFun.div(this.leaf_kj , 10) , 100)
-        this.vcPer = this.commonFun.mul(this.commonFun.div(this.vc_kj , 500) , 100)
-        this.vePer = this.commonFun.mul(this.commonFun.div(this.ve_kj , 267) , 100)
-        this.znoPer = this.commonFun.mul(this.commonFun.div(this.zno_kj , 25) , 100)
-        this.cuoPer = this.commonFun.mul(this.commonFun.div(this.cuo_kj , 2) , 100)
+        this.leafPer = this.commonFun.mul(this.commonFun.div(this.leaf_kj , 40) , 100)
+        this.vcPer = this.commonFun.mul(this.commonFun.div(this.vc_kj , 2000) , 100)
+        this.vePer = this.commonFun.mul(this.commonFun.div(this.ve_kj , 468) , 100)
+        this.znoPer = this.commonFun.mul(this.commonFun.div(this.zno_kj , 2000) , 100)
+        this.cuoPer = this.commonFun.mul(this.commonFun.div(this.cuo_kj , 8) , 100)
         if(this.leafPer>100) {
           this.cssType = 'partThreeRed'
           this.leafPer = 100
