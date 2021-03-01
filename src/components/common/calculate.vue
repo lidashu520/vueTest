@@ -200,13 +200,6 @@
         this.cuo_kj = this.commonFun.mul(this.listData.cuo_unit, this.g)
       }
     },
-      // mul(arg1, arg2) {
-      //   var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
-      //   try { m += s1.split(".")[1].length } catch (e) { }
-      //   try { m += s2.split(".")[1].length } catch (e) { }
-      //   return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
-      // }
-
     },
     mounted() {
       // 根据传入的uid来，拉取该页面数据
