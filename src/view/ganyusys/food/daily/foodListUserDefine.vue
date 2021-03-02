@@ -10,8 +10,7 @@
       <li v-for='(item,index) of items' :class='{on : index === idx }' @click="goChange(item)">{{item.name}}</li>
     </ul>
   </div>
-  <div  class="infinite-list-wrapper" style="margin-top: 2.75rem; overflow:auto; height:100%">
-    <ul
+    <!-- <ul
       style="height:100%"
       class="list"
       v-infinite-scroll="load"
@@ -27,9 +26,18 @@
           width:12rem;"><span style="color:red; font-size: 0.6525rem;">{{data.mg}}</span><span style="color:gray; font-size: 0.6525rem;"> &nbsp;&nbsp;/100克</span> </p>
         </div>
       </li>
+    </ul> -->
+    <ul style="border-bottom: 1px solid #E4E4E4;">
+      <li class="food-item" v-for='(data,index) in defineList' :key='index' :value='data'>
+        <div class="icon">
+          <img width="57" height="57" :src='data.src'>
+        </div>
+          <div class="content">
+            <h6 class="name">{{data.name}}</h6>
+            <p class="desc"><span style="color:re; font-size: 0.6525rem;">{{data.result}} {{data.listOfName}}</span></p>
+          </div>
+      </li>
     </ul>
-    <p class="noMore" v-if="loading">加载中...</p>
-    <p class="noMore" v-if="noMore">没有更多了</p>
     <el-dialog
         v-if="centerDialogVisible"
         class="abow_dialog"
@@ -40,11 +48,9 @@
         <calculate :listData='value' @child-event='parentEvent'></calculate>
     </el-dialog>
   </div>
-  </div>
 </template>
 
 <script>
- import foodList from '../../../../data/foodList.json'
   export default {
     data () {
       return {
@@ -53,15 +59,14 @@
         centerDialogVisible: false,
         loading: false,
         count: 10,
-        list: foodList,
         pageForm: {
           page: 1,
         },
         pageTotal:9999,
         isShow: false,
         eatCount: 0,
-        selectList: [],
-        idx: 0,
+        selectData: {},
+        idx: 1,
         items: [
           {
             name: "常用",
@@ -71,15 +76,8 @@
             name: "自定义",
             push: "/ganyusys/ganyu/daily/define",
           },
-        ]
-      }
-    },
-    computed: {
-      noMore () {
-         return this.count >= 50
-      },
-      disabled () {
-        return (this.loading || this.noMore)
+        ],
+        defineList: []
       }
     },
       mounted(){
@@ -87,26 +85,17 @@
         if(this.$route.query.value==='午餐') this.titleName = '添加午餐'
         if(this.$route.query.value==='晚餐') this.titleName = '添加晚餐'
         if(this.$route.query.value==='加餐') this.titleName = '加餐'
-        this.load();
       },
     methods: {
-      load () {
-        this.loading = true
-        setTimeout(() => {
-          this.count += 50
-          this.loading = false
-        }, 600)
-      },
       saveInfo() {
         this.eatCount = 0
         this.isShow = false
-        this.$router.push({ path: '/ganyusys/ganyu/daily', query: this.selectList})
+        this.$router.push({ path: '/ganyusys/ganyu/daily', query: this.selectData})
       },
       parentEvent(data) {
-        let index = -1
         if(data!=null && data!=undefined){
-          this.selectList = this.addData(index,this.selectList,data)
-          this.eatCount = this.selectList.length
+          this.selectData = data
+          this.eatCount +=1
           this.isShow = true
         }
         this.centerDialogVisible = false;
@@ -123,21 +112,7 @@
           this.idx = 1
         }
         this.$router.push({ path: item.push, query:{value:this.$route.query.value}})
-      },
-      addData(index,arryList,data) {
-        for(let i = 0; i < arryList.length; i++) {
-            if(arryList[i].name === data.name){
-               index = i
-               break
-            }
-          }
-          if(index!=-1){
-            arryList.splice(index,1,data);
-          }else{
-            arryList.push(data)
-          }
-          return arryList
-      },
+      }
 
     }
   }

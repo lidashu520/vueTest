@@ -832,9 +832,16 @@ export default [{
           {
             path: 'search',
             meta: {
-              title: '每日营养食物列表'
+              title: '每日营养食物列表--常用'
             },
             component: resolve => require(['./view/ganyusys/food/daily/foodList'], resolve),
+          },
+          {
+            path: 'define',
+            meta: {
+              title: '每日营养食物列表--自定义'
+            },
+            component: resolve => require(['./view/ganyusys/food/daily/foodListUserDefine'], resolve),
           },
           {
             path: 'detail',

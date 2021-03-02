@@ -214,26 +214,25 @@
           this.lunchList = this.foodData.lunchList
           this.dinnerList = this.foodData.dinnerList
           this.addList = this.foodData.addList
-          console.log(this.foodData)
         } else {
           // 如果vuex中未存储数据则发送ajax
           console.log('发送ajax')
         }
       }
-      let data = null
+      var data = []
       let index = -1
       if(JSON.stringify(this.$route.query) != '{}'){
         data = this.$route.query
-        if(data.eatTime === '早餐') {
+        if(data[0].eatTime === '早餐') {
           this.breakList = this.addData(index,this.breakList,data)
         }
-        if(data.eatTime === '午餐') {
+        if(data[0].eatTime === '午餐') {
           this.lunchList= this.addData(index,this.lunchList,data)
         }
-        if(data.eatTime === '晚餐') {
+        if(data[0].eatTime === '晚餐') {
           this.dinnerList = this.addData(index,this.dinnerList,data)
         }
-        if(data.eatTime === '加餐') {
+        if(data[0].eatTime === '加餐') {
           this.addList = this.addData(index,this.addList,data)
         }
         this.foodData.breakList = this.breakList
@@ -276,16 +275,19 @@
       },
       addData(index,arryList,data) {
         for(let i = 0; i < arryList.length; i++) {
-            if(arryList[i].name === data.name){
+          for(let j=0;j<Object.keys(data).length;j++){
+            if(arryList[i].name === data[j].name){
                index = i
-               break
+               if(index!=-1){
+                arryList.splice(index,1);
+               }
             }
           }
-          if(index!=-1){
-            arryList.splice(index,1,data);
-          }else{
-            arryList.push(data)
+        }
+          for(let m=0; m<Object.keys(data).length; m++){
+            arryList.push(data[m]);
           }
+          console.log(JSON.stringify(arryList))
           return arryList
       },
       addElement(arryList){
