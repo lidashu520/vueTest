@@ -287,7 +287,6 @@
           for(let m=0; m<Object.keys(data).length; m++){
             arryList.push(data[m]);
           }
-          console.log(JSON.stringify(arryList))
           return arryList
       },
       addElement(arryList){

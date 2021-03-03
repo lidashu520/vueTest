@@ -844,6 +844,13 @@ export default [{
             component: resolve => require(['./view/ganyusys/food/daily/foodListUserDefine'], resolve),
           },
           {
+            path: 'defineEdit',
+            meta: {
+              title: '自定义编辑页面'
+            },
+            component: resolve => require(['./view/ganyusys/food/daily/foodDefine'], resolve),
+          },
+          {
             path: 'detail',
             meta: {
               title: '每日营养分析'
