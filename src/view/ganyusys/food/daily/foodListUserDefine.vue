@@ -14,14 +14,14 @@
       <li @click="addDefineFood"><i class="el-icon-plus"></i> 添加自定义食物</li>
     </ul>
   </div>
-    <ul style="border-bottom: 1px solid #E4E4E4; margin-top:3.75rem">
-      <li class="food-item" v-for='(data,index) in defineList' :key='index' :value='data'>
+    <ul style="border-bottom: 1px solid #E4E4E4; margin-top:5.5rem">
+      <li class="food-item" v-for='(data,index) in defineList' :key='index' :value='data' @click="showDialog(data)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
           <div class="content">
             <h6 class="name">{{data.name}}</h6>
-            <p class="desc" style="width:12rem;"><span style="color:red; font-size: 0.6525rem;">{{data.mg}}</span><span style="color:re; font-size: 0.6525rem;"> &nbsp;&nbsp;/{{data.count}} {{data.unit}}</span></p>
+            <p class="desc" style="width:12rem;"><span style="color:red; font-size: 0.6525rem;">{{data.mg}}</span><span style="color:re; font-size: 0.6525rem;"> &nbsp;&nbsp;/ {{data.unit}}</span></p>
           </div>
       </li>
     </ul>
@@ -32,13 +32,15 @@
         width="100%"
         :destroy-on-close= true
         :show-close= false>
-        <calculate :listData='value' @child-event='parentEvent'></calculate>
+        <calculate-define :listData='value' @child-event='parentEvent'></calculate-define>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import calculateDefine from '../../../../components/common/calculateDefine.vue'
   export default {
+  components: { calculateDefine },
     data () {
       return {
         titleName: '',
@@ -51,7 +53,7 @@
         pageTotal:9999,
         isShow: false,
         eatCount: 0,
-        selectData: {},
+        selectList: [],
         idx: 1,
         items: [
           {
@@ -86,12 +88,13 @@
       saveInfo() {
         this.eatCount = 0
         this.isShow = false
-        this.$router.push({ path: '/ganyusys/ganyu/daily', query: this.selectData})
+        this.$router.push({ path: '/ganyusys/ganyu/daily', query: this.selectList})
       },
       parentEvent(data) {
+        let index = -1
         if(data!=null && data!=undefined){
-          this.selectData = data
-          this.eatCount +=1
+          this.selectList = this.addData(index,this.selectList,data)
+          this.eatCount = this.selectList.length
           this.isShow = true
         }
         this.centerDialogVisible = false;
@@ -111,8 +114,21 @@
       },
       addDefineFood(){
         this.$router.push({ path: '/ganyusys/ganyu/daily/defineEdit', query:{value:this.$route.query.value}})
-      }
-
+      },
+      addData(index,arryList,data) {
+        for(let i = 0; i < arryList.length; i++) {
+            if(arryList[i].name === data.name){
+               index = i
+               break
+            }
+          }
+          if(index!=-1){
+            arryList.splice(index,1,data);
+          }else{
+            arryList.push(data)
+          }
+          return arryList
+      },
     }
   }
 </script>
@@ -154,20 +170,21 @@
       }
   .defineCls  {
       height: 2.75rem;
+      overflow: hidden;
+      background: #fff;
+      z-index: 9;
+      position: fixed;
+      top: 5.5rem;
+      width: 100%;
   }
   .defineCls  ul {
-    position: fixed;
-    top: 5.8rem;
-    width: 100%;
-    height: 2.2rem;
-    background: #fff;
     border-top: 1px #E6F0DF solid;
     border-bottom: 1px #E6F0DF solid;
     }
     .defineCls li {
-      float: left;
+      display: inline-block;
       width: 100%;
-      overflow: hidden;
+      cursor: pointer;
       text-align: center;
       line-height: 2.2rem;
       font-size: 0.8375rem;

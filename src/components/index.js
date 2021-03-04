@@ -42,6 +42,7 @@ import foodMatchTitle from './reward/foodMatchTitle';		  //foodMatchTitle
 import supBanner from './loan/supTop';			   // sup-top
 import hint from './common/hint';			   // hint
 import calculate from './common/calculate';			   // calculate
+import calculateDefine from './common/calculateDefine';			   // calculateDefine
 import footerFoodLog from './common/footerFoodLog';			   // footerFoodLog
 import nutriRankTitle from './reward/nutriRankTitle';		  //nutriRankTitle
 // import CPdf from './common/CPdf';			   // CPdf

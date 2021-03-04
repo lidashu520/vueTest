@@ -11,9 +11,9 @@
     <h5 style="color:#000;padding-left:0.5rem">营养素比及摄入</h5>
     <p style="color:gray; font-size: 0.5525rem; padding:0.25rem 0 0 0.5rem">每种营养素摄入符号表示</p>
     <ul class="footer">
-      <li style="color:#696969; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#EA7F21" class="el-icon-top"></i>偏高</li>
-      <li style="color:#696969; width:30%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#FFD700" class="el-icon-bottom"></i>偏低</li>
-      <li style="color:#696969; width:30%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-0.5rem"><i style="color:#73BD4C" class="el-icon-check"></i>满足</li>
+      <li style="color:#696969; width:33%;font-size: 0.7525rem;padding-top:0.5rem;margin-left:-1rem"><i style="color:#EA7F21" class="el-icon-top"></i>偏高</li>
+      <li style="color:#696969; width:33%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-1rem"><i style="color:#FFD700" class="el-icon-bottom"></i>偏低</li>
+      <li style="color:#696969; width:33%; font-size: 0.7525rem;padding-top:0.5rem;margin-left:-1rem"><i style="color:#73BD4C" class="el-icon-check"></i>满足</li>
     </ul>
   </div>
         <div style="width:355px;height:280px" ref="chart"></div>

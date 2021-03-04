@@ -42,13 +42,13 @@
       return {
         //数据
         name: '',
-        count: 1,
         unit: '',
         leaf_kj: 0,
         vc_kj: 0,
         ve_kj: 0,
         zno_kj: 0,
         cuo_kj: 0,
+        mg: '',
         paramsData: {},
         definefoodData: {},
         defineList: []
@@ -66,18 +66,67 @@
     },
     methods: {
       goNext(){
-        // this.$router.push({ path: '/ganyusys/ganyu/daily/define', query:{value:this.$route.query.value, defineFood:{}}})
         this.$router.back()
       },
       confirm(){
+        let checkNum = /^[0-9]+(\.[0-9]{1,3})?$/
+        let checkName = /^[\u4E00-\u9FA5]{1,8}(?:·[\u4E00-\u9FA5]{1,8})*$/
+        if(typeof this.name === 'undefined' || this.name === null || this.name === ""){
+          this.$dialog('食物名称不能为空');
+          return
+        }
+        if(checkName.test(this.unit) === false){
+          this.$dialog("单位格式必须为中文且不能为空");
+          return
+        }
+        if(this.leaf_kj===0 && this.vc_kj===0 && this.ve_kj===0 && this.zno_kj===0 && this.cuo_kj===0){
+          this.$dialog("营养素的含量不能全部为0");
+          return
+        }else{
+          if(checkNum.test(this.leaf_kj) === false) {
+            this.$dialog("叶黄素的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            return
+          }
+          if(checkNum.test(this.vc_kj) === false) {
+            this.$dialog("维生素E的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            return
+          }
+          if(checkNum.test(this.ve_kj) === false) {
+            this.$dialog("维生素C的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            return
+          }
+          if(checkNum.test(this.zno_kj) === false) {
+            this.$dialog("氧化锌的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            return
+          }
+          if(checkNum.test(this.cuo_kj) === false) {
+            this.$dialog("氧化铜的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            return
+          }
+        }
         this.paramsData.name = this.name
-        this.paramsData.count = this.count
         this.paramsData.unit = this.unit
         this.paramsData.leaf_kj = this.leaf_kj
         this.paramsData.vc_kj = this.vc_kj
         this.paramsData.ve_kj = this.ve_kj
         this.paramsData.zno_kj = this.zno_kj
         this.paramsData.cuo_kj = this.cuo_kj
+        if(this.paramsData.leaf_kj!=0){
+          this.mg=this.mg + this.paramsData.leaf_kj + 'mg叶黄素 '
+        }
+        if(this.paramsData.vc_kj!=0){
+          this.mg=this.mg + this.paramsData.vc_kj + 'mg维生素C '
+        }
+        if(this.paramsData.ve_kj!=0){
+          this.mg=this.mg + this.paramsData.ve_kj + 'mg维生素E '
+        }
+        if(this.paramsData.zno_kj!=0){
+          this.mg=this.mg + this.paramsData.zno_kj + 'mg氧化锌 '
+        }
+        if(this.paramsData.zno_kj!=0){
+          this.mg=this.mg + this.paramsData.cuo_kj + 'mg氧化铜 '
+        }
+        this.paramsData.mg = this.mg
         this.defineList.push(this.paramsData)
         this.definefoodData.defineList = this.defineList
         this.$store.commit('uploadCreditStatu', {
@@ -88,7 +137,6 @@
             name: 'userDefineFood',
             val: JSON.stringify(this.definefoodData)
           });
-          // this.$router.push({ path: '/ganyusys/ganyu/daily/define', query:{value:this.$route.query.value, defineFood:this.paramsData}})
           // 发送ajax 请求
           this.$router.back()
 
