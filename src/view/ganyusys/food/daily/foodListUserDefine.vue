@@ -14,7 +14,7 @@
       <li @click="addDefineFood"><i class="el-icon-plus"></i> 添加自定义食物</li>
     </ul>
   </div>
-    <ul style="border-bottom: 1px solid #E4E4E4; margin-top:5.5rem">
+    <ul :style='borderCss'>
       <li class="food-item" v-for='(data,index) in defineList' :key='index' :value='data' @click="showDialog(data)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
@@ -65,6 +65,7 @@ import calculateDefine from '../../../../components/common/calculateDefine.vue'
             push: "/ganyusys/ganyu/daily/define",
           },
         ],
+        borderCss: 'border-bottom: 1px solid #E4E4E4; margin-top:5.5rem',
         defineList: [],
         definefoodData:{}
       }
@@ -79,6 +80,7 @@ import calculateDefine from '../../../../components/common/calculateDefine.vue'
           console.log('发送ajax')
         }
       }
+      if(this.defineList.length>0) this.borderCss = 'border-bottom: 1px solid #E4E4E4; margin-top:5.5rem'
       if(this.$route.query.value==='早餐') this.titleName = '添加早餐'
       if(this.$route.query.value==='午餐') this.titleName = '添加午餐'
       if(this.$route.query.value==='晚餐') this.titleName = '添加晚餐'

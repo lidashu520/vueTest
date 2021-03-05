@@ -69,7 +69,7 @@
         this.$router.back()
       },
       confirm(){
-        let checkNum = /^[0-9]+(\.[0-9]{1,3})?$/
+        let checkNum = /^[0-9]{1,3}(\.[0-9]{1,2})?$/
         let checkName = /^[\u4E00-\u9FA5]{1,8}(?:·[\u4E00-\u9FA5]{1,8})*$/
         if(typeof this.name === 'undefined' || this.name === null || this.name === ""){
           this.$dialog('食物名称不能为空');
@@ -84,25 +84,34 @@
           return
         }else{
           if(checkNum.test(this.leaf_kj) === false) {
-            this.$dialog("叶黄素的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            this.$dialog("叶黄素输入格式错误(最多输入2位小数且整数部分最多到百位数)")
             return
           }
           if(checkNum.test(this.vc_kj) === false) {
-            this.$dialog("维生素E的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            this.$dialog("维生素E输入格式错误(最多输入2位小数且整数部分最多到百位数)")
             return
           }
           if(checkNum.test(this.ve_kj) === false) {
-            this.$dialog("维生素C的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            this.$dialog("维生素C输入格式错误(最多输入2位小数且整数部分最多到百位数)")
             return
           }
           if(checkNum.test(this.zno_kj) === false) {
-            this.$dialog("氧化锌的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            this.$dialog("氧化锌的输入格式错误(最多输入2位小数且整数部分最多到百位数)")
             return
           }
           if(checkNum.test(this.cuo_kj) === false) {
-            this.$dialog("氧化铜的含量数字格式有误(最多输入3位小数且最多到百位数)")
+            this.$dialog("氧化铜输入格式错误(最多输入2位小数且整数部分最多到百位数)")
             return
           }
+        }
+        this.leaf_kj = parseFloat(this.leaf_kj)
+        this.vc_kj = parseFloat(this.vc_kj)
+        this.ve_kj = parseFloat(this.ve_kj)
+        this.zno_kj = parseFloat(this.zno_kj)
+        this.cuo_kj = parseFloat(this.cuo_kj)
+        if(this.leaf_kj===0 && this.vc_kj===0 && this.ve_kj===0 && this.zno_kj===0 && this.cuo_kj===0){
+          this.$dialog("营养素的含量不能全部为0");
+          return
         }
         this.paramsData.name = this.name
         this.paramsData.unit = this.unit
