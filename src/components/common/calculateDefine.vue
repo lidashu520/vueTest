@@ -147,6 +147,7 @@
         this.result = left + "." + right
         this.g =  parseFloat(this.result)
         this.setKj()
+        this.isFirstInput=false
       },
     emitToParent(data){
         if(data){
