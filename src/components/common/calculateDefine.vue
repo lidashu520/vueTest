@@ -91,6 +91,7 @@
           },
         ],
         selectData:{},
+        isFirstInput: true
       }
 
     },
@@ -117,6 +118,9 @@
         this.setKj()
       },
       command(str) {
+        if(this.isFirstInput && str!="."){
+          this.result = str + ".0"
+        }
         let  temp = this.result.split(".")
         let  left = temp[0]
         let  right = temp[1]
@@ -126,7 +130,9 @@
           }else {
             if(parseInt(left)!=0){
             if(str!="."){
-              left = left + str;
+              if(this.isFirstInput===false){
+                left = left + str
+              }
               if(left.length>3){
                 left = 999
               }

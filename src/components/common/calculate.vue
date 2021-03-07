@@ -97,6 +97,7 @@
         ],
         selectData:{},
         list: [],
+        isFirstInput: true
       }
 
     },
@@ -123,6 +124,9 @@
         this.setKj()
       },
       command(str) {
+        if(this.isFirstInput && str!="."){
+          this.result = str + ".0"
+        }
         let  temp = this.result.split(".")
         let  left = temp[0]
         let  right = temp[1]
@@ -132,7 +136,9 @@
           }else {
             if(parseInt(left)!=0){
             if(str!="."){
-              left = left + str;
+              if(this.isFirstInput===false){
+                left = left + str
+              }
               if(left.length>3){
                 left = 999
               }
@@ -147,6 +153,7 @@
         this.result = left + "." + right
         this.g = this.list[this.idx].g * parseFloat(this.result)
         this.setKj()
+        this.isFirstInput=false
       },
     choiceUnit(index){
       if(this.idx === index){
@@ -157,6 +164,7 @@
         this.result = this.list[index].val
         this.g = this.list[index].g
         this.setKj()
+        this.isFirstInput = true
       }
 
     },
