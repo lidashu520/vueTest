@@ -72,7 +72,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in breakList' :key='index' :value='data'>
+      <li class="food-item" v-for='(data,index) in breakList' :key='index' :value='data' @click="deleteFood(data,1)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -94,7 +94,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in lunchList' :key='index' :value='data'>
+      <li class="food-item" v-for='(data,index) in lunchList' :key='index' :value='data' @click="deleteFood(data,2)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -116,7 +116,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in dinnerList' :key='index' :value='data'>
+      <li class="food-item" v-for='(data,index) in dinnerList' :key='index' :value='data' @click="deleteFood(data,3)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -138,7 +138,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in addList' :key='index' :value='data'>
+      <li class="food-item" v-for='(data,index) in addList' :key='index' :value='data' @click="deleteFood(data,4)">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -173,6 +173,17 @@
       margin-top:0.5rem;
       color:gray; font-size: 0.6525rem;">完整记录三餐分析才准确
     </p>
+    <el-dialog
+      :visible.sync="dialogVisible"
+      :show-close= false
+      :before-close="handleClose"
+      width="85%">
+      <span>确定要删除吗？</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   <footerFoodLog></footerFoodLog>
   </div>
 </template>
@@ -182,7 +193,6 @@
     data () {
       return {
         cssType: 'partThreeGray',
-        isShow: false,
         showAdd: true,
         isBreak: false,
         isLunch: false,
@@ -203,7 +213,8 @@
         dinnerList: [],
         addList: [],
         foodData: {},
-        paramsData: []
+        paramsData: [],
+        dialogVisible: false
       }
     },
     mounted() {
@@ -298,6 +309,15 @@
             this.cuo_kj = this.commonFun.add(this.cuo_kj , arryList[i].cuo_kj)
           }
       },
+      cutElement(arryList){
+        for(let i = 0; i < arryList.length; i++) {
+            this.leaf_kj = this.commonFun.cut(this.leaf_kj , arryList[i].leaf_kj)
+            this.vc_kj = this.commonFun.cut(this.vc_kj , arryList[i].vc_kj)
+            this.ve_kj = this.commonFun.cut(this.ve_kj , arryList[i].ve_kj)
+            this.zno_kj = this.commonFun.cut(this.zno_kj , arryList[i].zno_kj)
+            this.cuo_kj = this.commonFun.cut(this.cuo_kj , arryList[i].cuo_kj)
+          }
+      },
       finalNum(){
         this.leafPer = this.commonFun.mul(this.commonFun.div(this.leaf_kj , 40) , 100)
         this.vcPer = this.commonFun.mul(this.commonFun.div(this.vc_kj , 2000) , 100)
@@ -334,11 +354,86 @@
         }else{
           if(this.cuoPer!=0) this.cuoPer = parseFloat((this.cuoPer).toFixed(2))
         }
-        this.leaf_kj = parseFloat((this.leaf_kj).toFixed(3))
-        this.vc_kj = parseFloat((this.vc_kj).toFixed(3))
-        this.ve_kj = parseFloat((this.ve_kj).toFixed(3))
-        this.zno_kj = parseFloat((this.zno_kj).toFixed(3))
-        this.cuo_kj = parseFloat((this.cuo_kj).toFixed(3))
+        if(this.breakList.length === 0 && this.lunchList.length === 0 && this.dinnerList.length === 0 && this.addList.length===0) {
+          this.showAdd = true
+        }
+        console.log('========'  + this.leaf_kj)
+        if(this.leaf_kj!=0) this.leaf_kj = parseFloat((this.leaf_kj).toFixed(3))
+        if(this.vc_kj!=0)  this.vc_kj = parseFloat((this.vc_kj).toFixed(3))
+        if(this.ve_kj!=0) this.ve_kj = parseFloat((this.ve_kj).toFixed(3))
+        if(this.zno_kj!=0) this.zno_kj = parseFloat((this.zno_kj).toFixed(3))
+        if(this.cuo_kj!=0) this.cuo_kj = parseFloat((this.cuo_kj).toFixed(3))
+        console.log('*********')
+      },
+      deleteFood(food,type){
+        this.dialogVisible = true
+        this.handleClose(food,type)
+        this.finalNum()
+      },
+      handleClose(food,type) {
+        if(type ===1){
+          for(let i=0;i<this.breakList.length;i++){
+           if(food.name === this.breakList[i].name){
+             this.cutElement(this.breakList)
+             this.breakList.splice(i,1)
+             break
+           }
+          }
+          if(this.breakList.length === 0){
+            this.isBreak = false
+          }
+        }
+        if(type ===2){
+          for(let i=0;i<this.lunchList.length;i++){
+           if(food.name === this.lunchList[i].name){
+             this.cutElement(this.lunchList)
+             this.lunchList.splice(i,1)
+             break
+           }
+          }
+          if(this.lunchList.length === 0){
+            this.isLunch = false
+          }
+        }
+        if(type ===3){
+          for(let i=0;i<this.dinnerList.length;i++){
+           if(food.name === this.dinnerList[i].name){
+             this.cutElement(this.dinnerList)
+             this.dinnerList.splice(i,1)
+             break
+           }
+          }
+          if(this.dinnerList.length === 0){
+            this.isDinner = false
+          }
+        }
+        if(type ===4){
+          for(let i=0;i<this.addList.length;i++){
+           if(food.name === this.addList[i].name){
+             this.cutElement(this.addList)
+             this.addList.splice(i,1)
+             break
+           }
+          }
+          if(this.addList.length === 0){
+            this.isAdd = false
+          }
+        }
+        this.saveFood()
+      },
+      saveFood(){
+        this.foodData.breakList = this.breakList
+        this.foodData.lunchList = this.lunchList
+        this.foodData.dinnerList = this.dinnerList
+        this.foodData.addList = this.addList
+        this.$store.commit('uploadCreditStatu', {
+            name: 'userDailyFood',
+            val: true
+          });
+          this.$store.commit('uploadCreditData', {
+            name: 'userDailyFood',
+            val: JSON.stringify(this.foodData)
+          });
       }
     }
 
