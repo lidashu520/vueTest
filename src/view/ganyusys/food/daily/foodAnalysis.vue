@@ -72,7 +72,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in breakList' :key='index' :value='data' @click="deleteFood(data,1)">
+      <li class="food-item" v-for='(data,index) in breakList' :key='index' :value='data' @touchstart="gotouchstart(data,1)" @touchmove="gotouchmove" @touchend="gotouchend">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -94,7 +94,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in lunchList' :key='index' :value='data' @click="deleteFood(data,2)">
+      <li class="food-item" v-for='(data,index) in lunchList' :key='index' :value='data'  @touchstart="gotouchstart(data,2)" @touchmove="gotouchmove" @touchend="gotouchend">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -116,7 +116,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in dinnerList' :key='index' :value='data' @click="deleteFood(data,3)">
+      <li class="food-item" v-for='(data,index) in dinnerList' :key='index' :value='data'  @touchstart="gotouchstart(data,3)" @touchmove="gotouchmove" @touchend="gotouchend">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -138,7 +138,7 @@
       </li>
     </ul>
     <ul style="border-bottom: 1px solid #E4E4E4;">
-      <li class="food-item" v-for='(data,index) in addList' :key='index' :value='data' @click="deleteFood(data,4)">
+      <li class="food-item" v-for='(data,index) in addList' :key='index' :value='data'  @touchstart="gotouchstart(data,4)" @touchmove="gotouchmove" @touchend="gotouchend">
         <div class="icon">
           <img width="57" height="57" :src='data.src'>
         </div>
@@ -176,12 +176,11 @@
     <el-dialog
       :visible.sync="dialogVisible"
       :show-close= false
-      :before-close="handleClose"
       width="85%">
       <span>确定要删除吗？</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="handleClose">确 定</el-button>
       </span>
     </el-dialog>
   <footerFoodLog></footerFoodLog>
@@ -214,7 +213,10 @@
         addList: [],
         foodData: {},
         paramsData: [],
-        dialogVisible: false
+        dialogVisible: false,
+        food: {},
+        type: 0,
+        timeOutEvent: 0
       }
     },
     mounted() {
@@ -309,14 +311,12 @@
             this.cuo_kj = this.commonFun.add(this.cuo_kj , arryList[i].cuo_kj)
           }
       },
-      cutElement(arryList){
-        for(let i = 0; i < arryList.length; i++) {
-            this.leaf_kj = this.commonFun.cut(this.leaf_kj , arryList[i].leaf_kj)
-            this.vc_kj = this.commonFun.cut(this.vc_kj , arryList[i].vc_kj)
-            this.ve_kj = this.commonFun.cut(this.ve_kj , arryList[i].ve_kj)
-            this.zno_kj = this.commonFun.cut(this.zno_kj , arryList[i].zno_kj)
-            this.cuo_kj = this.commonFun.cut(this.cuo_kj , arryList[i].cuo_kj)
-          }
+      cutElement(food){
+          this.leaf_kj = this.commonFun.cut(this.leaf_kj , food.leaf_kj)
+          this.vc_kj = this.commonFun.cut(this.vc_kj , food.vc_kj)
+          this.ve_kj = this.commonFun.cut(this.ve_kj , food.ve_kj)
+          this.zno_kj = this.commonFun.cut(this.zno_kj , food.zno_kj)
+          this.cuo_kj = this.commonFun.cut(this.cuo_kj , food.cuo_kj)
       },
       finalNum(){
         this.leafPer = this.commonFun.mul(this.commonFun.div(this.leaf_kj , 40) , 100)
@@ -357,24 +357,20 @@
         if(this.breakList.length === 0 && this.lunchList.length === 0 && this.dinnerList.length === 0 && this.addList.length===0) {
           this.showAdd = true
         }
-        console.log('========'  + this.leaf_kj)
-        if(this.leaf_kj!=0) this.leaf_kj = parseFloat((this.leaf_kj).toFixed(3))
-        if(this.vc_kj!=0)  this.vc_kj = parseFloat((this.vc_kj).toFixed(3))
-        if(this.ve_kj!=0) this.ve_kj = parseFloat((this.ve_kj).toFixed(3))
-        if(this.zno_kj!=0) this.zno_kj = parseFloat((this.zno_kj).toFixed(3))
-        if(this.cuo_kj!=0) this.cuo_kj = parseFloat((this.cuo_kj).toFixed(3))
-        console.log('*********')
+        this.leaf_kj = this.numberFormat(this.leaf_kj)
+        this.vc_kj = this.numberFormat(this.vc_kj)
+        this.ve_kj = this.numberFormat(this.ve_kj)
+        this.zno_kj = this.numberFormat(this.zno_kj)
+        this.cuo_kj = this.numberFormat(this.cuo_kj)
       },
-      deleteFood(food,type){
-        this.dialogVisible = true
-        this.handleClose(food,type)
-        this.finalNum()
-      },
-      handleClose(food,type) {
+      handleClose() {
+        this.dialogVisible = false
+        let food = this.food
+        let type = this.type
         if(type ===1){
           for(let i=0;i<this.breakList.length;i++){
            if(food.name === this.breakList[i].name){
-             this.cutElement(this.breakList)
+             this.cutElement(food)
              this.breakList.splice(i,1)
              break
            }
@@ -386,7 +382,7 @@
         if(type ===2){
           for(let i=0;i<this.lunchList.length;i++){
            if(food.name === this.lunchList[i].name){
-             this.cutElement(this.lunchList)
+             this.cutElement(food)
              this.lunchList.splice(i,1)
              break
            }
@@ -398,7 +394,7 @@
         if(type ===3){
           for(let i=0;i<this.dinnerList.length;i++){
            if(food.name === this.dinnerList[i].name){
-             this.cutElement(this.dinnerList)
+             this.cutElement(food)
              this.dinnerList.splice(i,1)
              break
            }
@@ -410,7 +406,7 @@
         if(type ===4){
           for(let i=0;i<this.addList.length;i++){
            if(food.name === this.addList[i].name){
-             this.cutElement(this.addList)
+             this.cutElement(food)
              this.addList.splice(i,1)
              break
            }
@@ -420,6 +416,7 @@
           }
         }
         this.saveFood()
+        this.finalNum()
       },
       saveFood(){
         this.foodData.breakList = this.breakList
@@ -434,7 +431,45 @@
             name: 'userDailyFood',
             val: JSON.stringify(this.foodData)
           });
-      }
+      },
+      numberFormat(num){
+        if(num!=0) {
+          let strNum = num.toString()
+          if(strNum.indexOf(".") != -1){
+            let rightLen = strNum.split(".")[1]
+            if(rightLen.length>2){
+              num = parseFloat(num).toFixed(3)
+            }
+          }
+        }else{
+          num = 0
+        }
+        return num
+      },
+
+      gotouchstart(food,type){
+        let that = this
+        clearTimeout(this.timeOutEvent);//清除定时器
+        this.timeOutEvent = 0;
+        this.timeOutEvent = setTimeout(function(){
+          // delete Food
+          that.dialogVisible = true
+          that.food = food
+          that.type = type
+        },600);//这里设置定时
+      },
+      //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
+      gotouchend(){
+        clearTimeout(this.timeOutEvent);
+          if(this.timeOutEvent!=0){
+            //这里写要执行的内容（尤如onclick事件）
+        }
+      },
+      //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
+      gotouchmove(){
+        clearTimeout(this.timeOutEvent);//清除定时器
+        this.timeOutEvent = 0;
+      },
     }
 
 
